@@ -10,7 +10,7 @@ import javax.swing.JTabbedPane;
 import javax.swing.JCheckBox;
 import javax.swing.border.LineBorder;
 
-import jdk.internal.vm.compiler.libgraal.LibGraalIsolate;
+//import jdk.internal.vm.compiler.libgraal.LibGraalIsolate;
 
 import java.awt.Color;
 import javax.swing.JTextField;

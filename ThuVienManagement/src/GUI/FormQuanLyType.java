@@ -7,7 +7,7 @@ import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
 
-public class FormPublisherManagement extends JFrame {
+public class FormQuanLyType extends JFrame {
 
 	private JPanel contentPane;
 
@@ -18,7 +18,7 @@ public class FormPublisherManagement extends JFrame {
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
 				try {
-					FormPublisherManagement frame = new FormPublisherManagement();
+					FormQuanLyType frame = new FormQuanLyType();
 					frame.setVisible(true);
 				} catch (Exception e) {
 					e.printStackTrace();
@@ -30,13 +30,13 @@ public class FormPublisherManagement extends JFrame {
 	/**
 	 * Create the frame.
 	 */
-	public FormPublisherManagement() {
+	public FormQuanLyType() {
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 450, 300);
 		contentPane = new JPanel();
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
+		contentPane.setLayout(new BorderLayout(0, 0));
 		setContentPane(contentPane);
-		contentPane.setLayout(null);
 	}
 
 }
