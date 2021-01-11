@@ -19,11 +19,16 @@ import javax.swing.JButton;
 import java.awt.Button;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
+import javax.swing.SwingConstants;
+import java.awt.event.MouseAdapter;
+import java.awt.event.MouseEvent;
+import javax.swing.JTextField;
 
 public class FormDangNhap extends JFrame {
 
 	private JPanel contentPane;
 	private JPasswordField pwdPassword;
+	private JTextField txtUserName;
 
 	/**
 	 * Launch the application.
@@ -72,15 +77,17 @@ public class FormDangNhap extends JFrame {
 		contentPane.add(panel);
 		panel.setLayout(null);
 		
-		JLabel txt_usename = new JLabel("UserName");
-		txt_usename.setFont(new Font("Arial", Font.BOLD, 18));
-		txt_usename.setBounds(10, 0, 219, 30);
-		panel.add(txt_usename);
-		
 		JLabel lblNewLabel_1 = new JLabel("");
 		lblNewLabel_1.setIcon(new ImageIcon(FormDangNhap.class.getResource("/img/rsz_user.png")));
 		lblNewLabel_1.setBounds(270, 0, 30, 30);
 		panel.add(lblNewLabel_1);
+		
+		txtUserName = new JTextField();
+		txtUserName.setFont(new Font("Arial", Font.BOLD, 18));
+		txtUserName.setText("Username");
+		txtUserName.setBounds(10, 0, 219, 30);
+		panel.add(txtUserName);
+		txtUserName.setColumns(10);
 		
 		Panel panel_1 = new Panel();
 		panel_1.setBackground(Color.WHITE);
@@ -117,14 +124,29 @@ public class FormDangNhap extends JFrame {
 		lblNewLabel_2.setBounds(155, 264, 129, 29);
 		contentPane.add(lblNewLabel_2);
 		
-		Button bntX = new Button("X");
-		bntX.addActionListener(new ActionListener() {
-		/*	public void actionPerformed(ActionEvent e) {
-				if(JOptionPane)
-			}*/
+		JLabel txtX = new JLabel("X");
+		txtX.addMouseListener(new MouseAdapter() {
+			@SuppressWarnings("deprecation")
+			@Override
+			public void mouseClicked(MouseEvent e) {
+				if (JOptionPane.showConfirmDialog(null, "Do You Want To Exit ?", "Notification", JOptionPane.YES_NO_OPTION)== 0){
+						FormDangNhap.this.dispose();
+				}
+			}
+			@Override
+			public void mouseEntered(MouseEvent e) {
+				txtX.setForeground(Color .red);
+			}
+			@Override
+			public void mouseExited(MouseEvent e) {
+				txtX.setForeground(Color .BLACK);
+			}
 		});
-		bntX.setFont(new Font("Arial Black", Font.BOLD, 20));
-		bntX.setBounds(562, 10, 28, 22);
-		contentPane.add(bntX);
+		txtX.setHorizontalAlignment(SwingConstants.CENTER);
+		txtX.setFont(new Font("Arial", Font.BOLD, 17));
+		txtX.setBounds(565, 10, 25, 18);
+		contentPane.add(txtX);
+		
+		}
 	}
-}
+
