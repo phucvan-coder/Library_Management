@@ -31,7 +31,6 @@ public class FormQuanLyAccount extends JFrame {
 	private JTextField txtPassword;
 	private JTextField txtIdMember;
 	private JTextField txtname;
-	private JTextField txtTimKiem;
 
 	/**
 	 * Launch the application.
@@ -178,25 +177,6 @@ public class FormQuanLyAccount extends JFrame {
 		lblRank.setBackground(Color.WHITE);
 		lblRank.setFont(new Font("Arial", Font.BOLD, 18));
 		lblRank.setForeground(Color.BLACK);
-		
-		JPanel panel_3 = new JPanel();
-		panel_3.setBackground(Color.WHITE);
-		panel_3.setBounds(663, 207, 352, 33);
-		contentPane.add(panel_3);
-		panel_3.setLayout(null);
-		
-		txtTimKiem = new JTextField();
-		txtTimKiem.setBounds(0, 0, 304, 33);
-		panel_3.add(txtTimKiem);
-		txtTimKiem.setText("Enter keywords ......");
-		txtTimKiem.setFont(new Font("Arial", Font.ITALIC, 18));
-		txtTimKiem.setColumns(10);
-		
-		JButton btnTimkiem = new JButton("");
-		btnTimkiem.setIcon(new ImageIcon(FormQuanLyAccount.class.getResource("/img/loupe.png")));
-		btnTimkiem.setBackground(Color.WHITE);
-		btnTimkiem.setBounds(320, 1, 32, 32);
-		panel_3.add(btnTimkiem);
 		
 		JButton btnUpdate = new JButton("");
 		btnUpdate.setIcon(new ImageIcon(FormQuanLyAccount.class.getResource("/img/plus-circular-button.png")));

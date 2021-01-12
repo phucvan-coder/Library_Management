@@ -33,7 +33,6 @@ public class FormQuanLyBook extends JFrame {
 	private JTextField txtLoai;
 	private JTextField txtTacGia;
 	private JTextField txtSoLuong;
-	private JTextField txtTimKiem;
 
 	/**
 	 * Launch the application.
@@ -220,28 +219,5 @@ public class FormQuanLyBook extends JFrame {
 		btnThem.setIcon(new ImageIcon(FormQuanLyBook.class.getResource("/img/plus-circular-button.png")));
 		btnThem.setBounds(501, 83, 30, 30);
 		contentPane.add(btnThem);
-		
-		JButton btnXoa = new JButton("");
-		btnXoa.setIcon(new ImageIcon(FormQuanLyBook.class.getResource("/img/delete.png")));
-		btnXoa.setBounds(501, 239, 30, 30);
-		contentPane.add(btnXoa);
-		
-		JPanel panel_6 = new JPanel();
-		panel_6.setBackground(Color.WHITE);
-		panel_6.setBounds(670, 163, 308, 33);
-		contentPane.add(panel_6);
-		panel_6.setLayout(null);
-		
-		JButton btnTim = new JButton("");
-		btnTim.setIcon(new ImageIcon(FormQuanLyBook.class.getResource("/img/loupe.png")));
-		btnTim.setBounds(278, 0, 30, 30);
-		panel_6.add(btnTim);
-		
-		txtTimKiem = new JTextField();
-		txtTimKiem.setFont(new Font("Arial", Font.ITALIC, 18));
-		txtTimKiem.setText("Enter keywords ......");
-		txtTimKiem.setBounds(0, 0, 308, 33);
-		panel_6.add(txtTimKiem);
-		txtTimKiem.setColumns(10);
 	}
 }

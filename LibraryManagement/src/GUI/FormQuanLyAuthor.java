@@ -29,7 +29,6 @@ public class FormQuanLyAuthor extends JFrame {
 	private JTable tblTacGia;
 	private JTextField txtTacGia;
 	private JTextField txtTenSach;
-	private JTextField txtTimKiem;
 
 	/**
 	 * Launch the application.
@@ -155,25 +154,6 @@ public class FormQuanLyAuthor extends JFrame {
 		JSeparator separator = new JSeparator();
 		separator.setBounds(72, 313, 954, 8);
 		contentPane.add(separator);
-		
-		JPanel panel_2 = new JPanel();
-		panel_2.setBackground(Color.WHITE);
-		panel_2.setBounds(698, 162, 328, 32);
-		contentPane.add(panel_2);
-		panel_2.setLayout(null);
-		
-		txtTimKiem = new JTextField();
-		txtTimKiem.setFont(new Font("Arial", Font.ITALIC, 18));
-		txtTimKiem.setText("Enter keywords ......");
-		txtTimKiem.setBounds(0, 0, 269, 32);
-		panel_2.add(txtTimKiem);
-		txtTimKiem.setColumns(10);
-		
-		JButton btnXoa_1 = new JButton("");
-		btnXoa_1.setBackground(Color.WHITE);
-		btnXoa_1.setIcon(new ImageIcon(FormQuanLyAuthor.class.getResource("/img/loupe.png")));
-		btnXoa_1.setBounds(296, 0, 33, 32);
-		panel_2.add(btnXoa_1);
 		
 		JLabel lblNewLabel_2 = new JLabel("Author ");
 		lblNewLabel_2.setHorizontalAlignment(SwingConstants.CENTER);

@@ -25,8 +25,6 @@ public class FormQuanLyCategory extends JFrame {
 
 	private JPanel contentPane;
 	private JTable table;
-	private JTextField txtNameAuthor;
-	private JTextField txtNameBook;
 	private JTextField txtTimkiem;
 
 	/**
@@ -99,42 +97,6 @@ public class FormQuanLyCategory extends JFrame {
 		contentPane.add(panel);
 		panel.setLayout(null);
 		
-		JPanel panel_1 = new JPanel();
-		panel_1.setBackground(Color.WHITE);
-		panel_1.setBounds(10, 10, 262, 33);
-		panel.add(panel_1);
-		panel_1.setLayout(null);
-		
-		txtNameAuthor = new JTextField();
-		txtNameAuthor.setText("Name Author");
-		txtNameAuthor.setFont(new Font("Arial", Font.BOLD, 18));
-		txtNameAuthor.setBounds(0, 0, 199, 32);
-		panel_1.add(txtNameAuthor);
-		txtNameAuthor.setColumns(10);
-		
-		JLabel lblNewLabel_1 = new JLabel("");
-		lblNewLabel_1.setIcon(new ImageIcon(FormQuanLyCategory.class.getResource("/img/human-resources.png")));
-		lblNewLabel_1.setBounds(230, 0, 32, 32);
-		panel_1.add(lblNewLabel_1);
-		
-		JPanel panel_1_1 = new JPanel();
-		panel_1_1.setLayout(null);
-		panel_1_1.setBackground(Color.WHITE);
-		panel_1_1.setBounds(10, 86, 262, 33);
-		panel.add(panel_1_1);
-		
-		txtNameBook = new JTextField();
-		txtNameBook.setText("Name Book");
-		txtNameBook.setFont(new Font("Arial", Font.BOLD, 18));
-		txtNameBook.setColumns(10);
-		txtNameBook.setBounds(0, 0, 199, 32);
-		panel_1_1.add(txtNameBook);
-		
-		JLabel lblNewLabel_1_1 = new JLabel("");
-		lblNewLabel_1_1.setIcon(new ImageIcon(FormQuanLyCategory.class.getResource("/img/book.png")));
-		lblNewLabel_1_1.setBounds(230, 0, 32, 32);
-		panel_1_1.add(lblNewLabel_1_1);
-		
 		JPanel panel_1_2 = new JPanel();
 		panel_1_2.setLayout(null);
 		panel_1_2.setBackground(Color.WHITE);
@@ -145,10 +107,6 @@ public class FormQuanLyCategory extends JFrame {
 		lblNewLabel.setFont(new Font("Arial", Font.BOLD, 18));
 		lblNewLabel.setBounds(0, 0, 164, 33);
 		panel_1_2.add(lblNewLabel);
-		
-		JComboBox comboBox = new JComboBox();
-		comboBox.setBounds(163, 0, 99, 33);
-		panel_1_2.add(comboBox);
 		
 		JPanel panel_2 = new JPanel();
 		panel_2.setBackground(Color.WHITE);
