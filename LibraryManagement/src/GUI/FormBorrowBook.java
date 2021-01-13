@@ -134,7 +134,7 @@ public class FormBorrowBook extends JFrame {
 		lblNewLabel_3.setBounds(174, 261, 69, 14);
 		contentPane.add(lblNewLabel_3);
 		
-		JLabel lblNewLabel_3_1 = new JLabel("Refund Date");
+		JLabel lblNewLabel_3_1 = new JLabel("Return Date");
 		lblNewLabel_3_1.setHorizontalAlignment(SwingConstants.CENTER);
 		lblNewLabel_3_1.setBounds(174, 314, 69, 14);
 		contentPane.add(lblNewLabel_3_1);

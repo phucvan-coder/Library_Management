@@ -8,6 +8,9 @@ import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
 import java.awt.Color;
 import javax.swing.border.LineBorder;
+
+import DTO.AccountDTO;
+
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 import javax.swing.ImageIcon;
@@ -30,9 +33,15 @@ import javax.swing.border.CompoundBorder;
 public class FormDangNhap extends JFrame {
 
 	private JPanel contentPane;
-	private JPasswordField pwdPassword;
-	private JTextField txtUserName;
-
+	private static JPasswordField pwdPassword;
+	private static JTextField txtUserName;
+	//get Account
+	public static AccountDTO getAccount() {
+		AccountDTO user = new AccountDTO();
+		user.setAccountName(txtUserName.getText());
+		user.setAccountName(pwdPassword.getText());
+		return user;
+	}
 	/**
 	 * Launch the application.
 	 */
