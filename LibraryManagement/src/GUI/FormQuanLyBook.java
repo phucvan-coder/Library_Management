@@ -100,8 +100,16 @@ public class FormQuanLyBook extends JFrame {
 			new Object[][] {
 			},
 			new String[] {
+				"Book Name", "Type of Book", "Author", "Borrow Date", "Return Date"
 			}
-		));
+		) {
+			Class[] columnTypes = new Class[] {
+				String.class, String.class, String.class, String.class, String.class
+			};
+			public Class getColumnClass(int columnIndex) {
+				return columnTypes[columnIndex];
+			}
+		});
 		tblBook.setFont(new Font("Arial", Font.BOLD, 20));
 		scrollPane.setViewportView(tblBook);
 		

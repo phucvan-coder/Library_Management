@@ -56,7 +56,7 @@ public class FormQuanLyMember extends JFrame {
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 1100, 650);
 		contentPane = new JPanel();
-		contentPane.setBackground(Color.CYAN);
+		contentPane.setBackground(new Color(255, 255, 255));
 		contentPane.setBorder(new LineBorder(Color.BLUE, 3));
 		setContentPane(contentPane);
 		
@@ -103,14 +103,14 @@ public class FormQuanLyMember extends JFrame {
 		
 		JPanel panel_1 = new JPanel();
 		panel_1.setBackground(Color.WHITE);
-		panel_1.setBounds(10, 10, 305, 33);
+		panel_1.setBounds(48, 11, 305, 33);
 		panel.add(panel_1);
 		panel_1.setLayout(null);
 		
 		txtName = new JTextField();
 		txtName.setFont(new Font("Arial", Font.BOLD, 18));
 		txtName.setText("Name");
-		txtName.setBounds(0, 0, 267, 33);
+		txtName.setBounds(0, 0, 239, 33);
 		panel_1.add(txtName);
 		txtName.setColumns(10);
 		
@@ -119,43 +119,20 @@ public class FormQuanLyMember extends JFrame {
 		lblNewLabel_3.setBounds(273, 2, 32, 32);
 		panel_1.add(lblNewLabel_3);
 		
-		JPanel panel_1_1 = new JPanel();
-		panel_1_1.setLayout(null);
-		panel_1_1.setBackground(Color.WHITE);
-		panel_1_1.setBounds(10, 75, 305, 33);
-		panel.add(panel_1_1);
-		
-		JDateChooser dateChooser = new JDateChooser();
-		dateChooser.setBounds(0, 0, 305, 33);
-		panel_1_1.add(dateChooser);
-		
 		JPanel panel_1_2 = new JPanel();
 		panel_1_2.setLayout(null);
 		panel_1_2.setBackground(Color.WHITE);
-		panel_1_2.setBounds(10, 131, 305, 33);
+		panel_1_2.setBounds(113, 130, 240, 33);
 		panel.add(panel_1_2);
 		
-		JLabel lblNewLabel = new JLabel("Gendes");
-		lblNewLabel.setFont(new Font("Arial", Font.BOLD, 18));
-		lblNewLabel.setBounds(0, 0, 121, 33);
-		panel_1_2.add(lblNewLabel);
-		
-		JRadioButton rdbtnMale = new JRadioButton("Male");
-		rdbtnMale.setFont(new Font("Arial", Font.BOLD, 16));
-		rdbtnMale.setBackground(Color.WHITE);
-		rdbtnMale.setBounds(143, 0, 73, 32);
-		panel_1_2.add(rdbtnMale);
-		
-		JRadioButton rdbtnFemale = new JRadioButton("FeMale");
-		rdbtnFemale.setFont(new Font("Arial", Font.BOLD, 16));
-		rdbtnFemale.setBackground(Color.WHITE);
-		rdbtnFemale.setBounds(218, 0, 87, 32);
-		panel_1_2.add(rdbtnFemale);
+		JComboBox comboBox = new JComboBox();
+		comboBox.setBounds(0, 0, 240, 33);
+		panel_1_2.add(comboBox);
 		
 		JPanel panel_1_3 = new JPanel();
 		panel_1_3.setLayout(null);
 		panel_1_3.setBackground(Color.WHITE);
-		panel_1_3.setBounds(10, 194, 305, 33);
+		panel_1_3.setBounds(48, 196, 305, 33);
 		panel.add(panel_1_3);
 		
 		txtNumberphone = new JTextField();
@@ -173,7 +150,7 @@ public class FormQuanLyMember extends JFrame {
 		JPanel panel_1_4 = new JPanel();
 		panel_1_4.setLayout(null);
 		panel_1_4.setBackground(Color.WHITE);
-		panel_1_4.setBounds(10, 254, 305, 33);
+		panel_1_4.setBounds(48, 252, 305, 33);
 		panel.add(panel_1_4);
 		
 		txtAddress = new JTextField();
@@ -191,7 +168,7 @@ public class FormQuanLyMember extends JFrame {
 		JPanel panel_1_2_2 = new JPanel();
 		panel_1_2_2.setLayout(null);
 		panel_1_2_2.setBackground(Color.WHITE);
-		panel_1_2_2.setBounds(10, 310, 305, 33);
+		panel_1_2_2.setBounds(48, 309, 305, 33);
 		panel.add(panel_1_2_2);
 		
 		JLabel lblNewLabel_1 = new JLabel("Rank");
@@ -199,10 +176,20 @@ public class FormQuanLyMember extends JFrame {
 		lblNewLabel_1.setBounds(0, 0, 175, 33);
 		panel_1_2_2.add(lblNewLabel_1);
 		
-		JComboBox comboBox_1 = new JComboBox();
-		comboBox_1.setFont(new Font("Arial Black", Font.PLAIN, 15));
-		comboBox_1.setBounds(238, 0, 67, 33);
-		panel_1_2_2.add(comboBox_1);
+		JComboBox cmbRank = new JComboBox();
+		cmbRank.setFont(new Font("Arial Black", Font.PLAIN, 15));
+		cmbRank.setBounds(238, 0, 67, 33);
+		panel_1_2_2.add(cmbRank);
+		
+		JDateChooser dtpBirthday = new JDateChooser();
+		dtpBirthday.setBounds(69, 75, 284, 33);
+		panel.add(dtpBirthday);
+		
+		JLabel lblNewLabel = new JLabel("Gender");
+		lblNewLabel.setBounds(48, 130, 71, 33);
+		panel.add(lblNewLabel);
+		lblNewLabel.setHorizontalAlignment(SwingConstants.CENTER);
+		lblNewLabel.setFont(new Font("Tahoma", Font.BOLD, 12));
 		
 		JPanel panel_1_2_1 = new JPanel();
 		panel_1_2_1.setLayout(null);

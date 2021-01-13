@@ -4,6 +4,7 @@ import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.EventQueue;
 import java.awt.Font;
+import java.awt.Image;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 
@@ -23,14 +24,20 @@ import com.toedter.calendar.JDateChooser;
 import javax.swing.JButton;
 import javax.swing.ImageIcon;
 import javax.swing.JSeparator;
+import java.awt.event.ActionListener;
+import java.awt.event.ActionEvent;
 
 public class FormQuanLyAccount extends JFrame {
+	
+	private Image img_Logan = new ImageIcon(FormQuanLyAccount.class.getResource("/img/loupe1.png")).getImage().getScaledInstance(40, 40, Image.SCALE_SMOOTH);
 
 	private JPanel contentPane;
-	private JTable tblTaiKhoan;
+	private JTable tblAccount;
 	private JTextField txtPassword;
 	private JTextField txtIdMember;
 	private JTextField txtname;
+	private JTextField textUsername;
+	private JTextField textField_1;
 
 	/**
 	 * Launch the application.
@@ -55,7 +62,7 @@ public class FormQuanLyAccount extends JFrame {
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 1100, 650);
 		contentPane = new JPanel();
-		contentPane.setBackground(Color.CYAN);
+		contentPane.setBackground(new Color(255, 255, 255));
 		contentPane.setBorder(new LineBorder(Color.BLUE, 3));
 		setContentPane(contentPane);
 		
@@ -93,8 +100,8 @@ public class FormQuanLyAccount extends JFrame {
 		scrollPane.setBounds(10, 431, 1080, 209);
 		contentPane.add(scrollPane);
 		
-		tblTaiKhoan = new JTable();
-		scrollPane.setViewportView(tblTaiKhoan);
+		tblAccount = new JTable();
+		scrollPane.setViewportView(tblAccount);
 		
 		JLabel lblNewLabel = new JLabel("Account Management");
 		lblNewLabel.setForeground(new Color(204, 204, 0));
@@ -103,18 +110,17 @@ public class FormQuanLyAccount extends JFrame {
 		contentPane.add(lblNewLabel);
 		
 		JPanel panel_1 = new JPanel();
-		panel_1.setBounds(10, 73, 338, 319);
+		panel_1.setBounds(10, 73, 426, 335);
 		contentPane.add(panel_1);
 		panel_1.setLayout(null);
 		
 		JPanel panel = new JPanel();
 		panel.setBackground(Color.WHITE);
-		panel.setBounds(10, 39, 287, 33);
+		panel.setBounds(118, 38, 287, 33);
 		panel_1.add(panel);
 		panel.setLayout(null);
 		
 		txtname = new JTextField();
-		txtname.setText("Name");
 		txtname.setBounds(0, 0, 243, 32);
 		panel.add(txtname);
 		txtname.setFont(new Font("Arial", Font.BOLD, 18));
@@ -128,13 +134,12 @@ public class FormQuanLyAccount extends JFrame {
 		JPanel panel_2_2 = new JPanel();
 		panel_2_2.setBackground(Color.WHITE);
 		panel_2_2.setLayout(null);
-		panel_2_2.setBounds(10, 104, 287, 32);
+		panel_2_2.setBounds(118, 161, 287, 32);
 		panel_1.add(panel_2_2);
 		
 		txtIdMember = new JTextField();
 		txtIdMember.setBounds(0, 0, 243, 32);
 		panel_2_2.add(txtIdMember);
-		txtIdMember.setText("ID Member");
 		txtIdMember.setFont(new Font("Arial", Font.BOLD, 18));
 		txtIdMember.setColumns(10);
 		
@@ -146,13 +151,12 @@ public class FormQuanLyAccount extends JFrame {
 		JPanel panel_2_3 = new JPanel();
 		panel_2_3.setBackground(Color.WHITE);
 		panel_2_3.setLayout(null);
-		panel_2_3.setBounds(10, 174, 287, 32);
+		panel_2_3.setBounds(118, 216, 287, 32);
 		panel_1.add(panel_2_3);
 		
 		txtPassword = new JTextField();
 		txtPassword.setBounds(0, 0, 243, 32);
 		panel_2_3.add(txtPassword);
-		txtPassword.setText("Password");
 		txtPassword.setFont(new Font("Arial", Font.BOLD, 18));
 		txtPassword.setColumns(10);
 		
@@ -164,19 +168,55 @@ public class FormQuanLyAccount extends JFrame {
 		JPanel panel_2_3_1 = new JPanel();
 		panel_2_3_1.setBackground(Color.WHITE);
 		panel_2_3_1.setLayout(null);
-		panel_2_3_1.setBounds(10, 245, 287, 32);
+		panel_2_3_1.setBounds(118, 272, 287, 32);
 		panel_1.add(panel_2_3_1);
 		
 		JComboBox cmbRank = new JComboBox();
 		cmbRank.setBounds(223, 0, 64, 32);
 		panel_2_3_1.add(cmbRank);
 		
-		JLabel lblRank = new JLabel(" Rank");
+		JLabel lblRank = new JLabel("");
 		lblRank.setBounds(0, -2, 206, 32);
 		panel_2_3_1.add(lblRank);
 		lblRank.setBackground(Color.WHITE);
 		lblRank.setFont(new Font("Arial", Font.BOLD, 18));
 		lblRank.setForeground(Color.BLACK);
+		
+		JLabel lblNewLabel_1 = new JLabel("Name");
+		lblNewLabel_1.setBounds(35, 38, 73, 34);
+		panel_1.add(lblNewLabel_1);
+		
+		JPanel panel_2 = new JPanel();
+		panel_2.setLayout(null);
+		panel_2.setBackground(Color.WHITE);
+		panel_2.setBounds(118, 99, 287, 33);
+		panel_1.add(panel_2);
+		
+		textUsername = new JTextField();
+		textUsername.setFont(new Font("Arial", Font.BOLD, 18));
+		textUsername.setColumns(10);
+		textUsername.setBounds(0, 0, 243, 32);
+		panel_2.add(textUsername);
+		
+		JLabel lblNewLabel_2_1 = new JLabel("");
+		lblNewLabel_2_1.setBounds(255, 2, 32, 30);
+		panel_2.add(lblNewLabel_2_1);
+		
+		JLabel lblUserName = new JLabel("UserName");
+		lblUserName.setBounds(35, 99, 73, 34);
+		panel_1.add(lblUserName);
+		
+		JLabel lblidMember = new JLabel("Id Member");
+		lblidMember.setBounds(35, 161, 73, 34);
+		panel_1.add(lblidMember);
+		
+		JLabel lblNewLabel_1_3 = new JLabel("Password");
+		lblNewLabel_1_3.setBounds(35, 216, 46, 34);
+		panel_1.add(lblNewLabel_1_3);
+		
+		JLabel lblNewLabel_1_4 = new JLabel("Rank");
+		lblNewLabel_1_4.setBounds(35, 272, 46, 34);
+		panel_1.add(lblNewLabel_1_4);
 		
 		JButton btnUpdate = new JButton("");
 		btnUpdate.setIcon(new ImageIcon(FormQuanLyAccount.class.getResource("/img/plus-circular-button.png")));
@@ -199,5 +239,16 @@ public class FormQuanLyAccount extends JFrame {
 		JSeparator separator = new JSeparator();
 		separator.setBounds(32, 419, 1022, 2);
 		contentPane.add(separator);
+		
+		textField_1 = new JTextField();
+		textField_1.setBounds(562, 351, 150, 31);
+		contentPane.add(textField_1);
+		textField_1.setColumns(10);
+		
+		JButton btnSearch = new JButton("");
+		btnSearch.setIcon(new ImageIcon(img_Logan));
+		btnSearch.setBackground(Color.CYAN);
+		btnSearch.setBounds(525, 350, 32, 32);
+		contentPane.add(btnSearch);
 	}
 }
