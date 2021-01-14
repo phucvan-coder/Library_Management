@@ -31,8 +31,8 @@ public class FormQuanLyAuthor extends JFrame {
 	private JPanel contentPane;
 	private JTable tblTacGia;
 	private JTextField txtTacGia;
-	private JTextField txtTenSach;
-	private JTextField textSearch;
+	private JTextField txtAddress;
+	private JTextField txtPhoneNumber;
 
 	/**
 	 * Launch the application.
@@ -55,10 +55,10 @@ public class FormQuanLyAuthor extends JFrame {
 	 */
 	public FormQuanLyAuthor() {
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		setBounds(100, 100, 1100, 650);
+		setBounds(100, 100, 550, 650);
 		contentPane = new JPanel();
 		contentPane.setBackground(new Color(255, 250, 250));
-		contentPane.setBorder(new LineBorder(Color.BLUE, 3));
+		contentPane.setBorder(new LineBorder(new Color(128, 128, 128), 3));
 		setContentPane(contentPane);
 		
 		setLocationRelativeTo(null);
@@ -92,7 +92,7 @@ public class FormQuanLyAuthor extends JFrame {
 		
 		JScrollPane scrollPane = new JScrollPane();
 		scrollPane.setBorder(new LineBorder(Color.BLUE, 2));
-		scrollPane.setBounds(10, 349, 1080, 291);
+		scrollPane.setBounds(10, 360, 392, 280);
 		contentPane.add(scrollPane);
 		
 		tblTacGia = new JTable();
@@ -104,10 +104,22 @@ public class FormQuanLyAuthor extends JFrame {
 		));
 		scrollPane.setViewportView(tblTacGia);
 		
+		JLabel lblNewLabel_2 = new JLabel("Author ");
+		lblNewLabel_2.setHorizontalAlignment(SwingConstants.CENTER);
+		lblNewLabel_2.setForeground(new Color(0, 0, 0));
+		lblNewLabel_2.setFont(new Font("Arial", Font.BOLD, 30));
+		lblNewLabel_2.setBounds(73, 10, 392, 55);
+		contentPane.add(lblNewLabel_2);
+		
+		JPanel panel_2 = new JPanel();
+		panel_2.setBounds(10, 75, 392, 275);
+		contentPane.add(panel_2);
+		panel_2.setLayout(null);
+		
 		JPanel panel = new JPanel();
+		panel.setBounds(98, 24, 252, 32);
+		panel_2.add(panel);
 		panel.setBackground(Color.WHITE);
-		panel.setBounds(140, 121, 252, 32);
-		contentPane.add(panel);
 		panel.setLayout(null);
 		
 		txtTacGia = new JTextField();
@@ -121,66 +133,61 @@ public class FormQuanLyAuthor extends JFrame {
 		panel.add(lblNewLabel);
 		lblNewLabel.setIcon(new ImageIcon(FormQuanLyAuthor.class.getResource("/img/human-resources.png")));
 		
+		JLabel lblNewLabel_3 = new JLabel("Name Author");
+		lblNewLabel_3.setBounds(10, 24, 78, 32);
+		panel_2.add(lblNewLabel_3);
+		
+		JLabel lblNewLabel_3_1 = new JLabel("Address");
+		lblNewLabel_3_1.setBounds(10, 77, 78, 32);
+		panel_2.add(lblNewLabel_3_1);
+		
 		JPanel panel_1 = new JPanel();
+		panel_1.setBounds(98, 77, 252, 32);
+		panel_2.add(panel_1);
 		panel_1.setBackground(Color.WHITE);
 		panel_1.setLayout(null);
-		panel_1.setBounds(140, 202, 252, 32);
-		contentPane.add(panel_1);
 		
-		txtTenSach = new JTextField();
-		txtTenSach.setFont(new Font("Tahoma", Font.BOLD, 18));
-		txtTenSach.setBounds(0, 0, 202, 32);
-		panel_1.add(txtTenSach);
-		txtTenSach.setColumns(10);
+		txtAddress = new JTextField();
+		txtAddress.setFont(new Font("Tahoma", Font.BOLD, 18));
+		txtAddress.setBounds(0, 0, 202, 32);
+		panel_1.add(txtAddress);
+		txtAddress.setColumns(10);
 		
 		JLabel lblNewLabel_1 = new JLabel("");
 		lblNewLabel_1.setIcon(new ImageIcon(FormQuanLyAuthor.class.getResource("/img/book.png")));
 		lblNewLabel_1.setBounds(216, 0, 32, 32);
 		panel_1.add(lblNewLabel_1);
 		
-		JButton btnThem = new JButton("");
-		btnThem.setIcon(new ImageIcon(FormQuanLyAuthor.class.getResource("/img/plus-circular-button.png")));
-		btnThem.setBounds(475, 97, 31, 31);
-		contentPane.add(btnThem);
+		JButton btnAdd = new JButton("Add");
+		btnAdd.setBounds(10, 220, 85, 21);
+		panel_2.add(btnAdd);
 		
-		JButton btnSua = new JButton("");
-		btnSua.setIcon(new ImageIcon(FormQuanLyAuthor.class.getResource("/img/pencil.png")));
-		btnSua.setBounds(475, 162, 31, 31);
-		contentPane.add(btnSua);
+		JButton btnDelete = new JButton("Delete");
+		btnDelete.setBounds(146, 220, 85, 21);
+		panel_2.add(btnDelete);
 		
-		JButton btnXoa = new JButton("");
-		btnXoa.setIcon(new ImageIcon(FormQuanLyAuthor.class.getResource("/img/delete.png")));
-		btnXoa.setBounds(475, 229, 31, 31);
-		contentPane.add(btnXoa);
+		JButton btnUpdate = new JButton("Update");
+		btnUpdate.setBounds(266, 220, 85, 21);
+		panel_2.add(btnUpdate);
 		
-		JSeparator separator = new JSeparator();
-		separator.setBounds(72, 330, 954, 8);
-		contentPane.add(separator);
+		JLabel lblNewLabel_3_1_1 = new JLabel("Phone number");
+		lblNewLabel_3_1_1.setBounds(10, 129, 78, 32);
+		panel_2.add(lblNewLabel_3_1_1);
 		
-		JLabel lblNewLabel_2 = new JLabel("Author ");
-		lblNewLabel_2.setHorizontalAlignment(SwingConstants.CENTER);
-		lblNewLabel_2.setForeground(new Color(204, 204, 0));
-		lblNewLabel_2.setFont(new Font("Arial", Font.BOLD, 30));
-		lblNewLabel_2.setBounds(148, 10, 696, 55);
-		contentPane.add(lblNewLabel_2);
+		JPanel panel_1_1 = new JPanel();
+		panel_1_1.setLayout(null);
+		panel_1_1.setBackground(Color.WHITE);
+		panel_1_1.setBounds(98, 129, 252, 32);
+		panel_2.add(panel_1_1);
 		
-		JLabel lblNewLabel_3 = new JLabel("Name Author");
-		lblNewLabel_3.setBounds(52, 121, 78, 32);
-		contentPane.add(lblNewLabel_3);
+		txtPhoneNumber = new JTextField();
+		txtPhoneNumber.setFont(new Font("Tahoma", Font.BOLD, 18));
+		txtPhoneNumber.setColumns(10);
+		txtPhoneNumber.setBounds(0, 0, 202, 32);
+		panel_1_1.add(txtPhoneNumber);
 		
-		JLabel lblNewLabel_3_1 = new JLabel("Name Book");
-		lblNewLabel_3_1.setBounds(52, 202, 78, 32);
-		contentPane.add(lblNewLabel_3_1);
-		
-		JButton btnSearch = new JButton("");
-		btnSearch.setIcon(new ImageIcon(img_Search));
-		btnSearch.setBackground(Color.CYAN);
-		btnSearch.setBounds(475, 271, 32, 32);
-		contentPane.add(btnSearch);
-		
-		textSearch = new JTextField();
-		textSearch.setColumns(10);
-		textSearch.setBounds(512, 272, 150, 31);
-		contentPane.add(textSearch);
+		JLabel lblNewLabel_1_1 = new JLabel("");
+		lblNewLabel_1_1.setBounds(216, 0, 32, 32);
+		panel_1_1.add(lblNewLabel_1_1);
 	}
 }

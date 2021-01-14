@@ -6,7 +6,7 @@ import java.sql.Connection;
 public class ConnectionUtils {
 	public static Connection getConnection() {
 		try {
-			String instace = "MISASME2017";
+			String instace = "SQLEXPRESS";
 			String database = "LibraryManagement";
 			String userName = "sa";
 			String password = "123";

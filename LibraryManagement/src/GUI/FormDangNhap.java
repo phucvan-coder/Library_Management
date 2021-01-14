@@ -66,7 +66,8 @@ public class FormDangNhap extends JFrame {
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 775, 400);
 		contentPane = new JPanel();
-		contentPane.setBackground(Color.WHITE);
+		contentPane.setBorder(new LineBorder(new Color(0, 0, 0), 2));
+		contentPane.setBackground(new Color(255, 250, 250));
 		setContentPane(contentPane);
 		
 		setLocationRelativeTo(null);
@@ -160,7 +161,7 @@ public class FormDangNhap extends JFrame {
 		contentPane.add(txtX);
 		
 		JPanel panel_2 = new JPanel();
-		panel_2.setBackground(SystemColor.textHighlight);
+		panel_2.setBackground(new Color(0, 128, 128));
 		panel_2.setForeground(SystemColor.textHighlight);
 		panel_2.setBounds(0, 0, 219, 400);
 		contentPane.add(panel_2);

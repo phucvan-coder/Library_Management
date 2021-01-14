@@ -27,7 +27,7 @@ public class FormBorrowBook extends JFrame {
 	private JTextField txtNumberBook;
 	private JLabel lblNewLabel_2;
 	private JDateChooser dateBorrow;
-	private JTable table;
+	private JTable tblBorrowBook;
 
 	/**
 	 * Launch the application.
@@ -50,10 +50,10 @@ public class FormBorrowBook extends JFrame {
 	 */
 	public FormBorrowBook() {
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		setBounds(100, 100, 700, 650);
+		setBounds(100, 100, 700, 550);
 		contentPane = new JPanel();
-		contentPane.setBackground(new Color(255, 255, 255));
-		contentPane.setBorder(new LineBorder(Color.BLUE, 3));
+		contentPane.setBackground(new Color(0, 128, 128));
+		contentPane.setBorder(new LineBorder(new Color(128, 128, 128), 3));
 		setContentPane(contentPane);
 		
 		setLocationRelativeTo(null);
@@ -86,88 +86,89 @@ public class FormBorrowBook extends JFrame {
 		contentPane.add(txtX);
 		
 		JLabel lblNewLabel = new JLabel("Borrow Book");
+		lblNewLabel.setBackground(new Color(0, 0, 0));
 		lblNewLabel.setFont(new Font("Arial", Font.BOLD, 30));
-		lblNewLabel.setForeground(new Color(204, 204, 0));
+		lblNewLabel.setForeground(new Color(0, 0, 0));
 		lblNewLabel.setHorizontalAlignment(SwingConstants.CENTER);
 		lblNewLabel.setBounds(231, 11, 245, 52);
 		contentPane.add(lblNewLabel);
 		
 		JLabel lblNewLabel_1 = new JLabel("Number of books borrowed:");
 		lblNewLabel_1.setFont(new Font("Arial", Font.BOLD | Font.ITALIC, 16));
-		lblNewLabel_1.setBounds(51, 414, 245, 44);
+		lblNewLabel_1.setBounds(16, 496, 245, 44);
 		contentPane.add(lblNewLabel_1);
 		
 		txtNumberBook = new JTextField();
-		txtNumberBook.setBounds(295, 428, 46, 19);
+		txtNumberBook.setBounds(247, 511, 46, 19);
 		contentPane.add(txtNumberBook);
 		txtNumberBook.setColumns(10);
 		
 		JComboBox cmbBookType = new JComboBox();
-		cmbBookType.setBounds(268, 101, 208, 22);
+		cmbBookType.setBounds(108, 101, 208, 22);
 		contentPane.add(cmbBookType);
 		
 		JComboBox cmdIdMember = new JComboBox();
-		cmdIdMember.setBounds(268, 201, 208, 22);
+		cmdIdMember.setBounds(108, 201, 208, 22);
 		contentPane.add(cmdIdMember);
 		
 		JComboBox cmbBookName = new JComboBox();
-		cmbBookName.setBounds(268, 151, 208, 22);
+		cmbBookName.setBounds(108, 151, 208, 22);
 		contentPane.add(cmbBookName);
 		
 		lblNewLabel_2 = new JLabel("Type of Book");
 		lblNewLabel_2.setHorizontalAlignment(SwingConstants.CENTER);
-		lblNewLabel_2.setBounds(161, 105, 82, 14);
+		lblNewLabel_2.setBounds(16, 109, 82, 14);
 		contentPane.add(lblNewLabel_2);
 		
 		JLabel lblNewLabel_2_1 = new JLabel("Name of Book");
 		lblNewLabel_2_1.setHorizontalAlignment(SwingConstants.CENTER);
-		lblNewLabel_2_1.setBounds(170, 155, 73, 14);
+		lblNewLabel_2_1.setBounds(25, 159, 73, 14);
 		contentPane.add(lblNewLabel_2_1);
 		
 		JLabel lblNewLabel_2_2 = new JLabel("ID Member");
 		lblNewLabel_2_2.setHorizontalAlignment(SwingConstants.CENTER);
-		lblNewLabel_2_2.setBounds(170, 205, 73, 14);
+		lblNewLabel_2_2.setBounds(25, 209, 73, 14);
 		contentPane.add(lblNewLabel_2_2);
 		
 		JLabel lblNewLabel_3 = new JLabel("Borrow Date");
 		lblNewLabel_3.setHorizontalAlignment(SwingConstants.CENTER);
-		lblNewLabel_3.setBounds(174, 261, 69, 14);
+		lblNewLabel_3.setBounds(366, 110, 69, 14);
 		contentPane.add(lblNewLabel_3);
 		
 		JLabel lblNewLabel_3_1 = new JLabel("Return Date");
 		lblNewLabel_3_1.setHorizontalAlignment(SwingConstants.CENTER);
-		lblNewLabel_3_1.setBounds(174, 314, 69, 14);
+		lblNewLabel_3_1.setBounds(366, 163, 69, 14);
 		contentPane.add(lblNewLabel_3_1);
 		
 		dateBorrow = new JDateChooser();
-		dateBorrow.setBounds(268, 261, 208, 20);
+		dateBorrow.setBounds(445, 104, 208, 20);
 		contentPane.add(dateBorrow);
 		
 		JDateChooser dateRefund = new JDateChooser();
-		dateRefund.setBounds(268, 314, 208, 20);
+		dateRefund.setBounds(445, 157, 208, 20);
 		contentPane.add(dateRefund);
 		
 		JButton btnAdd = new JButton("Add");
-		btnAdd.setBounds(86, 380, 89, 23);
+		btnAdd.setBounds(366, 205, 89, 23);
 		contentPane.add(btnAdd);
 		
 		JButton btnDelete = new JButton("Delete");
-		btnDelete.setBounds(252, 380, 89, 23);
+		btnDelete.setBounds(465, 205, 89, 23);
 		contentPane.add(btnDelete);
 		
 		JButton btnUpdate = new JButton("Update");
-		btnUpdate.setBounds(429, 380, 89, 23);
+		btnUpdate.setBounds(564, 205, 89, 23);
 		contentPane.add(btnUpdate);
 		
 		JScrollPane scrollPane = new JScrollPane();
-		scrollPane.setBounds(10, 458, 680, 181);
+		scrollPane.setBounds(10, 259, 680, 231);
 		contentPane.add(scrollPane);
 		
-		table = new JTable();
-		scrollPane.setColumnHeaderView(table);
+		tblBorrowBook = new JTable();
+		scrollPane.setColumnHeaderView(tblBorrowBook);
 		
 		JButton btnComfirm = new JButton("Confirm");
-		btnComfirm.setBounds(366, 427, 89, 23);
+		btnComfirm.setBounds(564, 509, 89, 23);
 		contentPane.add(btnComfirm);
 	}
 }

@@ -32,7 +32,6 @@ public class FormQuanLyBook extends JFrame {
 	private JTextField txtSach;
 	private JTextField txtLoai;
 	private JTextField txtTacGia;
-	private JTextField txtSoLuong;
 
 	/**
 	 * Launch the application.
@@ -113,24 +112,6 @@ public class FormQuanLyBook extends JFrame {
 		tblBook.setFont(new Font("Arial", Font.BOLD, 20));
 		scrollPane.setViewportView(tblBook);
 		
-		JPanel panel = new JPanel();
-		panel.setBackground(Color.WHITE);
-		panel.setBounds(40, 68, 258, 33);
-		contentPane.add(panel);
-		panel.setLayout(null);
-		
-		JLabel lblNewLabel = new JLabel("");
-		lblNewLabel.setIcon(new ImageIcon(FormQuanLyBook.class.getResource("/img/book.png")));
-		lblNewLabel.setBounds(221, 0, 39, 32);
-		panel.add(lblNewLabel);
-		
-		txtSach = new JTextField();
-		txtSach.setFont(new Font("Arial", Font.BOLD, 20));
-		txtSach.setText("Book title.....");
-		txtSach.setBounds(0, 0, 224, 33);
-		panel.add(txtSach);
-		txtSach.setColumns(10);
-		
 		JPanel panel_1 = new JPanel();
 		panel_1.setLayout(null);
 		panel_1.setBackground(Color.WHITE);
@@ -167,29 +148,39 @@ public class FormQuanLyBook extends JFrame {
 		txtTacGia.setBounds(0, 0, 220, 33);
 		panel_2.add(txtTacGia);
 		
-		JPanel panel_3 = new JPanel();
-		panel_3.setLayout(null);
-		panel_3.setBackground(Color.WHITE);
-		panel_3.setBounds(40, 214, 258, 33);
-		contentPane.add(panel_3);
+		JSeparator separator = new JSeparator();
+		separator.setBounds(151, 324, 800, 2);
+		contentPane.add(separator);
 		
-		JLabel lblNewLabel_2_1_1 = new JLabel("");
-		lblNewLabel_2_1_1.setIcon(new ImageIcon(FormQuanLyBook.class.getResource("/img/steps.png")));
-		lblNewLabel_2_1_1.setBounds(220, 0, 38, 32);
-		panel_3.add(lblNewLabel_2_1_1);
+		JPanel panel_5 = new JPanel();
+		panel_5.setBorder(new LineBorder(Color.BLUE, 2));
+		panel_5.setBounds(10, 54, 345, 259);
+		contentPane.add(panel_5);
+		panel_5.setLayout(null);
 		
-		txtSoLuong = new JTextField();
-		txtSoLuong.setText("Book Amount.....");
-		txtSoLuong.setFont(new Font("Arial", Font.BOLD, 20));
-		txtSoLuong.setColumns(10);
-		txtSoLuong.setBounds(0, 0, 221, 32);
-		panel_3.add(txtSoLuong);
+		JPanel panel = new JPanel();
+		panel.setBounds(40, 153, 258, 33);
+		panel_5.add(panel);
+		panel.setBackground(Color.WHITE);
+		panel.setLayout(null);
+		
+		txtSach = new JTextField();
+		txtSach.setBounds(0, 0, 224, 33);
+		panel.add(txtSach);
+		txtSach.setFont(new Font("Arial", Font.BOLD, 20));
+		txtSach.setText("Book title.....");
+		txtSach.setColumns(10);
+		
+		JLabel lblNewLabel = new JLabel("");
+		lblNewLabel.setBounds(219, 0, 39, 32);
+		panel.add(lblNewLabel);
+		lblNewLabel.setIcon(new ImageIcon(FormQuanLyBook.class.getResource("/img/book.png")));
 		
 		JPanel panel_4 = new JPanel();
+		panel_4.setBounds(40, 196, 258, 33);
+		panel_5.add(panel_4);
 		panel_4.setLayout(null);
 		panel_4.setBackground(Color.WHITE);
-		panel_4.setBounds(40, 267, 258, 33);
-		contentPane.add(panel_4);
 		
 		JComboBox comboBox = new JComboBox();
 		comboBox.setModel(new DefaultComboBoxModel(new String[] {"Still ", "Out ", "Damaged "}));
@@ -201,15 +192,6 @@ public class FormQuanLyBook extends JFrame {
 		lblStatus.setBounds(0, 0, 157, 30);
 		panel_4.add(lblStatus);
 		lblStatus.setFont(new Font("Arial", Font.BOLD, 20));
-		
-		JSeparator separator = new JSeparator();
-		separator.setBounds(151, 324, 800, 2);
-		contentPane.add(separator);
-		
-		JPanel panel_5 = new JPanel();
-		panel_5.setBorder(new LineBorder(Color.BLUE, 2));
-		panel_5.setBounds(10, 54, 345, 259);
-		contentPane.add(panel_5);
 		
 		JLabel lblNewLabel_1 = new JLabel("Book Management");
 		lblNewLabel_1.setForeground(new Color(204, 204, 0));

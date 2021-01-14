@@ -31,7 +31,6 @@ public class FormQuanLyMember extends JFrame {
 	private JTextField txtName;
 	private JTextField txtNumberphone;
 	private JTextField txtAddress;
-	private JTextField txtTimKiem;
 
 	/**
 	 * Launch the application.
@@ -197,33 +196,11 @@ public class FormQuanLyMember extends JFrame {
 		panel_1_2_1.setBounds(668, 188, 363, 33);
 		contentPane.add(panel_1_2_1);
 		
-		txtTimKiem = new JTextField();
-		txtTimKiem.setBounds(0, 0, 304, 33);
-		panel_1_2_1.add(txtTimKiem);
-		txtTimKiem.setText("Enter keywords ......");
-		txtTimKiem.setFont(new Font("Arial", Font.ITALIC, 18));
-		txtTimKiem.setColumns(10);
-		
 		JButton btnTim = new JButton("");
 		btnTim.setBackground(Color.WHITE);
 		btnTim.setIcon(new ImageIcon(FormQuanLyMember.class.getResource("/img/loupe.png")));
 		btnTim.setBounds(329, 1, 32, 32);
 		panel_1_2_1.add(btnTim);
-		
-		JButton btnThem = new JButton("");
-		btnThem.setIcon(new ImageIcon(FormQuanLyMember.class.getResource("/img/plus-circular-button.png")));
-		btnThem.setBounds(482, 117, 32, 32);
-		contentPane.add(btnThem);
-		
-		JButton btnSua = new JButton("");
-		btnSua.setIcon(new ImageIcon(FormQuanLyMember.class.getResource("/img/pencil.png")));
-		btnSua.setBounds(482, 215, 32, 32);
-		contentPane.add(btnSua);
-		
-		JButton btnXoa = new JButton("");
-		btnXoa.setIcon(new ImageIcon(FormQuanLyMember.class.getResource("/img/delete.png")));
-		btnXoa.setBounds(482, 305, 32, 32);
-		contentPane.add(btnXoa);
 		
 		JLabel lblNewLabel_2 = new JLabel("MemBer Management ");
 		lblNewLabel_2.setForeground(new Color(204, 204, 0));

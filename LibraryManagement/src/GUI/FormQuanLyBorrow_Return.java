@@ -27,7 +27,6 @@ public class FormQuanLyBorrow_Return extends JFrame {
 	private JPanel contentPane;
 	private JTable table;
 	private JTable table_1;
-	private JTextField textField;
 
 	/**
 	 * Launch the application.
@@ -96,23 +95,5 @@ public class FormQuanLyBorrow_Return extends JFrame {
 		lblNewLabel.setFont(new Font("Arial", Font.BOLD, 30));
 		lblNewLabel.setBounds(286, 10, 504, 51);
 		contentPane.add(lblNewLabel);
-		
-		JPanel panel_2 = new JPanel();
-		panel_2.setBackground(Color.WHITE);
-		panel_2.setBounds(654, 189, 373, 32);
-		contentPane.add(panel_2);
-		panel_2.setLayout(null);
-		
-		textField = new JTextField();
-		textField.setText("Enter keywords ......");
-		textField.setFont(new Font("Arial", Font.ITALIC, 18));
-		textField.setColumns(10);
-		textField.setBounds(0, 0, 308, 33);
-		panel_2.add(textField);
-		
-		JButton btnTim = new JButton("");
-		btnTim.setIcon(new ImageIcon(FormQuanLyBorrow_Return.class.getResource("/img/loupe.png")));
-		btnTim.setBounds(341, 0, 32, 32);
-		panel_2.add(btnTim);
 	}
 }
