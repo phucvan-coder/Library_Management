@@ -20,6 +20,10 @@ import javax.swing.JScrollPane;
 import javax.swing.table.DefaultTableModel;
 import javax.swing.JTextField;
 import com.toedter.calendar.JDateChooser;
+
+import BUS.PublisherBUS;
+import DTO.PublisherDTO;
+
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JSeparator;
@@ -29,12 +33,12 @@ public class FormPublisherManager extends JFrame {
 	private Image img_Search = new ImageIcon(FormQuanLyAccount.class.getResource("/img/loupe1.png")).getImage().getScaledInstance(40, 40, Image.SCALE_SMOOTH);
 
 	private JPanel contentPane;
-	private JTextField txtTacGia;
-	private JTextField txtTenSach;
-	private JTextField textSearch;
-	private JTextField txtPhoneNumber;
+	private static JTextField txtAuthor;
+	private static JTextField txtAddress;
+	private static JTextField textSearch;
+	private static JTextField txtPhoneNumber;
 	private JTable tblPublisher;
-
+	
 	/**
 	 * Launch the application.
 	 */
@@ -111,11 +115,11 @@ public class FormPublisherManager extends JFrame {
 		contentPane.add(panel);
 		panel.setLayout(null);
 		
-		txtTacGia = new JTextField();
-		txtTacGia.setFont(new Font("Arial", Font.BOLD, 18));
-		txtTacGia.setBounds(0, 0, 205, 32);
-		panel.add(txtTacGia);
-		txtTacGia.setColumns(10);
+		txtAuthor = new JTextField();
+		txtAuthor.setFont(new Font("Arial", Font.BOLD, 18));
+		txtAuthor.setBounds(0, 0, 205, 32);
+		panel.add(txtAuthor);
+		txtAuthor.setColumns(10);
 		
 		JLabel lblNewLabel = new JLabel("New label");
 		lblNewLabel.setBounds(215, 2, 32, 32);
@@ -128,11 +132,11 @@ public class FormPublisherManager extends JFrame {
 		panel_1.setBounds(140, 162, 252, 32);
 		contentPane.add(panel_1);
 		
-		txtTenSach = new JTextField();
-		txtTenSach.setFont(new Font("Tahoma", Font.BOLD, 18));
-		txtTenSach.setBounds(0, 0, 202, 32);
-		panel_1.add(txtTenSach);
-		txtTenSach.setColumns(10);
+		txtAddress = new JTextField();
+		txtAddress.setFont(new Font("Tahoma", Font.BOLD, 18));
+		txtAddress.setBounds(0, 0, 202, 32);
+		panel_1.add(txtAddress);
+		txtAddress.setColumns(10);
 		
 		JLabel lblNewLabel_1 = new JLabel("");
 		lblNewLabel_1.setIcon(new ImageIcon(FormPublisherManager.class.getResource("/img/book.png")));
@@ -169,7 +173,7 @@ public class FormPublisherManager extends JFrame {
 		lblNewLabel_3.setBounds(52, 97, 78, 32);
 		contentPane.add(lblNewLabel_3);
 		
-		JLabel lblNewLabel_3_1 = new JLabel("Addres");
+		JLabel lblNewLabel_3_1 = new JLabel("Address");
 		lblNewLabel_3_1.setHorizontalAlignment(SwingConstants.CENTER);
 		lblNewLabel_3_1.setBounds(52, 162, 78, 32);
 		contentPane.add(lblNewLabel_3_1);
@@ -205,5 +209,14 @@ public class FormPublisherManager extends JFrame {
 		JLabel lblNewLabel_1_1 = new JLabel("");
 		lblNewLabel_1_1.setBounds(216, 0, 32, 32);
 		panel_1_1.add(lblNewLabel_1_1);
+		PublisherBUS.showPublisherList(tblPublisher);
+	}
+	//get publisher
+	public static PublisherDTO getPublisher() {
+		PublisherDTO p = new PublisherDTO();
+		p.setPublisherName(txtAuthor.getText());
+		p.setAddress(txtAddress.getText());
+		p.setPhoneNumber(txtPhoneNumber.getText());
+		return p;
 	}
 }

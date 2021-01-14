@@ -8,7 +8,7 @@ public class DangNhapBUS {
 	//check account
 	public static boolean CheckAccount() {
 		AccountDTO user = FormDangNhap.getAccount();
-		int a = DangNhapDAO.CheckAccount(user);
+		int a = DangNhapDAO.checkAccount(user);
 		if(a == 1) {
 			return true;
 		}
@@ -19,7 +19,7 @@ public class DangNhapBUS {
 	//check rank
 	public static String CheckRank() {
 		AccountDTO user = FormDangNhap.getAccount();
-		int a = DangNhapDAO.CheckRank(user);
+		int a = DangNhapDAO.checkRank(user);
 		String rank = "";
 		if(a == 1) {
 			rank = "Thủ Thư";

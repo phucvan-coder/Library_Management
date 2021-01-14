@@ -3,12 +3,13 @@ import java.io.*;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
+import java.util.ArrayList;
 
 import DTO.AccountDTO;
 import DTO.PublisherDTO;
 public class PublisherDAO {
 	//add
-	public static int AddPublisher(PublisherDTO a) {
+	public static int addPublisher(PublisherDTO a) {
 		int result = 0;
 		Connection conn;
 		try {
@@ -25,7 +26,7 @@ public class PublisherDAO {
 		return result;
 	}
 	//delete
-	public static int DeletePublisher(int id) {
+	public static int deletePublisher(int id) {
 		int result = 0;
 		Connection conn;
 		PreparedStatement ps;
@@ -42,7 +43,7 @@ public class PublisherDAO {
 		return result;
 	}
 	//update
-	public static int UpdatePublisher(PublisherDTO a) {
+	public static int updatePublisher(PublisherDTO a) {
 		int result = 0;
 		Connection conn;
 		PreparedStatement ps;
@@ -60,5 +61,32 @@ public class PublisherDAO {
 			e.printStackTrace();
 		}
 		return result;
+	}
+	//show PublisherList
+	public static ArrayList<PublisherDTO> getPublisherList(){
+		Connection conn;
+		PreparedStatement ps;
+		ResultSet r;
+		ArrayList<PublisherDTO> publisherList = new ArrayList<PublisherDTO>();
+		try {
+			String query = "SELECT * FROM Publisher";
+			conn = ConnectionUtils.getConnection();
+			ps = conn.prepareStatement(query);
+			r = ps.executeQuery();
+			PublisherDTO p;
+			while(r.next()) {
+				p = new PublisherDTO(r.getInt("Id"), r.getString("PublisherName"), r.getString("Address"), r.getString("PhoneNumber"));
+				publisherList.add(p);
+			}
+			int result = publisherList.size();
+			if(result>0) {
+				return publisherList;
+			}
+			conn.close();
+		}
+		catch(Exception e) {
+			e.printStackTrace();
+		}
+		return null;
 	}
 }

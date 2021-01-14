@@ -7,7 +7,7 @@ import java.sql.ResultSet;
 import DTO.AccountDTO;
 public class DangNhapDAO {
 	//Check Account
-	public static int CheckAccount(AccountDTO user) {
+	public static int checkAccount(AccountDTO user) {
 		int result = 0;
 		Connection conn;
 		PreparedStatement ps;
@@ -29,7 +29,7 @@ public class DangNhapDAO {
 		return result;
 	}
 	//Check Rank
-	public static int CheckRank(AccountDTO user) {
+	public static int checkRank(AccountDTO user) {
 		int result = 0;
 		Connection conn;
 		PreparedStatement ps;

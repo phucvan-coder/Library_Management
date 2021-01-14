@@ -2,19 +2,19 @@ package DTO;
 import java.io.*;
 public class AccountDTO {
 	private int id;
-	private String memberName;
+	private int memberID;
 	private String accountName;
 	private String password;
 	//Constructor
 	public AccountDTO() {
 		this.id = 0;
-		this.memberName = "";
+		this.memberID = 0;
 		this.accountName = "";
 		this.password = "";
 	}
-	public AccountDTO(int ID,String MemberName,String AccountName,String Password) {
+	public AccountDTO(int ID,int MemberID,String AccountName,String Password) {
 		this.id = ID;
-		this.memberName = MemberName;
+		this.memberID = MemberID;
 		this.accountName = AccountName;
 		this.password = Password;
 	}
@@ -25,11 +25,11 @@ public class AccountDTO {
 	public void setId(int id) {
 		this.id = id;
 	}
-	public String getMemberName() {
-		return memberName;
+	public int getMemberID() {
+		return memberID;
 	}
-	public void setMemberName(String memberName) {
-		this.memberName = memberName;
+	public void setMemberID(int memberID) {
+		this.memberID = memberID;
 	}
 	public String getAccountName() {
 		return accountName;

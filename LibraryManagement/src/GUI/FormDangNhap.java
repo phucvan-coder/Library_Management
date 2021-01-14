@@ -9,6 +9,7 @@ import javax.swing.border.EmptyBorder;
 import java.awt.Color;
 import javax.swing.border.LineBorder;
 
+import BUS.DangNhapBUS;
 import DTO.AccountDTO;
 
 import javax.swing.JLabel;
@@ -110,6 +111,13 @@ public class FormDangNhap extends JFrame {
 		panel_1.add(lblNewLabel_1_1);
 		
 		JButton btnNewButton = new JButton("Login");
+		btnNewButton.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				if(DangNhapBUS.CheckAccount()) {
+					JOptionPane.showMessageDialog(null,"Successfully Updated.","Alert",JOptionPane.WARNING_MESSAGE);
+				}
+			}
+		});
 		btnNewButton.setBorder(new CompoundBorder());
 		btnNewButton.setBackground(SystemColor.activeCaptionBorder);
 		btnNewButton.setFont(new Font("Arial", Font.PLAIN, 16));

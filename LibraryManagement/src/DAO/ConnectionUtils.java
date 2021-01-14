@@ -6,10 +6,10 @@ import java.sql.Connection;
 public class ConnectionUtils {
 	public static Connection getConnection() {
 		try {
-			String instace = "SQLEXPRESS";
+			String instace = "MISASME2017";
 			String database = "LibraryManagement";
 			String userName = "sa";
-			String password = "java";
+			String password = "123";
 			String connectionURL = "jdbc:sqlserver://localhost;databaseName=" + database + ";instance=" + instace + ";user=" + userName + ";password=" + password;
 			Connection conn = DriverManager.getConnection(connectionURL);
 		}
