@@ -29,8 +29,8 @@ public class FormQuanLyMember extends JFrame {
 	private JPanel contentPane;
 	private JTable table;
 	private JTextField txtName;
-	private JTextField txtNumberphone;
-	private JTextField txtAddress;
+	private JTextField textField;
+	private JTextField textField_1;
 
 	/**
 	 * Launch the application.
@@ -53,10 +53,11 @@ public class FormQuanLyMember extends JFrame {
 	 */
 	public FormQuanLyMember() {
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		setBounds(100, 100, 1100, 650);
+		setBounds(100, 100, 850, 650);
 		contentPane = new JPanel();
-		contentPane.setBackground(new Color(255, 255, 255));
-		contentPane.setBorder(new LineBorder(Color.BLUE, 3));
+		contentPane.setForeground(new Color(95, 158, 160));
+		contentPane.setBackground(new Color(0, 128, 128));
+		contentPane.setBorder(new LineBorder(new Color(95, 158, 160), 3));
 		setContentPane(contentPane);
 		
 		setLocationRelativeTo(null);
@@ -85,37 +86,38 @@ public class FormQuanLyMember extends JFrame {
 		contentPane.setLayout(null);
 		txtX.setHorizontalAlignment(SwingConstants.CENTER);
 		txtX.setFont(new Font("Arial", Font.BOLD, 17));
-		txtX.setBounds(1065, 0, 35, 28);
+		txtX.setBounds(815, 10, 35, 28);
 		contentPane.add(txtX);
 		
 		JScrollPane scrollPane = new JScrollPane();
-		scrollPane.setBounds(10, 433, 1080, 207);
+		scrollPane.setBounds(10, 418, 830, 222);
 		contentPane.add(scrollPane);
 		
 		table = new JTable();
 		scrollPane.setViewportView(table);
 		
 		JPanel panel = new JPanel();
-		panel.setBounds(22, 70, 363, 353);
+		panel.setBackground(new Color(95, 158, 160));
+		panel.setBounds(10, 70, 830, 307);
 		contentPane.add(panel);
 		panel.setLayout(null);
 		
 		JPanel panel_1 = new JPanel();
 		panel_1.setBackground(Color.WHITE);
-		panel_1.setBounds(48, 11, 305, 33);
+		panel_1.setBounds(115, 10, 265, 33);
 		panel.add(panel_1);
 		panel_1.setLayout(null);
 		
 		txtName = new JTextField();
 		txtName.setFont(new Font("Arial", Font.BOLD, 18));
 		txtName.setText("Name");
-		txtName.setBounds(0, 0, 239, 33);
+		txtName.setBounds(0, 0, 224, 33);
 		panel_1.add(txtName);
 		txtName.setColumns(10);
 		
 		JLabel lblNewLabel_3 = new JLabel("");
 		lblNewLabel_3.setIcon(new ImageIcon(FormQuanLyMember.class.getResource("/img/name.png")));
-		lblNewLabel_3.setBounds(273, 2, 32, 32);
+		lblNewLabel_3.setBounds(230, 0, 32, 32);
 		panel_1.add(lblNewLabel_3);
 		
 		JPanel panel_1_2 = new JPanel();
@@ -124,89 +126,111 @@ public class FormQuanLyMember extends JFrame {
 		panel_1_2.setBounds(113, 130, 240, 33);
 		panel.add(panel_1_2);
 		
+		JDateChooser dtpBirthday = new JDateChooser();
+		dtpBirthday.setBounds(115, 64, 265, 33);
+		panel.add(dtpBirthday);
+		
 		JComboBox comboBox = new JComboBox();
-		comboBox.setBounds(0, 0, 240, 33);
-		panel_1_2.add(comboBox);
+		comboBox.setBounds(140, 130, 240, 33);
+		panel.add(comboBox);
+		
+		JLabel lblNewLabel_4 = new JLabel("Name");
+		lblNewLabel_4.setFont(new Font("Tahoma", Font.PLAIN, 14));
+		lblNewLabel_4.setBounds(48, 10, 57, 33);
+		panel.add(lblNewLabel_4);
+		
+		JLabel lblNewLabel_4_1 = new JLabel("BirthDay");
+		lblNewLabel_4_1.setFont(new Font("Tahoma", Font.PLAIN, 14));
+		lblNewLabel_4_1.setBounds(48, 64, 57, 33);
+		panel.add(lblNewLabel_4_1);
+		
+		JLabel lblNewLabel_4_2 = new JLabel("Gender");
+		lblNewLabel_4_2.setFont(new Font("Tahoma", Font.PLAIN, 14));
+		lblNewLabel_4_2.setBounds(46, 130, 57, 33);
+		panel.add(lblNewLabel_4_2);
+		
+		JPanel panel_1_1 = new JPanel();
+		panel_1_1.setLayout(null);
+		panel_1_1.setBackground(Color.WHITE);
+		panel_1_1.setBounds(528, 10, 265, 33);
+		panel.add(panel_1_1);
+		
+		textField = new JTextField();
+		textField.setFont(new Font("Arial", Font.BOLD, 18));
+		textField.setColumns(10);
+		textField.setBounds(0, 0, 224, 33);
+		panel_1_1.add(textField);
+		
+		JLabel lblNewLabel_3_1 = new JLabel("");
+		lblNewLabel_3_1.setIcon(new ImageIcon(FormQuanLyMember.class.getResource("/img/phone-call.png")));
+		lblNewLabel_3_1.setBounds(230, 0, 32, 32);
+		panel_1_1.add(lblNewLabel_3_1);
 		
 		JPanel panel_1_3 = new JPanel();
 		panel_1_3.setLayout(null);
 		panel_1_3.setBackground(Color.WHITE);
-		panel_1_3.setBounds(48, 196, 305, 33);
+		panel_1_3.setBounds(528, 64, 265, 33);
 		panel.add(panel_1_3);
 		
-		txtNumberphone = new JTextField();
-		txtNumberphone.setText("NumberPhone");
-		txtNumberphone.setFont(new Font("Arial", Font.BOLD, 18));
-		txtNumberphone.setColumns(10);
-		txtNumberphone.setBounds(0, 0, 263, 33);
-		panel_1_3.add(txtNumberphone);
+		textField_1 = new JTextField();
+		textField_1.setFont(new Font("Arial", Font.BOLD, 18));
+		textField_1.setColumns(10);
+		textField_1.setBounds(0, 0, 224, 33);
+		panel_1_3.add(textField_1);
 		
-		JLabel lblNewLabel_3_1 = new JLabel("");
-		lblNewLabel_3_1.setIcon(new ImageIcon(FormQuanLyMember.class.getResource("/img/phone-call.png")));
-		lblNewLabel_3_1.setBounds(273, 1, 32, 32);
-		panel_1_3.add(lblNewLabel_3_1);
+		JLabel lblNewLabel_3_3 = new JLabel("");
+		lblNewLabel_3_3.setIcon(new ImageIcon(FormQuanLyMember.class.getResource("/img/placeholder.png")));
+		lblNewLabel_3_3.setBounds(230, 0, 32, 32);
+		panel_1_3.add(lblNewLabel_3_3);
 		
-		JPanel panel_1_4 = new JPanel();
-		panel_1_4.setLayout(null);
-		panel_1_4.setBackground(Color.WHITE);
-		panel_1_4.setBounds(48, 252, 305, 33);
-		panel.add(panel_1_4);
+		JLabel lblNewLabel_4_3 = new JLabel("TLP number");
+		lblNewLabel_4_3.setFont(new Font("Tahoma", Font.PLAIN, 14));
+		lblNewLabel_4_3.setBounds(434, 10, 84, 33);
+		panel.add(lblNewLabel_4_3);
 		
-		txtAddress = new JTextField();
-		txtAddress.setText("Address");
-		txtAddress.setFont(new Font("Arial", Font.BOLD, 18));
-		txtAddress.setColumns(10);
-		txtAddress.setBounds(0, 0, 263, 33);
-		panel_1_4.add(txtAddress);
-		
-		JLabel lblNewLabel_3_2 = new JLabel("");
-		lblNewLabel_3_2.setIcon(new ImageIcon(FormQuanLyMember.class.getResource("/img/placeholder.png")));
-		lblNewLabel_3_2.setBounds(273, 0, 32, 32);
-		panel_1_4.add(lblNewLabel_3_2);
+		JLabel lblNewLabel_4_4 = new JLabel("Address");
+		lblNewLabel_4_4.setFont(new Font("Tahoma", Font.PLAIN, 14));
+		lblNewLabel_4_4.setBounds(434, 64, 57, 33);
+		panel.add(lblNewLabel_4_4);
 		
 		JPanel panel_1_2_2 = new JPanel();
 		panel_1_2_2.setLayout(null);
 		panel_1_2_2.setBackground(Color.WHITE);
-		panel_1_2_2.setBounds(48, 309, 305, 33);
+		panel_1_2_2.setBounds(525, 130, 271, 33);
 		panel.add(panel_1_2_2);
 		
-		JLabel lblNewLabel_1 = new JLabel("Rank");
+		JLabel lblNewLabel_1 = new JLabel("");
 		lblNewLabel_1.setFont(new Font("Arial", Font.BOLD, 18));
 		lblNewLabel_1.setBounds(0, 0, 175, 33);
 		panel_1_2_2.add(lblNewLabel_1);
 		
 		JComboBox cmbRank = new JComboBox();
 		cmbRank.setFont(new Font("Arial Black", Font.PLAIN, 15));
-		cmbRank.setBounds(238, 0, 67, 33);
+		cmbRank.setBounds(0, 0, 271, 33);
 		panel_1_2_2.add(cmbRank);
 		
-		JDateChooser dtpBirthday = new JDateChooser();
-		dtpBirthday.setBounds(69, 75, 284, 33);
-		panel.add(dtpBirthday);
+		JLabel lblNewLabel_4_4_1 = new JLabel("Rank");
+		lblNewLabel_4_4_1.setFont(new Font("Tahoma", Font.PLAIN, 14));
+		lblNewLabel_4_4_1.setBounds(434, 130, 57, 33);
+		panel.add(lblNewLabel_4_4_1);
 		
-		JLabel lblNewLabel = new JLabel("Gender");
-		lblNewLabel.setBounds(48, 130, 71, 33);
-		panel.add(lblNewLabel);
-		lblNewLabel.setHorizontalAlignment(SwingConstants.CENTER);
-		lblNewLabel.setFont(new Font("Tahoma", Font.BOLD, 12));
+		JButton btnNewButton = new JButton("Add");
+		btnNewButton.setBounds(433, 232, 85, 33);
+		panel.add(btnNewButton);
 		
-		JPanel panel_1_2_1 = new JPanel();
-		panel_1_2_1.setLayout(null);
-		panel_1_2_1.setBackground(Color.WHITE);
-		panel_1_2_1.setBounds(668, 188, 363, 33);
-		contentPane.add(panel_1_2_1);
+		JButton btnDelete = new JButton("Delete");
+		btnDelete.setBounds(574, 232, 85, 33);
+		panel.add(btnDelete);
 		
-		JButton btnTim = new JButton("");
-		btnTim.setBackground(Color.WHITE);
-		btnTim.setIcon(new ImageIcon(FormQuanLyMember.class.getResource("/img/loupe.png")));
-		btnTim.setBounds(329, 1, 32, 32);
-		panel_1_2_1.add(btnTim);
+		JButton btnUpdate = new JButton("Update");
+		btnUpdate.setBounds(708, 232, 85, 33);
+		panel.add(btnUpdate);
 		
 		JLabel lblNewLabel_2 = new JLabel("MemBer Management ");
-		lblNewLabel_2.setForeground(new Color(204, 204, 0));
+		lblNewLabel_2.setForeground(new Color(0, 0, 0));
 		lblNewLabel_2.setHorizontalAlignment(SwingConstants.CENTER);
 		lblNewLabel_2.setFont(new Font("Arial", Font.BOLD, 30));
-		lblNewLabel_2.setBounds(292, 10, 488, 50);
+		lblNewLabel_2.setBounds(89, 10, 488, 50);
 		contentPane.add(lblNewLabel_2);
 	}
 }

@@ -55,9 +55,9 @@ public class FormQuanLyAuthor extends JFrame {
 	 */
 	public FormQuanLyAuthor() {
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		setBounds(100, 100, 550, 650);
+		setBounds(100, 100, 510, 650);
 		contentPane = new JPanel();
-		contentPane.setBackground(new Color(255, 250, 250));
+		contentPane.setBackground(new Color(0, 128, 128));
 		contentPane.setBorder(new LineBorder(new Color(128, 128, 128), 3));
 		setContentPane(contentPane);
 		
@@ -92,7 +92,7 @@ public class FormQuanLyAuthor extends JFrame {
 		
 		JScrollPane scrollPane = new JScrollPane();
 		scrollPane.setBorder(new LineBorder(Color.BLUE, 2));
-		scrollPane.setBounds(10, 360, 392, 280);
+		scrollPane.setBounds(10, 360, 490, 280);
 		contentPane.add(scrollPane);
 		
 		tblTacGia = new JTable();
@@ -112,7 +112,8 @@ public class FormQuanLyAuthor extends JFrame {
 		contentPane.add(lblNewLabel_2);
 		
 		JPanel panel_2 = new JPanel();
-		panel_2.setBounds(10, 75, 392, 275);
+		panel_2.setBackground(new Color(95, 158, 160));
+		panel_2.setBounds(10, 75, 490, 275);
 		contentPane.add(panel_2);
 		panel_2.setLayout(null);
 		
@@ -187,6 +188,7 @@ public class FormQuanLyAuthor extends JFrame {
 		panel_1_1.add(txtPhoneNumber);
 		
 		JLabel lblNewLabel_1_1 = new JLabel("");
+		lblNewLabel_1_1.setIcon(new ImageIcon(FormQuanLyAuthor.class.getResource("/img/phone-call.png")));
 		lblNewLabel_1_1.setBounds(216, 0, 32, 32);
 		panel_1_1.add(lblNewLabel_1_1);
 	}

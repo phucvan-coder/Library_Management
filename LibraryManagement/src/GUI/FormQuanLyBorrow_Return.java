@@ -49,9 +49,10 @@ public class FormQuanLyBorrow_Return extends JFrame {
 	 */
 	public FormQuanLyBorrow_Return() {
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		setBounds(100, 100, 1100, 650);
+		setBounds(100, 100, 700, 650);
 		contentPane = new JPanel();
-		contentPane.setBorder(new LineBorder(new Color(0, 0, 255), 4));
+		contentPane.setBackground(new Color(0, 128, 128));
+		contentPane.setBorder(new LineBorder(new Color(0, 128, 128), 4));
 		setContentPane(contentPane);
 
 		setLocationRelativeTo(null);
@@ -79,21 +80,57 @@ public class FormQuanLyBorrow_Return extends JFrame {
 		});
 		txtX.setHorizontalAlignment(SwingConstants.CENTER);
 		txtX.setFont(new Font("Arial", Font.BOLD, 17));
-		txtX.setBounds(1065, 10, 25, 18);
+		txtX.setBounds(663, 10, 25, 18);
 		contentPane.add(txtX);
 		
 		JScrollPane scrollPane = new JScrollPane();
 		scrollPane.setBorder(new LineBorder(Color.BLUE, 2));
-		scrollPane.setBounds(10, 391, 1080, 249);
+		scrollPane.setBounds(10, 391, 678, 249);
 		contentPane.add(scrollPane);
 		
 		table_1 = new JTable();
 		scrollPane.setViewportView(table_1);
 		
 		JLabel lblNewLabel = new JLabel("Manage Borrow and Return Books");
-		lblNewLabel.setForeground(new Color(204, 204, 0));
+		lblNewLabel.setForeground(new Color(0, 0, 0));
 		lblNewLabel.setFont(new Font("Arial", Font.BOLD, 30));
-		lblNewLabel.setBounds(286, 10, 504, 51);
+		lblNewLabel.setBounds(79, 10, 504, 51);
 		contentPane.add(lblNewLabel);
+		
+		JPanel panel = new JPanel();
+		panel.setBackground(new Color(95, 158, 160));
+		panel.setBounds(10, 94, 678, 195);
+		contentPane.add(panel);
+		panel.setLayout(null);
+		
+		JLabel lblNewLabel_1 = new JLabel("From Date");
+		lblNewLabel_1.setFont(new Font("Tahoma", Font.PLAIN, 14));
+		lblNewLabel_1.setBounds(10, 37, 79, 13);
+		panel.add(lblNewLabel_1);
+		
+		JLabel lblNewLabel_1_1 = new JLabel("To Date");
+		lblNewLabel_1_1.setFont(new Font("Tahoma", Font.PLAIN, 14));
+		lblNewLabel_1_1.setBounds(10, 92, 79, 13);
+		panel.add(lblNewLabel_1_1);
+		
+		JDateChooser dateChooser = new JDateChooser();
+		dateChooser.setBounds(99, 37, 243, 22);
+		panel.add(dateChooser);
+		
+		JDateChooser dateChooser_1 = new JDateChooser();
+		dateChooser_1.setBounds(99, 86, 243, 22);
+		panel.add(dateChooser_1);
+		
+		JButton btnAdd = new JButton("Add");
+		btnAdd.setBounds(284, 129, 85, 21);
+		panel.add(btnAdd);
+		
+		JButton btnDelete = new JButton("Delete");
+		btnDelete.setBounds(414, 129, 85, 21);
+		panel.add(btnDelete);
+		
+		JButton btnUpdate = new JButton("Update");
+		btnUpdate.setBounds(555, 129, 85, 21);
+		panel.add(btnUpdate);
 	}
 }
