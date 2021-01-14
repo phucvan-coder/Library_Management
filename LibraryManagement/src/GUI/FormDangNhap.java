@@ -40,7 +40,7 @@ public class FormDangNhap extends JFrame {
 	public static AccountDTO getAccount() {
 		AccountDTO user = new AccountDTO();
 		user.setAccountName(txtUserName.getText());
-		user.setAccountName(pwdPassword.getText());
+		user.setPassword("123");
 		return user;
 	}
 	/**
@@ -115,7 +115,10 @@ public class FormDangNhap extends JFrame {
 		btnNewButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				if(DangNhapBUS.CheckAccount()) {
-					JOptionPane.showMessageDialog(null,"Successfully Updated.","Alert",JOptionPane.WARNING_MESSAGE);
+					JOptionPane.showMessageDialog(null,"Login successfully.","Alert",JOptionPane.INFORMATION_MESSAGE);
+				}
+				else {
+					JOptionPane.showMessageDialog(null,"Login failed.","Alert",JOptionPane.INFORMATION_MESSAGE);
 				}
 			}
 		});

@@ -15,8 +15,8 @@ public class DangNhapDAO {
 		try {
 			conn = ConnectionUtils.getConnection();
 			ps = conn.prepareStatement("SELECT AccountName, Password FROM Account WHERE AccountName = ? AND Password = ?");
-			ps.setString(3, user.getAccountName());
-			ps.setString(4, user.getPassword());
+			ps.setString(1, user.getAccountName());
+			ps.setString(2, user.getPassword());
 			r = ps.executeQuery();
 			if(r.next()) {
 				result = 1;

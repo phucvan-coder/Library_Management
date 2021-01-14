@@ -114,7 +114,7 @@ public class FormPublisherManager extends JFrame {
 		lblNewLabel_2.setForeground(new Color(0, 0, 0));
 		lblNewLabel_2.setFont(new Font("Arial", Font.BOLD, 30));
 		contentPane.add(lblNewLabel_2);
-		PublisherBUS.showPublisherList(tblPublisher);
+		
 		
 		JPanel panel = new JPanel();
 		panel.setBackground(new Color(95, 158, 160));
@@ -168,6 +168,8 @@ public class FormPublisherManager extends JFrame {
 		JButton btnUpdate = new JButton("Update");
 		btnUpdate.setBounds(413, 178, 85, 21);
 		panel.add(btnUpdate);
+		//show publisher List
+		PublisherBUS.showPublisherList(tblPublisher);
 	}
 	//get publisher
 	public static PublisherDTO getPublisher() {
