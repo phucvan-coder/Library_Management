@@ -36,7 +36,7 @@ public class FormPublisherManager extends JFrame {
 	private static JTextField txtAuthor;
 	private static JTextField txtAddress;
 	private static JTextField txtPhoneNumber;
-	private JTable tblPublisher;
+	private static JTable tblPublisher;
 	
 	/**
 	 * Launch the application.
@@ -104,6 +104,7 @@ public class FormPublisherManager extends JFrame {
 			new Object[][] {
 			},
 			new String[] {
+				"Id", "PublisherName", "Address", "PhoneNumber"
 			}
 		));
 		scrollPane.setViewportView(tblPublisher);
@@ -178,5 +179,12 @@ public class FormPublisherManager extends JFrame {
 		p.setAddress(txtAddress.getText());
 		p.setPhoneNumber(txtPhoneNumber.getText());
 		return p;
+	}
+	//get id
+	public static int getPublisherID() {
+		int n = tblPublisher.getSelectionModel().getLeadSelectionIndex();
+		DefaultTableModel model = (DefaultTableModel) tblPublisher.getModel();
+		int id = (int) model.getValueAt(n, 0);
+		return id;
 	}
 }

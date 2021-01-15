@@ -3,18 +3,21 @@ import java.io.*;
 public class AccountDTO {
 	private int id;
 	private int memberID;
+	private String memberName;
 	private String accountName;
 	private String password;
 	//Constructor
 	public AccountDTO() {
 		this.id = 0;
 		this.memberID = 0;
+		this.memberName = "";
 		this.accountName = "";
 		this.password = "";
 	}
-	public AccountDTO(int ID,int MemberID,String AccountName,String Password) {
+	public AccountDTO(int ID,int MemberID,String MemberName,String AccountName,String Password) {
 		this.id = ID;
 		this.memberID = MemberID;
+		this.memberName = MemberName;
 		this.accountName = AccountName;
 		this.password = Password;
 	}
@@ -42,6 +45,12 @@ public class AccountDTO {
 	}
 	public void setPassword(String password) {
 		this.password = password;
+	}
+	public String getMemberName() {
+		return memberName;
+	}
+	public void setMemberName(String memberName) {
+		this.memberName = memberName;
 	}
 	
 }

@@ -5,6 +5,9 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.util.ArrayList;
 
+import javax.swing.JComboBox;
+import javax.swing.JTextField;
+
 import DTO.AccountDTO;
 import DTO.PublisherDTO;
 public class AccountDAO {
@@ -43,7 +46,7 @@ public class AccountDAO {
 			return result;
 		}
 		//update
-		public static int updateAccount(AccountDTO a) {
+		public static int updateAccount(int id,AccountDTO a) {
 			int result = 0;
 			Connection conn;
 			PreparedStatement ps;
@@ -53,7 +56,7 @@ public class AccountDAO {
 				ps.setInt(1, a.getMemberID());
 				ps.setString(2, a.getAccountName());
 				ps.setString(3, a.getPassword());
-				ps.setInt(4, a.getId());
+				ps.setInt(4, id);
 				result = ps.executeUpdate();
 				conn.close();
 			}
@@ -62,7 +65,7 @@ public class AccountDAO {
 			}
 			return result;
 		}
-		//show PublisherList
+		//show AccountList
 		public static ArrayList<AccountDTO> getAccountList(){
 			Connection conn;
 			PreparedStatement ps;
@@ -75,18 +78,53 @@ public class AccountDAO {
 				r = ps.executeQuery();
 				AccountDTO p;
 				while(r.next()) {
-					p = new AccountDTO(r.getInt("Id"), r.getInt("MemberID"), r.getString("AccountName"), r.getString("Password"));
+					p = new AccountDTO(r.getInt("Id"), r.getInt("MemberID"), r.getString("MemberName"), r.getString("AccountName"), r.getString("Password"));
 					AccountList.add(p);
-				}
-				int result = AccountList.size();
-				if(result>0) {
-					return AccountList;
 				}
 				conn.close();
 			}
 			catch(Exception e) {
 				e.printStackTrace();
 			}
-			return null;
+			return AccountList;
+		} 
+		//Load data into combobox
+		public static void loadMemberIDToCmb(JComboBox cmb) {
+			Connection conn;
+			PreparedStatement ps;
+			ResultSet r;
+			try {
+				String query = "SELECT Id FROM Member";
+				conn = ConnectionUtils.getConnection();
+				ps = conn.prepareStatement(query);
+				r = ps.executeQuery();
+				while(r.next()) {
+					String id = r.getString("MemberID");
+					cmb.addItem(id);
+				}
+			}
+			catch(Exception e) {
+				e.printStackTrace();
+			}
+		}
+		//load data into textfield
+		public static void loadMemberNameToTxt(JTextField t,JComboBox cmb) {
+			Connection conn;
+			PreparedStatement ps;
+			ResultSet r;
+			int id = Integer.parseInt(cmb.getSelectedObjects().toString());
+			try {
+				String query = "SELECT MemberName FROM Member WHERE Id="+id;
+				conn = ConnectionUtils.getConnection();
+				ps = conn.prepareStatement(query);
+				r = ps.executeQuery();
+				while(r.next()) {
+					String memberName = r.getString("MemberName");
+					cmb.addItem(memberName);
+				}
+			}
+			catch(Exception e) {
+				e.printStackTrace();
+			}
 		}
 }

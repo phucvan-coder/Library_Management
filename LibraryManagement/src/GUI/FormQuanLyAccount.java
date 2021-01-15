@@ -16,11 +16,16 @@ import javax.swing.SwingConstants;
 import javax.swing.border.EmptyBorder;
 import javax.swing.JTable;
 import javax.swing.border.LineBorder;
+import javax.swing.table.DefaultTableModel;
 import javax.swing.JScrollPane;
 import javax.swing.JList;
 import javax.swing.JTextField;
 import javax.swing.JComboBox;
 import com.toedter.calendar.JDateChooser;
+
+import DTO.AccountDTO;
+import DTO.PublisherDTO;
+
 import javax.swing.JButton;
 import javax.swing.ImageIcon;
 import javax.swing.JSeparator;
@@ -32,10 +37,12 @@ public class FormQuanLyAccount extends JFrame {
 	private Image img_Logan = new ImageIcon(FormQuanLyAccount.class.getResource("/img/loupe1.png")).getImage().getScaledInstance(40, 40, Image.SCALE_SMOOTH);
 
 	private JPanel contentPane;
-	private JTable tblAccount;
-	private JTextField txtPassword;
-	private JTextField txtname;
-	private JTextField textUsername;
+	private static JTable tblAccount;
+	private static JTextField txtPassword;
+	private static JTextField txtname;
+	private static JTextField textUsername;
+	private static JComboBox cmbMemberID;
+	private static JComboBox cmbRank;
 
 	/**
 	 * Launch the application.
@@ -132,7 +139,7 @@ public class FormQuanLyAccount extends JFrame {
 		panel_2_2.setBounds(93, 38, 287, 32);
 		panel_1.add(panel_2_2);
 		
-		JComboBox cmbMemberID = new JComboBox();
+		cmbMemberID = new JComboBox();
 		cmbMemberID.setBounds(0, 0, 242, 31);
 		panel_2_2.add(cmbMemberID);
 		
@@ -210,4 +217,19 @@ public class FormQuanLyAccount extends JFrame {
 		btnUpdate.setBounds(793, 155, 95, 30);
 		panel_1.add(btnUpdate);
 	}
+	//get Account
+		public static AccountDTO getAccount() {
+			AccountDTO p = new AccountDTO();
+			p.setMemberID(Integer.parseInt(cmbMemberID.getSelectedItem().toString()));
+			p.setMemberName(txtname.getText());
+			p.setPassword(txtPassword.getText());;
+			return p;
+		}
+		//get id
+		public static int getAccountID() {
+			int n = tblAccount.getSelectionModel().getLeadSelectionIndex();
+			DefaultTableModel model = (DefaultTableModel) tblAccount.getModel();
+			int id = (int) model.getValueAt(n, 0);
+			return id;
+		}
 }

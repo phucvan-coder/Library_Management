@@ -5,6 +5,8 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.util.ArrayList;
 
+import javax.swing.JOptionPane;
+
 import DTO.AccountDTO;
 import DTO.PublisherDTO;
 public class PublisherDAO {
@@ -43,7 +45,7 @@ public class PublisherDAO {
 		return result;
 	}
 	//update
-	public static int updatePublisher(PublisherDTO a) {
+	public static int updatePublisher(int id,PublisherDTO a) {
 		int result = 0;
 		Connection conn;
 		PreparedStatement ps;
@@ -53,7 +55,7 @@ public class PublisherDAO {
 			ps.setString(1, a.getPublisherName());
 			ps.setString(2, a.getAddress());
 			ps.setString(3, a.getPhoneNumber());
-			ps.setInt(4, a.getId());
+			ps.setInt(4, id);
 			result = ps.executeUpdate();
 			conn.close();
 		}
@@ -77,16 +79,12 @@ public class PublisherDAO {
 			while(r.next()) {
 				p = new PublisherDTO(r.getInt("Id"), r.getString("PublisherName"), r.getString("Address"), r.getString("PhoneNumber"));
 				publisherList.add(p);
-			}
-			int result = publisherList.size();
-			if(result>0) {
-				return publisherList;
-			}
+			}	
 			conn.close();
 		}
 		catch(Exception e) {
-			e.printStackTrace();
+			JOptionPane.showMessageDialog(null, e);
 		}
-		return null;
+		return publisherList;
 	}
 }
