@@ -33,6 +33,14 @@ public class FormHomePage extends JFrame {
 	private Image img_Login = new ImageIcon(FormHomePage.class.getResource("/img/login.png")).getImage().getScaledInstance(27, 25, Image.SCALE_SMOOTH);
 	private Image img_Statistics = new ImageIcon(FormHomePage.class.getResource("/img/trend.png")).getImage().getScaledInstance(27, 25, Image.SCALE_SMOOTH);
 	private Image img_Logan = new ImageIcon(FormHomePage.class.getResource("/img/ebook.png")).getImage().getScaledInstance(40, 40, Image.SCALE_SMOOTH);
+	private PanelCategory panelCategory;
+	private PanelMain panelMain;
+	private PanelPlublisherManger pPublish ;
+	private PanelManagerBook panelManagerBook ;
+	private PanelManagerAccount panelManagerAccount ;
+	private PanelManagerAuthor panelManagerAuthor ;
+	private PanelMemberManger panelManagerMember ;
+	
 	
 	
 
@@ -57,18 +65,28 @@ public class FormHomePage extends JFrame {
 	 */
 	public FormHomePage() {
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		setBounds(100, 100, 781, 533);
+		setBounds(100, 100, 781, 700);
 		setUndecorated(true);
 		contentPane = new JPanel();
 		contentPane.setBorder(new LineBorder(new Color(0, 128, 128), 2));
-		contentPane.setBackground(new Color(95, 158, 160));
+		contentPane.setBackground(new Color(255, 255, 255));
 		setContentPane(contentPane);
 		contentPane.setLayout(null);
+		
+		panelCategory = new PanelCategory();
+		panelMain = new PanelMain();
+		pPublish = new PanelPlublisherManger();
+		panelManagerBook = new PanelManagerBook();
+		panelManagerAccount = new PanelManagerAccount();
+		panelManagerAuthor = new PanelManagerAuthor();
+		panelManagerMember = new PanelMemberManger();
+		//panelCategory.setBounds(261, 7, 1, 1);
+		
 		
 		JPanel panel = new JPanel();
 		panel.setBorder(new LineBorder(new Color(128, 128, 128), 2));
 		panel.setBackground(SystemColor.controlDkShadow);
-		panel.setBounds(0, 47, 238, 486);
+		panel.setBounds(0, 47, 238, 653);
 		contentPane.add(panel);
 		panel.setLayout(null);
 		
@@ -81,7 +99,16 @@ public class FormHomePage extends JFrame {
 		panel.add(lblHomePage);
 		
 		JPanel PanelHomePage = new JPanel();
-		PanelHomePage.setBorder(new LineBorder(new Color(128, 128, 128), 2));
+		PanelHomePage.addMouseListener(new PanelButtonMouseAdapter(PanelHomePage) {
+			@Override
+			public void mouseClicked(MouseEvent e) {
+				panelCategory.setVisible(true);
+				//panel_Main.add(panelCategory);
+				menuClicked(panelCategory);
+			}
+			
+		});
+		PanelHomePage.setBorder(new LineBorder(new Color(128, 128, 128)));
 		PanelHomePage.setBackground(SystemColor.controlDkShadow);
 		PanelHomePage.setBounds(0, 126, 236, 40);
 		panel.add(PanelHomePage);
@@ -100,7 +127,15 @@ public class FormHomePage extends JFrame {
 		lblHomePage_p.setIcon(new ImageIcon((img_house)));
 		
 		JPanel panelQuanLyAncount = new JPanel();
-		panelQuanLyAncount.setBorder(new LineBorder(new Color(128, 128, 128), 2));
+		panelQuanLyAncount.addMouseListener(new PanelButtonMouseAdapter(panelQuanLyAncount) {
+			@Override
+			public void mouseClicked(MouseEvent e) {
+				panelManagerAccount.setVisible(true);
+				//panel_Main.add(panelCategory);
+				menuClicked(panelManagerAccount);
+			}
+		});
+		panelQuanLyAncount.setBorder(new LineBorder(new Color(128, 128, 128)));
 		panelQuanLyAncount.setBackground(SystemColor.controlDkShadow);
 		panelQuanLyAncount.setBounds(0, 166, 236, 40);
 		panel.add(panelQuanLyAncount);
@@ -124,7 +159,15 @@ public class FormHomePage extends JFrame {
 		panelQuanLyAncount.add(lblNewLabel_2_1);
 		
 		JPanel panelQuanLyAuthor = new JPanel();
-		panelQuanLyAuthor.setBorder(new LineBorder(new Color(128, 128, 128), 2));
+		panelQuanLyAuthor.addMouseListener(new PanelButtonMouseAdapter(panelQuanLyAuthor) {
+			@Override
+			public void mouseClicked(MouseEvent e) {
+				panelManagerAuthor.setVisible(true);
+				//panel_Main.add(panelCategory);
+				menuClicked(panelManagerAuthor);
+			}
+		});
+		panelQuanLyAuthor.setBorder(new LineBorder(new Color(128, 128, 128)));
 		panelQuanLyAuthor.setBackground(SystemColor.controlDkShadow);
 		panelQuanLyAuthor.setBounds(0, 206, 236, 37);
 		panel.add(panelQuanLyAuthor);
@@ -144,7 +187,16 @@ public class FormHomePage extends JFrame {
 		
 		
 		JPanel panelQuanLyBook = new JPanel();
-		panelQuanLyBook.setBorder(new LineBorder(new Color(128, 128, 128), 2));
+		panelQuanLyBook.addMouseListener(new PanelButtonMouseAdapter(panelQuanLyBook) {
+			@Override
+			public void mouseClicked(MouseEvent e) {
+				panelManagerBook.setVisible(true);
+				//panel_Main.add(panelCategory);
+				menuClicked(panelManagerBook);
+			}
+			
+		});
+		panelQuanLyBook.setBorder(new LineBorder(new Color(128, 128, 128), 1, true));
 		panelQuanLyBook.setBackground(SystemColor.controlDkShadow);
 		panelQuanLyBook.setBounds(0, 242, 236, 40);
 		panel.add(panelQuanLyBook);
@@ -163,7 +215,8 @@ public class FormHomePage extends JFrame {
 		lblManagerBook_p.setIcon(new ImageIcon((img_Book)));
 		
 		JPanel panelQuanLyCategory = new JPanel();
-		panelQuanLyCategory.setBorder(new LineBorder(new Color(128, 128, 128), 2));
+		panelQuanLyCategory.addMouseListener(new PanelButtonMouseAdapter(panelQuanLyCategory));
+		panelQuanLyCategory.setBorder(new LineBorder(new Color(128, 128, 128), 1, true));
 		panelQuanLyCategory.setBackground(SystemColor.controlDkShadow);
 		panelQuanLyCategory.setBounds(0, 282, 236, 37);
 		panel.add(panelQuanLyCategory);
@@ -182,7 +235,15 @@ public class FormHomePage extends JFrame {
 		lblMangerCategory_p.setIcon(new ImageIcon((img_Category)));
 		
 		JPanel panelQuanLyMember = new JPanel();
-		panelQuanLyMember.setBorder(new LineBorder(new Color(128, 128, 128), 2));
+		panelQuanLyMember.addMouseListener(new PanelButtonMouseAdapter(panelQuanLyMember) {
+			@Override
+			public void mouseClicked(MouseEvent e) {
+				panelManagerMember.setVisible(true);
+				//panel_Main.add(panelCategory);
+				menuClicked(panelManagerMember);
+			}
+		});
+		panelQuanLyMember.setBorder(new LineBorder(new Color(128, 128, 128), 1, true));
 		panelQuanLyMember.setBackground(SystemColor.controlDkShadow);
 		panelQuanLyMember.setBounds(0, 319, 236, 40);
 		panel.add(panelQuanLyMember);
@@ -201,9 +262,10 @@ public class FormHomePage extends JFrame {
 		lblMember_p.setIcon(new ImageIcon((img_Member)));
 		
 		JPanel panelDangNhap = new JPanel();
+		panelDangNhap.addMouseListener(new PanelButtonMouseAdapter(panelDangNhap));
 		panelDangNhap.setBorder(new LineBorder(new Color(128, 128, 128), 2));
 		panelDangNhap.setBackground(SystemColor.controlDkShadow);
-		panelDangNhap.setBounds(0, 435, 236, 40);
+		panelDangNhap.setBounds(0, 602, 236, 40);
 		panel.add(panelDangNhap);
 		panelDangNhap.setLayout(null);
 		
@@ -218,6 +280,35 @@ public class FormHomePage extends JFrame {
 		lblLogin_P.setBounds(27, 11, 46, 23);
 		panelDangNhap.add(lblLogin_P);
 		lblLogin_P.setIcon(new ImageIcon((img_Login)));
+		
+		JPanel panelManagerPublisher = new JPanel();
+		panelManagerPublisher.setLayout(null);
+		panelManagerPublisher.setBorder(new LineBorder(new Color(128, 128, 128), 0, true));
+		panelManagerPublisher.setBackground(SystemColor.controlDkShadow);
+		panelManagerPublisher.setBounds(0, 360, 236, 40);
+		panel.add(panelManagerPublisher);
+		
+		JLabel lblNewLabel_3_4_1 = new JLabel("Manager Publisher");
+		lblNewLabel_3_4_1.setForeground(new Color(204, 255, 255));
+		lblNewLabel_3_4_1.setFont(new Font("Dialog", Font.BOLD, 14));
+		lblNewLabel_3_4_1.setBounds(81, 11, 145, 18);
+		panelManagerPublisher.add(lblNewLabel_3_4_1);
+		
+		JLabel lblMember_p_1 = new JLabel("");
+		lblMember_p_1.setIcon(new ImageIcon(FormHomePage.class.getResource("/img/coding.png")));
+		
+		lblMember_p_1.setHorizontalAlignment(SwingConstants.CENTER);
+		lblMember_p_1.setBounds(27, 6, 46, 23);
+		panelManagerPublisher.add(lblMember_p_1);
+		panelManagerPublisher.addMouseListener(new PanelButtonMouseAdapter(panelManagerPublisher) {
+			@Override
+			public void mouseClicked(MouseEvent e) {
+				panelCategory.setVisible(true);
+				//panel_Main.add(panelCategory);
+				menuClicked(pPublish);
+			}
+			
+		});
 		
 		
 		JPanel panel_1 = new JPanel();
@@ -239,7 +330,7 @@ public class FormHomePage extends JFrame {
 		panelBorrowBook_1.setBorder(new LineBorder(new Color(0, 128, 128), 2));
 		panelBorrowBook_1.setLayout(null);
 		panelBorrowBook_1.setBackground(SystemColor.textHighlight);
-		panelBorrowBook_1.setBounds(557, 265, 177, 40);
+		panelBorrowBook_1.setBounds(557, 47, 177, 40);
 		contentPane.add(panelBorrowBook_1);
 		
 		JLabel lblBorrowBook_1 = new JLabel("Borrow Book");
@@ -258,8 +349,8 @@ public class FormHomePage extends JFrame {
 		JPanel panelBorrow_Return_1 = new JPanel();
 		panelBorrow_Return_1.setBorder(new LineBorder(new Color(0, 128, 128), 2));
 		panelBorrow_Return_1.setLayout(null);
-		panelBorrow_Return_1.setBackground(new Color(218, 112, 214));
-		panelBorrow_Return_1.setBounds(278, 390, 177, 40);
+		panelBorrow_Return_1.setBackground(new Color(216, 191, 216));
+		panelBorrow_Return_1.setBounds(288, 114, 177, 40);
 		contentPane.add(panelBorrow_Return_1);
 		
 		JLabel lblNewLabel_3_2_1 = new JLabel("Borrow,refund");
@@ -274,25 +365,6 @@ public class FormHomePage extends JFrame {
 		lblReturn_p.setHorizontalAlignment(SwingConstants.CENTER);
 		lblReturn_p.setIcon(new ImageIcon((img_Return)));
 		
-		JPanel panelBorrowBook_1_1 = new JPanel();
-		panelBorrowBook_1_1.setBorder(new LineBorder(new Color(0, 128, 128), 2));
-		panelBorrowBook_1_1.setLayout(null);
-		panelBorrowBook_1_1.setBackground(new Color(60, 179, 113));
-		panelBorrowBook_1_1.setBounds(278, 265, 177, 40);
-		contentPane.add(panelBorrowBook_1_1);
-		
-		JLabel lblBorrowBook_1_1 = new JLabel("Statistics");
-		lblBorrowBook_1_1.setForeground(new Color(204, 255, 255));
-		lblBorrowBook_1_1.setFont(new Font("Dialog", Font.BOLD, 14));
-		lblBorrowBook_1_1.setBounds(61, 11, 116, 18);
-		panelBorrowBook_1_1.add(lblBorrowBook_1_1);
-		
-		JLabel lblBorrowBook_p_1 = new JLabel("");
-		lblBorrowBook_p_1.setHorizontalAlignment(SwingConstants.CENTER);
-		lblBorrowBook_p_1.setBounds(10, 11, 46, 23);
-		panelBorrowBook_1_1.add(lblBorrowBook_p_1);
-		lblBorrowBook_p_1.setIcon(new ImageIcon((img_Statistics)));
-		
 		JPanel panelBorrowBook_1_1_1 = new JPanel();
 		panelBorrowBook_1_1_1.setBorder(new LineBorder(new Color(0, 128, 128), 2));
 		panelBorrowBook_1_1_1.addMouseListener(new MouseAdapter() {
@@ -305,7 +377,7 @@ public class FormHomePage extends JFrame {
 		});
 		panelBorrowBook_1_1_1.setLayout(null);
 		panelBorrowBook_1_1_1.setBackground(new Color(100, 149, 237));
-		panelBorrowBook_1_1_1.setBounds(557, 390, 177, 40);
+		panelBorrowBook_1_1_1.setBounds(557, 114, 177, 40);
 		contentPane.add(panelBorrowBook_1_1_1);
 		
 		JLabel lblBorrowBook_1_1_1 = new JLabel("Exit");
@@ -325,46 +397,87 @@ public class FormHomePage extends JFrame {
 		lblLogan.setBounds(0, 0, 46, 46);
 		contentPane.add(lblLogan);
 		
-		JPanel panel_2 = new JPanel();
-		panel_2.setBorder(new LineBorder(new Color(0, 128, 128), 2));
-		panel_2.setBackground(new Color(255, 240, 245));
-		panel_2.setBounds(238, 47, 496, 128);
-		contentPane.add(panel_2);
-		panel_2.setLayout(null);
+		JPanel panel_Main = new JPanel();
+		panel_Main.setBorder(null);
+		panel_Main.setBackground(Color.LIGHT_GRAY);
+		panel_Main.setBounds(248, 180, 523, 509);
+		contentPane.add(panel_Main);
+		panel_Main.setLayout(null);
+		//panel_Main.setLayout(null);
 		
-		JLabel lblNewLabel_1 = new JLabel("User:");
-		lblNewLabel_1.setFont(new Font("Tahoma", Font.PLAIN, 16));
-		lblNewLabel_1.setBounds(52, 25, 39, 13);
-		panel_2.add(lblNewLabel_1);
+		//panel_Main.add(panelMain);
+		panel_Main.setVisible(true);
+		panel_Main.add(panelMain);
+		panel_Main.add(panelCategory);
+		panel_Main.add(pPublish);
+		panel_Main.add(panelManagerBook);
+		panel_Main.add(panelManagerAccount);
+		panel_Main.add(panelManagerAuthor);
+		panel_Main.add(panelManagerMember);
 		
-		JLabel lblUser = new JLabel("New label");
-		lblUser.setFont(new Font("Tahoma", Font.PLAIN, 16));
-		lblUser.setBounds(128, 27, 278, 13);
-		panel_2.add(lblUser);
+		menuClicked(panelMain);
 		
-		JLabel lblNewLabel_1_2 = new JLabel("Rank:");
-		lblNewLabel_1_2.setFont(new Font("Tahoma", Font.PLAIN, 16));
-		lblNewLabel_1_2.setBounds(52, 69, 55, 13);
-		panel_2.add(lblNewLabel_1_2);
+		JPanel panelBorrowBook_1_1 = new JPanel();
+		panelBorrowBook_1_1.setBounds(288, 47, 177, 40);
+		contentPane.add(panelBorrowBook_1_1);
+		panelBorrowBook_1_1.setBorder(new LineBorder(new Color(0, 128, 128), 2));
+		panelBorrowBook_1_1.setLayout(null);
+		panelBorrowBook_1_1.setBackground(new Color(60, 179, 113));
 		
-		JLabel lblRank = new JLabel("New label");
-		lblRank.setFont(new Font("Tahoma", Font.PLAIN, 16));
-		lblRank.setBounds(128, 69, 278, 13);
-		panel_2.add(lblRank);
+		JLabel lblBorrowBook_1_1 = new JLabel("Statistics");
+		lblBorrowBook_1_1.setForeground(new Color(204, 255, 255));
+		lblBorrowBook_1_1.setFont(new Font("Dialog", Font.BOLD, 14));
+		lblBorrowBook_1_1.setBounds(61, 11, 116, 18);
+		panelBorrowBook_1_1.add(lblBorrowBook_1_1);
+		
+		JLabel lblBorrowBook_p_1 = new JLabel("");
+		lblBorrowBook_p_1.setHorizontalAlignment(SwingConstants.CENTER);
+		lblBorrowBook_p_1.setBounds(10, 11, 46, 23);
+		panelBorrowBook_1_1.add(lblBorrowBook_p_1);
+		lblBorrowBook_p_1.setIcon(new ImageIcon((img_Statistics)));
+		
+	}
+	
+	public void menuClicked(JPanel panel) {
+		panelCategory.setVisible(false);
+		panelMain.setVisible(false);
+		pPublish.setVisible(false);
+		panelManagerBook.setVisible(false);
+		panelManagerAccount.setVisible(false);
+		panelManagerAuthor.setVisible(false);
+		panelManagerMember.setVisible(false);
+		
+		
+		
+		panel.setVisible(true);
 		
 	}
 	
 	private class PanelButtonMouseAdapter extends MouseAdapter{
+		JPanel panel;
+		public PanelButtonMouseAdapter(JPanel panel) {
+			this.panel = panel;
+		}
+		
 		@Override
 		public void mouseEntered(MouseEvent e) {
+			panel.setBackground(new Color(112, 128, 144));
+			
+		}
+		@Override
+		public void mouseExited(MouseEvent e) {
+			panel.setBackground(SystemColor.controlDkShadow);
 			
 		}
 		@Override
 		public void mousePressed(MouseEvent e) {
+			panel.setBackground(new Color(112,200,144));
 			
 		}
 		@Override
 		public void mouseReleased(MouseEvent e) {
+			panel.setBackground(new Color(112,128,144));
+			
 			
 		}
 		
