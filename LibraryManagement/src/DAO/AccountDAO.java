@@ -4,12 +4,9 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.util.ArrayList;
-
 import javax.swing.JComboBox;
 import javax.swing.JTextField;
-
 import DTO.AccountDTO;
-import DTO.PublisherDTO;
 public class AccountDAO {
 		//add
 		public static int addAccount(AccountDTO a) {
@@ -17,8 +14,8 @@ public class AccountDAO {
 			Connection conn;
 			try {
 				conn = ConnectionUtils.getConnection();
-				String sqlInsert = "INSERT INTO Publisher (MemberID, AccountName, Password) "
-	                    + " VALUES (N'"+a.getMemberID()+"', N'"+a.getAccountName()+"', "+a.getPassword()+")";
+				String sqlInsert = "INSERT INTO Account (MemberID, AccountName, Password) "
+	                    + " VALUES (N'"+a.getMemberID()+"', N'"+a.getAccountName()+"', N'"+a.getPassword()+"')";
 				java.sql.Statement st = conn.createStatement();
 				result = st.executeUpdate(sqlInsert);
 				conn.close();
@@ -52,7 +49,7 @@ public class AccountDAO {
 			PreparedStatement ps;
 			try {
 				conn = ConnectionUtils.getConnection();
-				ps = conn.prepareStatement("UPDATE Publisher SET MemberID = ?, AccountName = ?, Password = ? WHERE Id = ?");
+				ps = conn.prepareStatement("UPDATE Account SET MemberID = ?, AccountName = ?, Password = ? WHERE Id = ?");
 				ps.setInt(1, a.getMemberID());
 				ps.setString(2, a.getAccountName());
 				ps.setString(3, a.getPassword());
@@ -89,7 +86,8 @@ public class AccountDAO {
 			return AccountList;
 		} 
 		//Load data into combobox
-		public static void loadMemberIDToCmb(JComboBox cmb) {
+		public static JComboBox loadMemberIDToCmb() {
+			JComboBox cmb = null;
 			Connection conn;
 			PreparedStatement ps;
 			ResultSet r;
@@ -106,9 +104,11 @@ public class AccountDAO {
 			catch(Exception e) {
 				e.printStackTrace();
 			}
+			return cmb;
 		}
 		//load data into textfield
-		public static void loadMemberNameToTxt(JTextField t,JComboBox cmb) {
+		public static String loadMemberNameToTxt(JComboBox cmb) {
+			String t = null;
 			Connection conn;
 			PreparedStatement ps;
 			ResultSet r;
@@ -118,13 +118,14 @@ public class AccountDAO {
 				conn = ConnectionUtils.getConnection();
 				ps = conn.prepareStatement(query);
 				r = ps.executeQuery();
-				while(r.next()) {
+				if(r.next()) {
 					String memberName = r.getString("MemberName");
-					cmb.addItem(memberName);
+					t = memberName;
 				}
 			}
 			catch(Exception e) {
 				e.printStackTrace();
 			}
+			return t;
 		}
 }

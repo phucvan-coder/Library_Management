@@ -1,10 +1,10 @@
 package BUS;
 import java.io.*;
 import java.util.ArrayList;
-
+import javax.swing.JComboBox;
 import javax.swing.JTable;
+import javax.swing.JTextField;
 import javax.swing.table.DefaultTableModel;
-
 import DAO.AccountDAO;
 import DTO.AccountDTO;
 import GUI.FormQuanLyAccount;
@@ -63,5 +63,13 @@ public class AccountBUS {
 			else {
 				return false;
 			}
+		}
+		//load data into combobox
+		public static void loadMemberIDToCmb(JComboBox cmb) {
+			cmb = AccountDAO.loadMemberIDToCmb();
+		}
+		//load data into textfield
+		public static void loadMemberNameToTxt(JTextField t,JComboBox cmb) {
+			t.setText(AccountDAO.loadMemberNameToTxt(cmb));
 		}
 }

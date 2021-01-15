@@ -6,8 +6,6 @@ import java.sql.ResultSet;
 import java.util.ArrayList;
 
 import javax.swing.JOptionPane;
-
-import DTO.AccountDTO;
 import DTO.PublisherDTO;
 public class PublisherDAO {
 	//add
@@ -17,7 +15,7 @@ public class PublisherDAO {
 		try {
 			conn = ConnectionUtils.getConnection();
 			String sqlInsert = "INSERT INTO Publisher (PublisherName, Address, PhoneNumber) "
-                    + " VALUES (N'"+a.getPublisherName()+"', N'"+a.getAddress()+"', "+a.getPhoneNumber()+")";
+                    + " VALUES (N'"+a.getPublisherName()+"', N'"+a.getAddress()+"', N'"+a.getPhoneNumber()+"')";
 			java.sql.Statement st = conn.createStatement();
 			result = st.executeUpdate(sqlInsert);
 			conn.close();

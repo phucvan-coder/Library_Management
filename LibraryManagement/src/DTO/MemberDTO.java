@@ -1,9 +1,10 @@
 package DTO;
 import java.io.*;
+import java.sql.Date;
 public class MemberDTO {
 	private int id;
 	private String memberName;
-	private String birthday;
+	private Date birthday;
 	private String gender;
 	private String phoneNumber;
 	private String rank;
@@ -11,12 +12,12 @@ public class MemberDTO {
 	public MemberDTO(){
 		this.id = 0;
 		this.memberName = "";
-		this.birthday = "";
+		this.birthday = null;
 		this.gender = "";
 		this.phoneNumber = "";
 		this.rank = "";
 	}
-	public MemberDTO(int ID,String MemberName,String Birthday,String Gender,String PhoneNumber,String Rank){
+	public MemberDTO(int ID,String MemberName,Date Birthday,String Gender,String PhoneNumber,String Rank){
 		this.id = ID;
 		this.memberName = MemberName;
 		this.birthday = Birthday;
@@ -37,10 +38,10 @@ public class MemberDTO {
 	public void setMemberName(String memberName) {
 		this.memberName = memberName;
 	}
-	public String getBirthday() {
+	public Date getBirthday() {
 		return birthday;
 	}
-	public void setBirthday(String birthday) {
+	public void setBirthday(Date birthday) {
 		this.birthday = birthday;
 	}
 	public String getGender() {
