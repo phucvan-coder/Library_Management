@@ -40,6 +40,7 @@ public class FormHomePage extends JFrame {
 	private PanelManagerAccount panelManagerAccount ;
 	private PanelManagerAuthor panelManagerAuthor ;
 	private PanelMemberManger panelManagerMember ;
+	private PanelManagerCategory panelManagerCategory ;
 	
 	
 	
@@ -80,6 +81,7 @@ public class FormHomePage extends JFrame {
 		panelManagerAccount = new PanelManagerAccount();
 		panelManagerAuthor = new PanelManagerAuthor();
 		panelManagerMember = new PanelMemberManger();
+		panelManagerCategory = new PanelManagerCategory();
 		//panelCategory.setBounds(261, 7, 1, 1);
 		
 		
@@ -215,7 +217,14 @@ public class FormHomePage extends JFrame {
 		lblManagerBook_p.setIcon(new ImageIcon((img_Book)));
 		
 		JPanel panelQuanLyCategory = new JPanel();
-		panelQuanLyCategory.addMouseListener(new PanelButtonMouseAdapter(panelQuanLyCategory));
+		panelQuanLyCategory.addMouseListener(new PanelButtonMouseAdapter(panelQuanLyCategory) {
+			@Override
+			public void mouseClicked(MouseEvent e) {
+				panelManagerCategory.setVisible(true);
+				//panel_Main.add(panelCategory);
+				menuClicked(panelManagerCategory);
+			}
+		});
 		panelQuanLyCategory.setBorder(new LineBorder(new Color(128, 128, 128), 1, true));
 		panelQuanLyCategory.setBackground(SystemColor.controlDkShadow);
 		panelQuanLyCategory.setBounds(0, 282, 236, 37);
@@ -414,6 +423,7 @@ public class FormHomePage extends JFrame {
 		panel_Main.add(panelManagerAccount);
 		panel_Main.add(panelManagerAuthor);
 		panel_Main.add(panelManagerMember);
+		panel_Main.add(panelManagerCategory);
 		
 		menuClicked(panelMain);
 		
@@ -446,6 +456,7 @@ public class FormHomePage extends JFrame {
 		panelManagerAccount.setVisible(false);
 		panelManagerAuthor.setVisible(false);
 		panelManagerMember.setVisible(false);
+		panelManagerCategory.setVisible(false);
 		
 		
 		

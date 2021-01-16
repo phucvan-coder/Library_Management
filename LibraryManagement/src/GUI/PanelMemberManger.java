@@ -32,12 +32,11 @@ public class PanelMemberManger extends JPanel {
 		JPanel panel = new JPanel();
 		panel.setLayout(null);
 		panel.setBackground(new Color(95, 158, 160));
-		panel.setBounds(10, 11, 503, 241);
+		panel.setBounds(10, 11, 503, 259);
 		add(panel);
 		
 		JLabel lblNewLabel_3_1_1 = new JLabel("Gender");
-		lblNewLabel_3_1_1.setHorizontalAlignment(SwingConstants.CENTER);
-		lblNewLabel_3_1_1.setFont(new Font("Tahoma", Font.PLAIN, 14));
+		lblNewLabel_3_1_1.setFont(new Font("Tahoma", Font.BOLD, 14));
 		lblNewLabel_3_1_1.setBounds(10, 170, 78, 32);
 		panel.add(lblNewLabel_3_1_1);
 		
@@ -48,13 +47,12 @@ public class PanelMemberManger extends JPanel {
 		panel.add(txtBirthdayMember);
 		
 		JLabel lblNewLabel_3_1 = new JLabel("Birthday");
-		lblNewLabel_3_1.setHorizontalAlignment(SwingConstants.CENTER);
-		lblNewLabel_3_1.setFont(new Font("Tahoma", Font.PLAIN, 14));
+		lblNewLabel_3_1.setFont(new Font("Tahoma", Font.BOLD, 14));
 		lblNewLabel_3_1.setBounds(10, 104, 70, 32);
 		panel.add(lblNewLabel_3_1);
 		
 		JLabel lblNewLabel_3 = new JLabel("Name ");
-		lblNewLabel_3.setFont(new Font("Tahoma", Font.PLAIN, 14));
+		lblNewLabel_3.setFont(new Font("Tahoma", Font.BOLD, 14));
 		lblNewLabel_3.setBounds(10, 39, 54, 32);
 		panel.add(lblNewLabel_3);
 		
@@ -65,23 +63,23 @@ public class PanelMemberManger extends JPanel {
 		panel.add(txtNameMember);
 		
 		JButton btnAdd = new JButton("Add");
-		btnAdd.setBounds(60, 209, 85, 21);
+		btnAdd.setBounds(80, 228, 85, 21);
 		panel.add(btnAdd);
 		
 		JButton btnDelete = new JButton("Delete");
-		btnDelete.setBounds(192, 209, 85, 21);
+		btnDelete.setBounds(212, 228, 85, 21);
 		panel.add(btnDelete);
 		
 		JButton btnUpdate = new JButton("Update");
-		btnUpdate.setBounds(317, 209, 85, 21);
+		btnUpdate.setBounds(337, 228, 85, 21);
 		panel.add(btnUpdate);
 		
 		JComboBox cmbGenderMember = new JComboBox();
 		cmbGenderMember.setBounds(90, 177, 159, 22);
 		panel.add(cmbGenderMember);
 		
-		JLabel lblNewLabel_3_2 = new JLabel("TLP");
-		lblNewLabel_3_2.setFont(new Font("Tahoma", Font.PLAIN, 14));
+		JLabel lblNewLabel_3_2 = new JLabel("Phone");
+		lblNewLabel_3_2.setFont(new Font("Tahoma", Font.BOLD, 14));
 		lblNewLabel_3_2.setBounds(270, 39, 54, 32);
 		panel.add(lblNewLabel_3_2);
 		
@@ -92,7 +90,7 @@ public class PanelMemberManger extends JPanel {
 		panel.add(txtTelephoneNumber);
 		
 		JLabel lblNewLabel_3_3 = new JLabel("Adrees");
-		lblNewLabel_3_3.setFont(new Font("Tahoma", Font.PLAIN, 14));
+		lblNewLabel_3_3.setFont(new Font("Tahoma", Font.BOLD, 14));
 		lblNewLabel_3_3.setBounds(270, 104, 54, 32);
 		panel.add(lblNewLabel_3_3);
 		
@@ -104,7 +102,7 @@ public class PanelMemberManger extends JPanel {
 		
 		JLabel lblNewLabel_3_1_1_1 = new JLabel("Rank");
 		lblNewLabel_3_1_1_1.setHorizontalAlignment(SwingConstants.CENTER);
-		lblNewLabel_3_1_1_1.setFont(new Font("Tahoma", Font.PLAIN, 14));
+		lblNewLabel_3_1_1_1.setFont(new Font("Tahoma", Font.BOLD, 14));
 		lblNewLabel_3_1_1_1.setBounds(259, 170, 78, 32);
 		panel.add(lblNewLabel_3_1_1_1);
 		
@@ -112,9 +110,14 @@ public class PanelMemberManger extends JPanel {
 		cmbRankMember.setBounds(339, 177, 159, 22);
 		panel.add(cmbRankMember);
 		
+		JLabel lblNewLabel_3_4 = new JLabel("Member Management");
+		lblNewLabel_3_4.setFont(new Font("Tahoma", Font.BOLD, 14));
+		lblNewLabel_3_4.setBounds(175, 0, 178, 32);
+		panel.add(lblNewLabel_3_4);
+		
 		JScrollPane scrollPane = new JScrollPane();
 		scrollPane.setBorder(new LineBorder(Color.LIGHT_GRAY, 2));
-		scrollPane.setBounds(10, 263, 503, 235);
+		scrollPane.setBounds(10, 280, 503, 218);
 		add(scrollPane);
 		
 		tblMember = new JTable();

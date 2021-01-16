@@ -19,6 +19,7 @@ public class PanelManagerBook extends JPanel {
 	private JTextField txtBookAuthor;
 	private JTextField txtBookName;
 	private JTable tblBookManager;
+	private JTextField txtCondition;
 
 	/**
 	 * Create the panel.
@@ -31,31 +32,30 @@ public class PanelManagerBook extends JPanel {
 		JPanel panel = new JPanel();
 		panel.setLayout(null);
 		panel.setBackground(new Color(95, 158, 160));
-		panel.setBounds(10, 11, 503, 241);
+		panel.setBounds(10, 11, 503, 260);
 		add(panel);
 		
 		JLabel lblNewLabel_3_1_1 = new JLabel("Category");
-		lblNewLabel_3_1_1.setHorizontalAlignment(SwingConstants.CENTER);
-		lblNewLabel_3_1_1.setFont(new Font("Tahoma", Font.PLAIN, 14));
-		lblNewLabel_3_1_1.setBounds(261, 40, 92, 32);
+		lblNewLabel_3_1_1.setFont(new Font("Tahoma", Font.BOLD, 14));
+		lblNewLabel_3_1_1.setBounds(10, 155, 92, 32);
 		panel.add(lblNewLabel_3_1_1);
 		
 		txtPhoneNumber = new JTextField();
 		txtPhoneNumber.setFont(new Font("Tahoma", Font.BOLD, 18));
 		txtPhoneNumber.setColumns(10);
-		txtPhoneNumber.setBounds(359, 39, 134, 32);
+		txtPhoneNumber.setBounds(118, 154, 134, 32);
 		panel.add(txtPhoneNumber);
 		
 		txtBookAuthor = new JTextField();
 		txtBookAuthor.setFont(new Font("Tahoma", Font.BOLD, 18));
 		txtBookAuthor.setColumns(10);
-		txtBookAuthor.setBounds(122, 103, 129, 32);
+		txtBookAuthor.setBounds(118, 103, 133, 32);
 		panel.add(txtBookAuthor);
 		
 		JLabel lblNewLabel_3_1 = new JLabel("Book Author");
 		lblNewLabel_3_1.setHorizontalAlignment(SwingConstants.CENTER);
 		lblNewLabel_3_1.setFont(new Font("Tahoma", Font.BOLD, 13));
-		lblNewLabel_3_1.setBounds(10, 104, 78, 32);
+		lblNewLabel_3_1.setBounds(10, 104, 92, 32);
 		panel.add(lblNewLabel_3_1);
 		
 		JLabel lblNewLabel_3 = new JLabel("Name");
@@ -70,20 +70,20 @@ public class PanelManagerBook extends JPanel {
 		panel.add(txtBookName);
 		
 		JButton btnAdd = new JButton("Add");
-		btnAdd.setBounds(20, 213, 85, 21);
+		btnAdd.setBounds(96, 206, 85, 33);
 		panel.add(btnAdd);
 		
 		JButton btnDelete = new JButton("Delete");
-		btnDelete.setBounds(132, 212, 85, 21);
+		btnDelete.setBounds(208, 205, 85, 34);
 		panel.add(btnDelete);
 		
 		JButton btnUpdate = new JButton("Update");
-		btnUpdate.setBounds(261, 213, 85, 21);
+		btnUpdate.setBounds(337, 206, 85, 33);
 		panel.add(btnUpdate);
 		
 		JLabel lblNewLabel_3_1_1_1 = new JLabel("Status");
 		lblNewLabel_3_1_1_1.setHorizontalAlignment(SwingConstants.CENTER);
-		lblNewLabel_3_1_1_1.setFont(new Font("Tahoma", Font.PLAIN, 14));
+		lblNewLabel_3_1_1_1.setFont(new Font("Tahoma", Font.BOLD, 14));
 		lblNewLabel_3_1_1_1.setBounds(261, 103, 92, 32);
 		panel.add(lblNewLabel_3_1_1_1);
 		
@@ -91,9 +91,26 @@ public class PanelManagerBook extends JPanel {
 		cmbStatus.setBounds(359, 111, 134, 22);
 		panel.add(cmbStatus);
 		
+		JLabel lblNewLabel_3_1_1_2 = new JLabel("Condition");
+		lblNewLabel_3_1_1_2.setHorizontalAlignment(SwingConstants.CENTER);
+		lblNewLabel_3_1_1_2.setFont(new Font("Tahoma", Font.BOLD, 14));
+		lblNewLabel_3_1_1_2.setBounds(261, 39, 92, 32);
+		panel.add(lblNewLabel_3_1_1_2);
+		
+		txtCondition = new JTextField();
+		txtCondition.setFont(new Font("Tahoma", Font.BOLD, 18));
+		txtCondition.setColumns(10);
+		txtCondition.setBounds(359, 38, 134, 32);
+		panel.add(txtCondition);
+		
+		JLabel lblNewLabel = new JLabel("Book Management");
+		lblNewLabel.setFont(new Font("Tahoma", Font.BOLD, 14));
+		lblNewLabel.setBounds(194, 10, 159, 13);
+		panel.add(lblNewLabel);
+		
 		JScrollPane scrollPane = new JScrollPane();
 		scrollPane.setBorder(new LineBorder(Color.LIGHT_GRAY, 2));
-		scrollPane.setBounds(10, 263, 503, 235);
+		scrollPane.setBounds(10, 281, 503, 217);
 		add(scrollPane);
 		
 		tblBookManager = new JTable();

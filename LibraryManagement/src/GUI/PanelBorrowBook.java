@@ -13,17 +13,16 @@ import javax.swing.SwingConstants;
 import javax.swing.border.LineBorder;
 import javax.swing.JTable;
 import javax.swing.JComboBox;
+import com.toedter.calendar.JDateChooser;
 
-public class PanelManagerAccount extends JPanel {
-	private JTextField txtNameAccount;
-	private JTextField ttxtName;
-	private JTextField txtPassword;
+public class PanelBorrowBook extends JPanel {
 	private JTable tblAccountManager;
+	private JTextField txtNumber;
 
 	/**
 	 * Create the panel.
 	 */
-	public PanelManagerAccount() {
+	public PanelBorrowBook() {
 		setBackground(Color.LIGHT_GRAY);
 		setLayout(null);
 		setBounds(0,0,523, 509);
@@ -34,40 +33,22 @@ public class PanelManagerAccount extends JPanel {
 		panel.setBounds(10, 11, 503, 241);
 		add(panel);
 		
-		JLabel lblNewLabel_3_1_1 = new JLabel("Username");
+		JLabel lblNewLabel_3_1_1 = new JLabel("Book Name");
 		lblNewLabel_3_1_1.setHorizontalAlignment(SwingConstants.CENTER);
 		lblNewLabel_3_1_1.setFont(new Font("Tahoma", Font.BOLD, 14));
 		lblNewLabel_3_1_1.setBounds(0, 155, 92, 32);
 		panel.add(lblNewLabel_3_1_1);
 		
-		txtNameAccount = new JTextField();
-		txtNameAccount.setFont(new Font("Tahoma", Font.BOLD, 18));
-		txtNameAccount.setColumns(10);
-		txtNameAccount.setBounds(96, 154, 165, 32);
-		panel.add(txtNameAccount);
-		
-		ttxtName = new JTextField();
-		ttxtName.setFont(new Font("Tahoma", Font.BOLD, 18));
-		ttxtName.setColumns(10);
-		ttxtName.setBounds(96, 102, 165, 32);
-		panel.add(ttxtName);
-		
-		JLabel lblNewLabel_3_1 = new JLabel("Name");
+		JLabel lblNewLabel_3_1 = new JLabel("Author");
 		lblNewLabel_3_1.setHorizontalAlignment(SwingConstants.CENTER);
 		lblNewLabel_3_1.setFont(new Font("Tahoma", Font.BOLD, 13));
 		lblNewLabel_3_1.setBounds(10, 104, 49, 32);
 		panel.add(lblNewLabel_3_1);
 		
-		JLabel lblNewLabel_3 = new JLabel("Id Member");
+		JLabel lblNewLabel_3 = new JLabel("Category");
 		lblNewLabel_3.setFont(new Font("Tahoma", Font.BOLD, 13));
 		lblNewLabel_3.setBounds(10, 39, 72, 32);
 		panel.add(lblNewLabel_3);
-		
-		txtPassword = new JTextField();
-		txtPassword.setFont(new Font("Arial", Font.BOLD, 18));
-		txtPassword.setColumns(10);
-		txtPassword.setBounds(361, 39, 132, 32);
-		panel.add(txtPassword);
 		
 		JButton btnAdd = new JButton("Add");
 		btnAdd.setBounds(109, 210, 85, 21);
@@ -81,38 +62,71 @@ public class PanelManagerAccount extends JPanel {
 		btnUpdate.setBounds(307, 210, 85, 21);
 		panel.add(btnUpdate);
 		
-		JLabel lblNewLabel_3_1_1_1 = new JLabel("Rank");
-		lblNewLabel_3_1_1_1.setHorizontalAlignment(SwingConstants.CENTER);
+		JLabel lblNewLabel_3_1_1_1 = new JLabel("To");
 		lblNewLabel_3_1_1_1.setFont(new Font("Tahoma", Font.BOLD, 14));
-		lblNewLabel_3_1_1_1.setBounds(271, 103, 92, 32);
+		lblNewLabel_3_1_1_1.setBounds(281, 103, 39, 32);
 		panel.add(lblNewLabel_3_1_1_1);
 		
-		JComboBox cmbRank = new JComboBox();
-		cmbRank.setBounds(359, 110, 134, 22);
-		panel.add(cmbRank);
-		
 		JComboBox cmbMemberID = new JComboBox();
-		cmbMemberID.setBounds(96, 45, 165, 22);
+		cmbMemberID.setBounds(96, 45, 165, 24);
 		panel.add(cmbMemberID);
 		
-		JLabel lblNewLabel_3_1_1_2 = new JLabel("Pasword");
-		lblNewLabel_3_1_1_2.setHorizontalAlignment(SwingConstants.CENTER);
+		JLabel lblNewLabel_3_1_1_2 = new JLabel("From");
 		lblNewLabel_3_1_1_2.setFont(new Font("Tahoma", Font.BOLD, 14));
-		lblNewLabel_3_1_1_2.setBounds(271, 38, 92, 32);
+		lblNewLabel_3_1_1_2.setBounds(281, 38, 60, 32);
 		panel.add(lblNewLabel_3_1_1_2);
 		
-		JLabel lblNewLabel = new JLabel("Account Management");
+		JLabel lblNewLabel = new JLabel("Borrow Book");
 		lblNewLabel.setFont(new Font("Tahoma", Font.BOLD, 14));
-		lblNewLabel.setBounds(160, 10, 203, 13);
+		lblNewLabel.setBounds(210, 10, 136, 13);
 		panel.add(lblNewLabel);
+		
+		JComboBox cmbAuthor = new JComboBox();
+		cmbAuthor.setBounds(96, 104, 165, 24);
+		panel.add(cmbAuthor);
+		
+		JComboBox cmbBookName = new JComboBox();
+		cmbBookName.setBounds(96, 163, 165, 24);
+		panel.add(cmbBookName);
+		
+		JDateChooser dateChooser = new JDateChooser();
+		dateChooser.setBounds(351, 39, 142, 24);
+		panel.add(dateChooser);
+		
+		JDateChooser dateChooser_1 = new JDateChooser();
+		dateChooser_1.setBounds(351, 104, 142, 24);
+		panel.add(dateChooser_1);
+		
+		JLabel lblNewLabel_3_2 = new JLabel("Member ID");
+		lblNewLabel_3_2.setFont(new Font("Tahoma", Font.BOLD, 13));
+		lblNewLabel_3_2.setBounds(281, 156, 72, 32);
+		panel.add(lblNewLabel_3_2);
+		
+		JComboBox cmbMemberID_1 = new JComboBox();
+		cmbMemberID_1.setBounds(357, 161, 136, 24);
+		panel.add(cmbMemberID_1);
 		
 		JScrollPane scrollPane = new JScrollPane();
 		scrollPane.setBorder(new LineBorder(Color.LIGHT_GRAY, 2));
-		scrollPane.setBounds(10, 263, 503, 235);
+		scrollPane.setBounds(10, 263, 503, 196);
 		add(scrollPane);
 		
 		tblAccountManager = new JTable();
 		scrollPane.setColumnHeaderView(tblAccountManager);
+		
+		JLabel lblNumberOfBoook = new JLabel("Number of Books");
+		lblNumberOfBoook.setFont(new Font("Tahoma", Font.BOLD, 14));
+		lblNumberOfBoook.setBounds(42, 469, 136, 13);
+		add(lblNumberOfBoook);
+		
+		txtNumber = new JTextField();
+		txtNumber.setBounds(172, 469, 36, 19);
+		add(txtNumber);
+		txtNumber.setColumns(10);
+		
+		JButton btnConfirm = new JButton("Confirm");
+		btnConfirm.setBounds(411, 467, 85, 21);
+		add(btnConfirm);
 		setVisible(false);
 
 	}
