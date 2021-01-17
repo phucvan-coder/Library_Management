@@ -2,6 +2,8 @@ package GUI;
 
 import javax.swing.JPanel;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
+
 import java.awt.Color;
 import javax.swing.JScrollPane;
 import java.awt.Font;
@@ -12,12 +14,18 @@ import java.awt.event.ActionEvent;
 import javax.swing.SwingConstants;
 import javax.swing.border.LineBorder;
 import javax.swing.JTable;
+import javax.swing.table.DefaultTableModel;
+
+import BUS.PublisherBUS;
+import DTO.PublisherDTO;
+import java.awt.event.MouseAdapter;
+import java.awt.event.MouseEvent;
 
 public class PanelPlublisherManger extends JPanel {
-	private JTextField txtPhoneNumber;
-	private JTextField txtAdress;
-	private JTextField txtNamePublisher;
-	private JTable tblPublisher;
+	private static JTextField txtPhoneNumber;
+	private static JTextField txtAdrress;
+	private static JTextField txtNamePublisher;
+	private static JTable tblPublisher;
 
 	/**
 	 * Create the panel.
@@ -45,11 +53,11 @@ public class PanelPlublisherManger extends JPanel {
 		txtPhoneNumber.setBounds(140, 169, 202, 32);
 		panel.add(txtPhoneNumber);
 		
-		txtAdress = new JTextField();
-		txtAdress.setFont(new Font("Arial", Font.PLAIN, 12));
-		txtAdress.setColumns(10);
-		txtAdress.setBounds(140, 103, 202, 32);
-		panel.add(txtAdress);
+		txtAdrress = new JTextField();
+		txtAdrress.setFont(new Font("Arial", Font.PLAIN, 12));
+		txtAdrress.setColumns(10);
+		txtAdrress.setBounds(140, 103, 202, 32);
+		panel.add(txtAdrress);
 		
 		JLabel lblNewLabel_3_1 = new JLabel("Address");
 		lblNewLabel_3_1.setFont(new Font("Arial", Font.BOLD, 14));
@@ -68,14 +76,71 @@ public class PanelPlublisherManger extends JPanel {
 		panel.add(txtNamePublisher);
 		
 		JButton btnAdd = new JButton("Add");
+		btnAdd.addActionListener(new ActionListener() {
+			//add
+			public void actionPerformed(ActionEvent e) {
+				boolean result = PublisherBUS.addPublisher();
+				if(result) {
+					JOptionPane.showMessageDialog(null, "         Add successful","Message",JOptionPane.INFORMATION_MESSAGE);
+					PublisherBUS.showPublisherList(tblPublisher);
+				}
+				else {
+					JOptionPane.showMessageDialog(null, "          Add failed","Message",JOptionPane.ERROR_MESSAGE);
+				}
+			}
+		});
 		btnAdd.setBounds(388, 43, 105, 29);
 		panel.add(btnAdd);
 		
 		JButton btnDelete = new JButton("Delete");
+		btnDelete.addActionListener(new ActionListener() {
+			//delete
+			public void actionPerformed(ActionEvent e) {
+				int n = tblPublisher.getSelectionModel().getLeadSelectionIndex();
+				if(n>=0) {
+					boolean result = PublisherBUS.deletePublisher();
+					if(result) {
+						JOptionPane.showMessageDialog(null, "         Delete successful","Message",JOptionPane.INFORMATION_MESSAGE);
+						PublisherBUS.showPublisherList(tblPublisher);
+					}
+					else {
+						JOptionPane.showMessageDialog(null, "          Delete failed","Message",JOptionPane.ERROR_MESSAGE);
+					}
+				}
+				if(tblPublisher.getRowCount()==0) {
+					JOptionPane.showMessageDialog(null, "         The list is empty","Message",JOptionPane.INFORMATION_MESSAGE);
+				}
+				if(n<0) {
+					JOptionPane.showMessageDialog(null, "         Please select a row","Message",JOptionPane.INFORMATION_MESSAGE);
+				}
+			}
+		});
 		btnDelete.setBounds(388, 107, 105, 30);
 		panel.add(btnDelete);
 		
 		JButton btnUpdate = new JButton("Update");
+		btnUpdate.addActionListener(new ActionListener() {
+			//update
+			public void actionPerformed(ActionEvent e) {
+				int n = tblPublisher.getSelectionModel().getLeadSelectionIndex();
+				if(n>=0) {
+					boolean result = PublisherBUS.updatePublisher();
+					if(result) {
+						JOptionPane.showMessageDialog(null, "         Update successful","Message",JOptionPane.INFORMATION_MESSAGE);
+						PublisherBUS.showPublisherList(tblPublisher);
+					}
+					else {
+						JOptionPane.showMessageDialog(null, "          Update failed","Message",JOptionPane.ERROR_MESSAGE);
+					}
+				}
+				if(tblPublisher.getRowCount()==0) {
+					JOptionPane.showMessageDialog(null, "         The list is empty","Message",JOptionPane.INFORMATION_MESSAGE);
+				}
+				if(n<0) {
+					JOptionPane.showMessageDialog(null, "         Please select a row","Message",JOptionPane.INFORMATION_MESSAGE);
+				}
+			}
+		});
 		btnUpdate.setBounds(388, 174, 105, 29);
 		panel.add(btnUpdate);
 		
@@ -85,13 +150,51 @@ public class PanelPlublisherManger extends JPanel {
 		panel.add(lblNewLabel);
 		
 		JScrollPane scrollPane = new JScrollPane();
-		scrollPane.setBorder(new LineBorder(Color.LIGHT_GRAY, 2));
-		scrollPane.setBounds(10, 263, 503, 235);
+		scrollPane.setBounds(10, 265, 503, 233);
 		add(scrollPane);
 		
 		tblPublisher = new JTable();
-		scrollPane.setColumnHeaderView(tblPublisher);
+		tblPublisher.addMouseListener(new MouseAdapter() {
+			//click on table
+			@Override
+			public void mouseClicked(MouseEvent e) {
+				int n = tblPublisher.getSelectionModel().getLeadSelectionIndex();
+				txtNamePublisher.setText(tblPublisher.getValueAt(n, 1).toString());
+				txtAdrress.setText(tblPublisher.getValueAt(n, 2).toString());
+				txtPhoneNumber.setText(tblPublisher.getValueAt(n, 3).toString());
+			}
+		});
+		tblPublisher.setModel(new DefaultTableModel(
+			new Object[][] {
+			},
+			new String[] {
+				"Id", "PublisherName", "Address", "PhoneNumber"
+			}
+		) {
+			boolean[] columnEditables = new boolean[] {
+				false, false, false, false
+			};
+			public boolean isCellEditable(int row, int column) {
+				return columnEditables[column];
+			}
+		});
+		scrollPane.setViewportView(tblPublisher);
 		setVisible(false);
-
+		PublisherBUS.showPublisherList(tblPublisher);
 	}
+	//get publisher
+		public static PublisherDTO getPublisher() {
+			PublisherDTO p = new PublisherDTO();
+			p.setPublisherName(txtNamePublisher.getText());
+			p.setAddress(txtAdrress.getText());
+			p.setPhoneNumber(txtPhoneNumber.getText());
+			return p;
+		}
+		//get id
+		public static int getPublisherID() {
+			int n = tblPublisher.getSelectionModel().getLeadSelectionIndex();
+			DefaultTableModel model = (DefaultTableModel) tblPublisher.getModel();
+			int id = (int) model.getValueAt(n, 0);
+			return id;
+		}
 }

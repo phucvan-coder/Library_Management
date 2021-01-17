@@ -1,17 +1,22 @@
 package BUS;
 import java.io.*;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Date;
+
 import javax.swing.JTable;
 import javax.swing.table.DefaultTableModel;
 
 import DAO.MemberDAO;
 import DTO.MemberDTO;
+import GUI.PanelMemberManger;
 public class MemberBUS {
 	//display Author list
 		public static void showMemberList(JTable table) {
 			MemberDAO MemberList = new MemberDAO();
 			DefaultTableModel model = (DefaultTableModel) table.getModel();
-			Object[] row = new Object[2];
+			model.getDataVector().clear();
+			Object[] row = new Object[6];
 			ArrayList<MemberDTO> list = MemberList.getMemberList();
 			for(int i = 0; i < list.size(); i++) {
 				row[0] = list.get(i).getId();
@@ -25,7 +30,7 @@ public class MemberBUS {
 		}
 		//add
 		public static boolean addMember() {
-			MemberDTO a = FormQuanLyMember.getMember();
+			MemberDTO a = PanelMemberManger.getMember();
 			int result = 0;
 			result = MemberDAO.addMember(a);
 			if(result==1) {
@@ -37,8 +42,8 @@ public class MemberBUS {
 		}
 		//delete
 		public static boolean deleteMember() {
-			MemberDTO a = FormQuanLyMember.getMember();
-			int id = FormQuanLyMember.getMemberID();
+			MemberDTO a = PanelMemberManger.getMember();
+			int id = PanelMemberManger.getMemberID();
 			int result = 0;
 			result = MemberDAO.deleteMember(id);
 			if(result==1) {
@@ -50,8 +55,8 @@ public class MemberBUS {
 		}
 		//update
 		public static boolean updateMember() {
-			MemberDTO a = FormQuanLyMember.getMember();
-			int id = FormQuanLyMember.getMemberID();
+			MemberDTO a = PanelMemberManger.getMember();
+			int id = PanelMemberManger.getMemberID();
 			int result = 0;
 			result = MemberDAO.updateMember(id,a);
 			if(result==1) {

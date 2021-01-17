@@ -2,6 +2,8 @@ package GUI;
 
 import javax.swing.JPanel;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
+
 import java.awt.Color;
 import javax.swing.JScrollPane;
 import java.awt.Font;
@@ -11,15 +13,29 @@ import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
 import javax.swing.SwingConstants;
 import javax.swing.border.LineBorder;
+import javax.swing.table.DefaultTableModel;
+
+import DTO.MemberDTO;
+
 import javax.swing.JTable;
 import javax.swing.JComboBox;
+import com.toedter.calendar.JDateChooser;
+
+import BUS.MemberBUS;
+
+import javax.swing.DefaultComboBoxModel;
+import java.awt.event.MouseAdapter;
+import java.awt.event.MouseEvent;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 
 public class PanelMemberManger extends JPanel {
-	private JTextField txtBirthdayMember;
-	private JTextField txtNameMember;
-	private JTable tblMember;
-	private JTextField txtTelephoneNumber;
-	private JTextField textAdressMember;
+	private static JTextField txtNameMember;
+	private static JTextField txtTelephoneNumber;
+	private static JDateChooser dtcBirthday;
+	private static JComboBox cmbGenderMember;
+	private static JComboBox cmbRankMember;
+	private static JTable tblMember;
 
 	/**
 	 * Create the panel.
@@ -40,12 +56,6 @@ public class PanelMemberManger extends JPanel {
 		lblNewLabel_3_1_1.setBounds(10, 170, 78, 32);
 		panel.add(lblNewLabel_3_1_1);
 		
-		txtBirthdayMember = new JTextField();
-		txtBirthdayMember.setFont(new Font("Arial", Font.PLAIN, 13));
-		txtBirthdayMember.setColumns(10);
-		txtBirthdayMember.setBounds(90, 103, 159, 32);
-		panel.add(txtBirthdayMember);
-		
 		JLabel lblNewLabel_3_1 = new JLabel("Birthday");
 		lblNewLabel_3_1.setFont(new Font("Arial", Font.BOLD, 14));
 		lblNewLabel_3_1.setBounds(10, 104, 70, 32);
@@ -63,18 +73,76 @@ public class PanelMemberManger extends JPanel {
 		panel.add(txtNameMember);
 		
 		JButton btnAdd = new JButton("Add");
+		btnAdd.addActionListener(new ActionListener() {
+			//add
+			public void actionPerformed(ActionEvent e) {
+				boolean result = MemberBUS.addMember();
+				if(result) {
+					JOptionPane.showMessageDialog(null, "         Add successful","Message",JOptionPane.INFORMATION_MESSAGE);
+					MemberBUS.showMemberList(tblMember);
+				}
+				else {
+					JOptionPane.showMessageDialog(null, "          Add failed","Message",JOptionPane.ERROR_MESSAGE);
+				}
+			}
+		});
 		btnAdd.setBounds(80, 228, 85, 21);
 		panel.add(btnAdd);
 		
 		JButton btnDelete = new JButton("Delete");
+		btnDelete.addActionListener(new ActionListener() {
+			//delete
+			public void actionPerformed(ActionEvent e) {
+				int n = tblMember.getSelectionModel().getLeadSelectionIndex();
+				if(n>=0) {
+					boolean result = MemberBUS.deleteMember();
+					if(result) {
+						JOptionPane.showMessageDialog(null, "         Delete successful","Message",JOptionPane.INFORMATION_MESSAGE);
+						MemberBUS.showMemberList(tblMember);
+					}
+					else {
+						JOptionPane.showMessageDialog(null, "          Delete failed","Message",JOptionPane.ERROR_MESSAGE);
+					}
+				}
+				if(tblMember.getRowCount()==0) {
+					JOptionPane.showMessageDialog(null, "         The list is empty","Message",JOptionPane.INFORMATION_MESSAGE);
+				}
+				if(n<0) {
+					JOptionPane.showMessageDialog(null, "         Please select a row","Message",JOptionPane.INFORMATION_MESSAGE);
+				}
+			}
+		});
 		btnDelete.setBounds(212, 228, 85, 21);
 		panel.add(btnDelete);
 		
 		JButton btnUpdate = new JButton("Update");
+		btnUpdate.addActionListener(new ActionListener() {
+			//update
+			public void actionPerformed(ActionEvent e) {
+				int n = tblMember.getSelectionModel().getLeadSelectionIndex();
+				if(n>=0) {
+					boolean result = MemberBUS.updateMember();
+					if(result) {
+						JOptionPane.showMessageDialog(null, "         Update successful","Message",JOptionPane.INFORMATION_MESSAGE);
+						MemberBUS.showMemberList(tblMember);
+					}
+					else {
+						JOptionPane.showMessageDialog(null, "          Update failed","Message",JOptionPane.ERROR_MESSAGE);
+					}
+				}
+				if(tblMember.getRowCount()==0) {
+					JOptionPane.showMessageDialog(null, "         The list is empty","Message",JOptionPane.INFORMATION_MESSAGE);
+				}
+				if(n<0) {
+					JOptionPane.showMessageDialog(null, "         Please select a row","Message",JOptionPane.INFORMATION_MESSAGE);
+				}
+			}
+		});
 		btnUpdate.setBounds(337, 228, 85, 21);
 		panel.add(btnUpdate);
 		
-		JComboBox cmbGenderMember = new JComboBox();
+		cmbGenderMember = new JComboBox();
+		cmbGenderMember.setModel(new DefaultComboBoxModel(new String[] {"Nam", "N\u1EEF", "Kh\u00E1c"}));
 		cmbGenderMember.setFont(new Font("Arial", Font.PLAIN, 13));
 		cmbGenderMember.setBounds(90, 177, 159, 22);
 		panel.add(cmbGenderMember);
@@ -90,26 +158,16 @@ public class PanelMemberManger extends JPanel {
 		txtTelephoneNumber.setBounds(334, 39, 159, 32);
 		panel.add(txtTelephoneNumber);
 		
-		JLabel lblNewLabel_3_3 = new JLabel("Adrees");
-		lblNewLabel_3_3.setFont(new Font("Arial", Font.BOLD, 14));
-		lblNewLabel_3_3.setBounds(270, 104, 54, 32);
-		panel.add(lblNewLabel_3_3);
-		
-		textAdressMember = new JTextField();
-		textAdressMember.setFont(new Font("Arial", Font.PLAIN, 13));
-		textAdressMember.setColumns(10);
-		textAdressMember.setBounds(336, 103, 159, 32);
-		panel.add(textAdressMember);
-		
 		JLabel lblNewLabel_3_1_1_1 = new JLabel("Rank");
 		lblNewLabel_3_1_1_1.setHorizontalAlignment(SwingConstants.CENTER);
 		lblNewLabel_3_1_1_1.setFont(new Font("Arial", Font.BOLD, 14));
-		lblNewLabel_3_1_1_1.setBounds(259, 170, 78, 32);
+		lblNewLabel_3_1_1_1.setBounds(256, 104, 78, 32);
 		panel.add(lblNewLabel_3_1_1_1);
 		
-		JComboBox cmbRankMember = new JComboBox();
+		cmbRankMember = new JComboBox();
+		cmbRankMember.setModel(new DefaultComboBoxModel(new String[] {"Th\u1EE7 Th\u01B0", "Ng\u01B0\u1EDDi \u0110\u1ECDc"}));
 		cmbRankMember.setFont(new Font("Arial", Font.PLAIN, 13));
-		cmbRankMember.setBounds(339, 177, 159, 22);
+		cmbRankMember.setBounds(334, 110, 159, 22);
 		panel.add(cmbRankMember);
 		
 		JLabel lblNewLabel_3_4 = new JLabel("Member Management");
@@ -117,14 +175,63 @@ public class PanelMemberManger extends JPanel {
 		lblNewLabel_3_4.setBounds(175, 0, 178, 32);
 		panel.add(lblNewLabel_3_4);
 		
+		dtcBirthday = new JDateChooser();
+		dtcBirthday.setBounds(90, 104, 156, 32);
+		//format dd/MM/yyyy for datechooser
+		dtcBirthday.setDateFormatString("dd-MM-yyyy");
+		panel.add(dtcBirthday);
+		
 		JScrollPane scrollPane = new JScrollPane();
-		scrollPane.setBorder(new LineBorder(Color.LIGHT_GRAY, 2));
-		scrollPane.setBounds(10, 280, 503, 218);
+		scrollPane.setBounds(10, 281, 503, 217);
 		add(scrollPane);
 		
 		tblMember = new JTable();
-		scrollPane.setColumnHeaderView(tblMember);
+		tblMember.addMouseListener(new MouseAdapter() {
+			//click on table
+			@Override
+			public void mouseClicked(MouseEvent e) {
+				int n = tblMember.getSelectionModel().getLeadSelectionIndex();
+				txtNameMember.setText(tblMember.getValueAt(n, 1).toString());
+				dtcBirthday.setDate((Date) (tblMember.getValueAt(n, 2)));
+				cmbGenderMember.setSelectedItem(tblMember.getValueAt(n, 3));
+				txtTelephoneNumber.setText(tblMember.getValueAt(n, 4).toString());
+				cmbRankMember.setSelectedItem(tblMember.getValueAt(n, 5));
+			}
+		});
+		tblMember.setModel(new DefaultTableModel(
+			new Object[][] {
+			},
+			new String[] {
+				"Id", "MemberName", "Birthday", "Gender", "PhoneNumber", "Rank"
+			}
+		) {
+			boolean[] columnEditables = new boolean[] {
+				false, false, false, false, false, false
+			};
+			public boolean isCellEditable(int row, int column) {
+				return columnEditables[column];
+			}
+		});
+		scrollPane.setViewportView(tblMember);
 		setVisible(false);
-
+		//display Member list
+		MemberBUS.showMemberList(tblMember);
+	}
+	//get Member
+	public static MemberDTO getMember() {
+		MemberDTO p = new MemberDTO();
+		p.setMemberName(txtNameMember.getText());
+		p.setBirthday(dtcBirthday.getDate());
+		p.setGender(cmbGenderMember.getSelectedItem().toString());;
+		p.setPhoneNumber(txtTelephoneNumber.getText());
+		p.setRank(cmbRankMember.getSelectedItem().toString());
+		return p;
+	}
+	//get id
+	public static int getMemberID() {
+		int n = tblMember.getSelectionModel().getLeadSelectionIndex();
+		DefaultTableModel model = (DefaultTableModel) tblMember.getModel();
+		int id = (int) model.getValueAt(n, 0);
+		return id;
 	}
 }

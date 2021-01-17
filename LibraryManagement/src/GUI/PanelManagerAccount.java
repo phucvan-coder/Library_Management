@@ -2,6 +2,8 @@ package GUI;
 
 import javax.swing.JPanel;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
+
 import java.awt.Color;
 import javax.swing.JScrollPane;
 import java.awt.Font;
@@ -13,13 +15,24 @@ import javax.swing.SwingConstants;
 import javax.swing.border.LineBorder;
 import javax.swing.JTable;
 import javax.swing.JComboBox;
+import javax.swing.table.DefaultTableModel;
+
+import BUS.AccountBUS;
+import BUS.MemberBUS;
+import DTO.AccountDTO;
+import DTO.MemberDTO;
+
+import java.awt.event.MouseAdapter;
+import java.awt.event.MouseEvent;
+import java.util.Date;
 
 public class PanelManagerAccount extends JPanel {
-	private JTextField txtNameAccount;
-	private JTextField ttxtName;
-	private JTextField txtPassword;
-	private JTable tblAccountManager;
-
+	private static JTextField txtNameAccount;
+	private static JTextField ttxtName;
+	private static JTextField txtPassword;
+	private static JTable tblAccountManager;
+	private static JComboBox cmbMemberID;
+	private static JTextField txtRank;
 	/**
 	 * Create the panel.
 	 */
@@ -70,14 +83,71 @@ public class PanelManagerAccount extends JPanel {
 		panel.add(txtPassword);
 		
 		JButton btnAdd = new JButton("Add");
+		btnAdd.addActionListener(new ActionListener() {
+			//add
+			public void actionPerformed(ActionEvent e) {
+				boolean result = AccountBUS.addAccount();
+				if(result) {
+					JOptionPane.showMessageDialog(null, "         Add successful","Message",JOptionPane.INFORMATION_MESSAGE);
+					AccountBUS.showAccountList(tblAccountManager);
+				}
+				else {
+					JOptionPane.showMessageDialog(null, "          Add failed","Message",JOptionPane.ERROR_MESSAGE);
+				}
+			}
+		});
 		btnAdd.setBounds(109, 210, 85, 21);
 		panel.add(btnAdd);
 		
 		JButton btnDelete = new JButton("Delete");
+		btnDelete.addActionListener(new ActionListener() {
+			//delete
+			public void actionPerformed(ActionEvent e) {
+				int n = tblAccountManager.getSelectionModel().getLeadSelectionIndex();
+				if(n>=0) {
+					boolean result = AccountBUS.deleteAccount();
+					if(result) {
+						JOptionPane.showMessageDialog(null, "         Delete successful","Message",JOptionPane.INFORMATION_MESSAGE);
+						AccountBUS.showAccountList(tblAccountManager);
+					}
+					else {
+						JOptionPane.showMessageDialog(null, "          Delete failed","Message",JOptionPane.ERROR_MESSAGE);
+					}
+				}
+				if(tblAccountManager.getRowCount()==0) {
+					JOptionPane.showMessageDialog(null, "         The list is empty","Message",JOptionPane.INFORMATION_MESSAGE);
+				}
+				if(n<0) {
+					JOptionPane.showMessageDialog(null, "         Please select a row","Message",JOptionPane.INFORMATION_MESSAGE);
+				}
+			}
+		});
 		btnDelete.setBounds(212, 210, 85, 21);
 		panel.add(btnDelete);
 		
 		JButton btnUpdate = new JButton("Update");
+		btnUpdate.addActionListener(new ActionListener() {
+			//update
+			public void actionPerformed(ActionEvent e) {
+				int n = tblAccountManager.getSelectionModel().getLeadSelectionIndex();
+				if(n>=0) {
+					boolean result = AccountBUS.updateAccount();
+					if(result) {
+						JOptionPane.showMessageDialog(null, "         Update successful","Message",JOptionPane.INFORMATION_MESSAGE);
+						AccountBUS.showAccountList(tblAccountManager);
+					}
+					else {
+						JOptionPane.showMessageDialog(null, "          Update failed","Message",JOptionPane.ERROR_MESSAGE);
+					}
+				}
+				if(tblAccountManager.getRowCount()==0) {
+					JOptionPane.showMessageDialog(null, "         The list is empty","Message",JOptionPane.INFORMATION_MESSAGE);
+				}
+				if(n<0) {
+					JOptionPane.showMessageDialog(null, "         Please select a row","Message",JOptionPane.INFORMATION_MESSAGE);
+				}
+			}
+		});
 		btnUpdate.setBounds(307, 210, 85, 21);
 		panel.add(btnUpdate);
 		
@@ -87,11 +157,7 @@ public class PanelManagerAccount extends JPanel {
 		lblNewLabel_3_1_1_1.setBounds(271, 103, 92, 32);
 		panel.add(lblNewLabel_3_1_1_1);
 		
-		JComboBox cmbRank = new JComboBox();
-		cmbRank.setBounds(359, 110, 134, 22);
-		panel.add(cmbRank);
-		
-		JComboBox cmbMemberID = new JComboBox();
+		cmbMemberID = new JComboBox();
 		cmbMemberID.setBounds(96, 45, 165, 22);
 		panel.add(cmbMemberID);
 		
@@ -106,14 +172,63 @@ public class PanelManagerAccount extends JPanel {
 		lblNewLabel.setBounds(160, 10, 203, 13);
 		panel.add(lblNewLabel);
 		
+		txtRank = new JTextField();
+		txtRank.setFont(new Font("Arial", Font.BOLD, 18));
+		txtRank.setColumns(10);
+		txtRank.setBounds(361, 102, 132, 32);
+		panel.add(txtRank);
+		
 		JScrollPane scrollPane = new JScrollPane();
-		scrollPane.setBorder(new LineBorder(Color.LIGHT_GRAY, 2));
 		scrollPane.setBounds(10, 263, 503, 235);
 		add(scrollPane);
 		
 		tblAccountManager = new JTable();
-		scrollPane.setColumnHeaderView(tblAccountManager);
+		tblAccountManager.addMouseListener(new MouseAdapter() {
+			//click on table
+			@Override
+			public void mouseClicked(MouseEvent e) {
+				int n = tblAccountManager.getSelectionModel().getLeadSelectionIndex();
+				cmbMemberID.setSelectedItem(tblAccountManager.getValueAt(n, 1));
+				ttxtName.setText(tblAccountManager.getValueAt(n, 2).toString());
+				txtNameAccount.setText(tblAccountManager.getValueAt(n, 3).toString());
+				txtPassword.setText(tblAccountManager.getValueAt(n, 4).toString());
+				txtRank.setText(tblAccountManager.getValueAt(n, 5).toString());
+			}
+		});
+		tblAccountManager.setModel(new DefaultTableModel(
+			new Object[][] {
+			},
+			new String[] {
+				"Id", "MemberID", "Name", "AccountName", "Password", "Rank"
+			}
+		) {
+			boolean[] columnEditables = new boolean[] {
+				false, false, false, false, false, false
+			};
+			public boolean isCellEditable(int row, int column) {
+				return columnEditables[column];
+			}
+		});
+		scrollPane.setViewportView(tblAccountManager);
 		setVisible(false);
-
+		//load data into cbm
+		AccountBUS.loadMemberIDToCmb(cmbMemberID);
+		//load data into textfield
+		AccountBUS.loadMemberNameToTxt(txtRank,cmbMemberID);
 	}
+	//get Member
+		public static AccountDTO getMember() {
+			AccountDTO p = new AccountDTO();
+			p.setMemberID(Integer.parseInt(cmbMemberID.getSelectedItem().toString()));
+			p.setAccountName(txtNameAccount.getText());
+			p.setPassword(txtPassword.getText());
+			return p;
+		}
+		//get id
+		public static int getAccountID() {
+			int n = tblAccountManager.getSelectionModel().getLeadSelectionIndex();
+			DefaultTableModel model = (DefaultTableModel) tblAccountManager.getModel();
+			int id = (int) model.getValueAt(n, 0);
+			return id;
+		}
 }

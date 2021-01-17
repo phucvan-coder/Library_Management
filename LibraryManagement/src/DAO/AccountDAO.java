@@ -69,7 +69,7 @@ public class AccountDAO {
 			ResultSet r;
 			ArrayList<AccountDTO> AccountList = new ArrayList<AccountDTO>();
 			try {
-				String query = "SELECT * FROM Account";
+				String query = "SELECT * FROM Account,Member WHERE Account.MemberID = Member.Id";
 				conn = ConnectionUtils.getConnection();
 				ps = conn.prepareStatement(query);
 				r = ps.executeQuery();

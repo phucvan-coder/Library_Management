@@ -15,6 +15,7 @@ public class AccountBUS {
 		public static void showAccountList(JTable table) {
 			AccountDAO AccountList = new AccountDAO();
 			DefaultTableModel model = (DefaultTableModel) table.getModel();
+			model.getDataVector().clear();
 			Object[] row = new Object[5];
 			ArrayList<AccountDTO> list = AccountList.getAccountList();
 			for(int i = 0; i < list.size(); i++) {
@@ -39,7 +40,7 @@ public class AccountBUS {
 			}
 		}
 		//delete
-		public static boolean deletePublisher() {
+		public static boolean deleteAccount() {
 			AccountDTO a = FormQuanLyAccount.getAccount();
 			int id = FormQuanLyAccount.getAccountID();
 			int result = 0;
@@ -52,7 +53,7 @@ public class AccountBUS {
 			}
 		}
 		//update
-		public static boolean updatePublisher() {
+		public static boolean updateAccount() {
 			AccountDTO a = FormQuanLyAccount.getAccount();
 			int id = FormQuanLyAccount.getAccountID();
 			int result = 0;

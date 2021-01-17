@@ -7,11 +7,13 @@ import javax.swing.table.DefaultTableModel;
 import DAO.PublisherDAO;
 import DTO.PublisherDTO;
 import GUI.FormPublisherManager;
+import GUI.PanelPlublisherManger;
 public class PublisherBUS {
 	//display list
 	public static void showPublisherList(JTable table) {
-		PublisherDAO publisherList = new PublisherDAO();
 		DefaultTableModel model = (DefaultTableModel) table.getModel();
+		model.getDataVector().clear();
+		PublisherDAO publisherList = new PublisherDAO();
 		Object[] row = new Object[4];
 		ArrayList<PublisherDTO> list = publisherList.getPublisherList();
 		for(int i = 0; i < list.size(); i++) {
@@ -24,7 +26,7 @@ public class PublisherBUS {
 	}
 	//add
 	public static boolean addPublisher() {
-		PublisherDTO a = FormPublisherManager.getPublisher();
+		PublisherDTO a = PanelPlublisherManger.getPublisher();
 		int result = 0;
 		result = PublisherDAO.addPublisher(a);
 		if(result==1) {
@@ -36,8 +38,8 @@ public class PublisherBUS {
 	}
 	//delete
 	public static boolean deletePublisher() {
-		PublisherDTO a = FormPublisherManager.getPublisher();
-		int id = FormPublisherManager.getPublisherID();
+		PublisherDTO a = PanelPlublisherManger.getPublisher();
+		int id = PanelPlublisherManger.getPublisherID();
 		int result = 0;
 		result = PublisherDAO.deletePublisher(id);
 		if(result==1) {
@@ -49,8 +51,8 @@ public class PublisherBUS {
 	}
 	//update
 	public static boolean updatePublisher() {
-		PublisherDTO a = FormPublisherManager.getPublisher();
-		int id = FormPublisherManager.getPublisherID();
+		PublisherDTO a = PanelPlublisherManger.getPublisher();
+		int id = PanelPlublisherManger.getPublisherID();
 		int result = 0;
 		result = PublisherDAO.updatePublisher(id,a);
 		if(result==1) {

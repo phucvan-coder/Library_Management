@@ -6,11 +6,13 @@ import javax.swing.table.DefaultTableModel;
 import DAO.AuthorDAO;
 import DTO.AuthorDTO;
 import GUI.FormQuanLyAccount;
+import GUI.PanelManagerAuthor;
 public class AuthorBUS {
 	//display Author list
 	public static void showAuthorList(JTable table) {
 		AuthorDAO AuthorList = new AuthorDAO();
 		DefaultTableModel model = (DefaultTableModel) table.getModel();
+		model.getDataVector().clear();
 		Object[] row = new Object[2];
 		ArrayList<AuthorDTO> list = AuthorList.getAuthorList();
 		for(int i = 0; i < list.size(); i++) {
@@ -21,7 +23,7 @@ public class AuthorBUS {
 	}
 	//add
 	public static boolean addAuthor() {
-		AuthorDTO a = FormQuanLyAuthor.getAuthor();
+		AuthorDTO a = PanelManagerAuthor.getAuthor();
 		int result = 0;
 		result = AuthorDAO.addAuthor(a);
 		if(result==1) {
@@ -33,8 +35,8 @@ public class AuthorBUS {
 	}
 	//delete
 	public static boolean deleteAuthor() {
-		AuthorDTO a = FormQuanLyAuthor.getAuthor();
-		int id = FormQuanLyAuthor.getAuthorID();
+		AuthorDTO a = PanelManagerAuthor.getAuthor();
+		int id = PanelManagerAuthor.getAuthorID();
 		int result = 0;
 		result = AuthorDAO.deleteAuthor(id);
 		if(result==1) {
@@ -46,8 +48,8 @@ public class AuthorBUS {
 	}
 	//update
 	public static boolean updateAuthor() {
-		AuthorDTO a = FormQuanLyAuthor.getAuthor();
-		int id = FormQuanLyAuthor.getAuthorID();
+		AuthorDTO a = PanelManagerAuthor.getAuthor();
+		int id = PanelManagerAuthor.getAuthorID();
 		int result = 0;
 		result = AuthorDAO.updateAuthor(id,a);
 		if(result==1) {
