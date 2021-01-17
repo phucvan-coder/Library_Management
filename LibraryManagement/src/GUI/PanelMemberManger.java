@@ -36,28 +36,28 @@ public class PanelMemberManger extends JPanel {
 		add(panel);
 		
 		JLabel lblNewLabel_3_1_1 = new JLabel("Gender");
-		lblNewLabel_3_1_1.setFont(new Font("Tahoma", Font.BOLD, 14));
+		lblNewLabel_3_1_1.setFont(new Font("Arial", Font.BOLD, 14));
 		lblNewLabel_3_1_1.setBounds(10, 170, 78, 32);
 		panel.add(lblNewLabel_3_1_1);
 		
 		txtBirthdayMember = new JTextField();
-		txtBirthdayMember.setFont(new Font("Tahoma", Font.BOLD, 18));
+		txtBirthdayMember.setFont(new Font("Arial", Font.PLAIN, 13));
 		txtBirthdayMember.setColumns(10);
 		txtBirthdayMember.setBounds(90, 103, 159, 32);
 		panel.add(txtBirthdayMember);
 		
 		JLabel lblNewLabel_3_1 = new JLabel("Birthday");
-		lblNewLabel_3_1.setFont(new Font("Tahoma", Font.BOLD, 14));
+		lblNewLabel_3_1.setFont(new Font("Arial", Font.BOLD, 14));
 		lblNewLabel_3_1.setBounds(10, 104, 70, 32);
 		panel.add(lblNewLabel_3_1);
 		
 		JLabel lblNewLabel_3 = new JLabel("Name ");
-		lblNewLabel_3.setFont(new Font("Tahoma", Font.BOLD, 14));
+		lblNewLabel_3.setFont(new Font("Arial", Font.BOLD, 14));
 		lblNewLabel_3.setBounds(10, 39, 54, 32);
 		panel.add(lblNewLabel_3);
 		
 		txtNameMember = new JTextField();
-		txtNameMember.setFont(new Font("Arial", Font.BOLD, 18));
+		txtNameMember.setFont(new Font("Arial", Font.PLAIN, 13));
 		txtNameMember.setColumns(10);
 		txtNameMember.setBounds(87, 39, 159, 32);
 		panel.add(txtNameMember);
@@ -75,38 +75,40 @@ public class PanelMemberManger extends JPanel {
 		panel.add(btnUpdate);
 		
 		JComboBox cmbGenderMember = new JComboBox();
+		cmbGenderMember.setFont(new Font("Arial", Font.PLAIN, 13));
 		cmbGenderMember.setBounds(90, 177, 159, 22);
 		panel.add(cmbGenderMember);
 		
 		JLabel lblNewLabel_3_2 = new JLabel("Phone");
-		lblNewLabel_3_2.setFont(new Font("Tahoma", Font.BOLD, 14));
+		lblNewLabel_3_2.setFont(new Font("Arial", Font.BOLD, 14));
 		lblNewLabel_3_2.setBounds(270, 39, 54, 32);
 		panel.add(lblNewLabel_3_2);
 		
 		txtTelephoneNumber = new JTextField();
-		txtTelephoneNumber.setFont(new Font("Arial", Font.BOLD, 18));
+		txtTelephoneNumber.setFont(new Font("Arial", Font.PLAIN, 13));
 		txtTelephoneNumber.setColumns(10);
 		txtTelephoneNumber.setBounds(334, 39, 159, 32);
 		panel.add(txtTelephoneNumber);
 		
 		JLabel lblNewLabel_3_3 = new JLabel("Adrees");
-		lblNewLabel_3_3.setFont(new Font("Tahoma", Font.BOLD, 14));
+		lblNewLabel_3_3.setFont(new Font("Arial", Font.BOLD, 14));
 		lblNewLabel_3_3.setBounds(270, 104, 54, 32);
 		panel.add(lblNewLabel_3_3);
 		
 		textAdressMember = new JTextField();
-		textAdressMember.setFont(new Font("Arial", Font.BOLD, 18));
+		textAdressMember.setFont(new Font("Arial", Font.PLAIN, 13));
 		textAdressMember.setColumns(10);
 		textAdressMember.setBounds(336, 103, 159, 32);
 		panel.add(textAdressMember);
 		
 		JLabel lblNewLabel_3_1_1_1 = new JLabel("Rank");
 		lblNewLabel_3_1_1_1.setHorizontalAlignment(SwingConstants.CENTER);
-		lblNewLabel_3_1_1_1.setFont(new Font("Tahoma", Font.BOLD, 14));
+		lblNewLabel_3_1_1_1.setFont(new Font("Arial", Font.BOLD, 14));
 		lblNewLabel_3_1_1_1.setBounds(259, 170, 78, 32);
 		panel.add(lblNewLabel_3_1_1_1);
 		
 		JComboBox cmbRankMember = new JComboBox();
+		cmbRankMember.setFont(new Font("Arial", Font.PLAIN, 13));
 		cmbRankMember.setBounds(339, 177, 159, 22);
 		panel.add(cmbRankMember);
 		

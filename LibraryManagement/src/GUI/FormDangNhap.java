@@ -116,6 +116,9 @@ public class FormDangNhap extends JFrame {
 			public void actionPerformed(ActionEvent e) {
 				if(DangNhapBUS.CheckAccount()) {
 					JOptionPane.showMessageDialog(null,"Login successfully.","Alert",JOptionPane.INFORMATION_MESSAGE);
+					FormHomePage hp = new FormHomePage();
+					hp.setVisible(true);
+					dispose();
 				}
 				else {
 					JOptionPane.showMessageDialog(null,"Login failed.","Alert",JOptionPane.INFORMATION_MESSAGE);
@@ -129,6 +132,11 @@ public class FormDangNhap extends JFrame {
 		contentPane.add(btnNewButton);
 		
 		JButton btnCancel = new JButton("Cancel");
+		btnCancel.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				dispose();
+			}
+		});
 		btnCancel.setFont(new Font("Arial", Font.PLAIN, 15));
 		btnCancel.setBorder(new EmptyBorder(0, 0, 0, 0));
 		btnCancel.setBackground(SystemColor.activeCaptionBorder);
@@ -171,7 +179,7 @@ public class FormDangNhap extends JFrame {
 		panel_2.setLayout(null);
 		
 		JLabel lblNewLabel = new JLabel("");
-		lblNewLabel.setBounds(54, 35, 90, 90);
+		lblNewLabel.setBounds(55, 80, 98, 129);
 		panel_2.add(lblNewLabel);
 		lblNewLabel.setIcon(new ImageIcon(FormDangNhap.class.getResource("/img/rsz_libirary.png")));
 		

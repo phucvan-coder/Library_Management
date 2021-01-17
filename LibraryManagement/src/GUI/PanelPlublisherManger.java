@@ -35,34 +35,34 @@ public class PanelPlublisherManger extends JPanel {
 		
 		JLabel lblNewLabel_3_1_1 = new JLabel("Phone Number");
 		lblNewLabel_3_1_1.setHorizontalAlignment(SwingConstants.CENTER);
-		lblNewLabel_3_1_1.setFont(new Font("Tahoma", Font.BOLD, 14));
+		lblNewLabel_3_1_1.setFont(new Font("Arial", Font.BOLD, 14));
 		lblNewLabel_3_1_1.setBounds(10, 170, 110, 32);
 		panel.add(lblNewLabel_3_1_1);
 		
 		txtPhoneNumber = new JTextField();
-		txtPhoneNumber.setFont(new Font("Tahoma", Font.BOLD, 18));
+		txtPhoneNumber.setFont(new Font("Arial", Font.PLAIN, 12));
 		txtPhoneNumber.setColumns(10);
 		txtPhoneNumber.setBounds(140, 169, 202, 32);
 		panel.add(txtPhoneNumber);
 		
 		txtAdress = new JTextField();
-		txtAdress.setFont(new Font("Tahoma", Font.BOLD, 18));
+		txtAdress.setFont(new Font("Arial", Font.PLAIN, 12));
 		txtAdress.setColumns(10);
 		txtAdress.setBounds(140, 103, 202, 32);
 		panel.add(txtAdress);
 		
 		JLabel lblNewLabel_3_1 = new JLabel("Address");
-		lblNewLabel_3_1.setFont(new Font("Tahoma", Font.BOLD, 14));
+		lblNewLabel_3_1.setFont(new Font("Arial", Font.BOLD, 14));
 		lblNewLabel_3_1.setBounds(10, 104, 78, 32);
 		panel.add(lblNewLabel_3_1);
 		
 		JLabel lblNewLabel_3 = new JLabel("Name Publisher");
-		lblNewLabel_3.setFont(new Font("Tahoma", Font.BOLD, 14));
+		lblNewLabel_3.setFont(new Font("Arial", Font.BOLD, 14));
 		lblNewLabel_3.setBounds(10, 39, 117, 32);
 		panel.add(lblNewLabel_3);
 		
 		txtNamePublisher = new JTextField();
-		txtNamePublisher.setFont(new Font("Arial", Font.BOLD, 18));
+		txtNamePublisher.setFont(new Font("Arial", Font.PLAIN, 12));
 		txtNamePublisher.setColumns(10);
 		txtNamePublisher.setBounds(137, 39, 205, 32);
 		panel.add(txtNamePublisher);
@@ -80,7 +80,7 @@ public class PanelPlublisherManger extends JPanel {
 		panel.add(btnUpdate);
 		
 		JLabel lblNewLabel = new JLabel("Publisher Management");
-		lblNewLabel.setFont(new Font("Tahoma", Font.BOLD, 14));
+		lblNewLabel.setFont(new Font("Arial", Font.BOLD, 14));
 		lblNewLabel.setBounds(175, 11, 167, 14);
 		panel.add(lblNewLabel);
 		
