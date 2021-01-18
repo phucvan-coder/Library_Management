@@ -2,6 +2,8 @@ package GUI;
 
 import javax.swing.JPanel;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
+
 import java.awt.Color;
 import javax.swing.JScrollPane;
 import java.awt.Font;
@@ -13,10 +15,19 @@ import javax.swing.SwingConstants;
 import javax.swing.border.LineBorder;
 import javax.swing.JTable;
 import javax.swing.JComboBox;
+import javax.swing.table.DefaultTableModel;
+
+import BUS.MemberBUS;
+import BUS.TypeBUS;
+import DTO.MemberDTO;
+import DTO.TypeOfBookDTO;
+
+import java.awt.event.MouseAdapter;
+import java.awt.event.MouseEvent;
 
 public class PanelManagerCategory extends JPanel {
-	private JTextField txtCategoryName;
-	private JTable tblCategoryManager;
+	private static JTextField txtCategoryName;
+	private static JTable tblCategory;
 
 	/**
 	 * Create the panel.
@@ -44,14 +55,71 @@ public class PanelManagerCategory extends JPanel {
 		panel.add(txtCategoryName);
 		
 		JButton btnAdd = new JButton("Add");
+		btnAdd.addActionListener(new ActionListener() {
+			//add
+			public void actionPerformed(ActionEvent e) {
+				boolean result = TypeBUS.addType();
+				if(result) {
+					JOptionPane.showMessageDialog(null, "         Add successful","Message",JOptionPane.INFORMATION_MESSAGE);
+					TypeBUS.showTypeOfBookList(tblCategory);
+				}
+				else {
+					JOptionPane.showMessageDialog(null, "          Add failed","Message",JOptionPane.ERROR_MESSAGE);
+				}
+			}
+		});
 		btnAdd.setBounds(61, 130, 85, 32);
 		panel.add(btnAdd);
 		
 		JButton btnDelete = new JButton("Delete");
-		btnDelete.setBounds(201, 130, 85, 32);
+		btnDelete.addActionListener(new ActionListener() {
+			//delete
+			public void actionPerformed(ActionEvent e) {
+				int n = tblCategory.getSelectionModel().getLeadSelectionIndex();
+				if(n>=0) {
+					boolean result = TypeBUS.deleteType();
+					if(result) {
+						JOptionPane.showMessageDialog(null, "         Delete successful","Message",JOptionPane.INFORMATION_MESSAGE);
+						TypeBUS.showTypeOfBookList(tblCategory);
+					}
+					else {
+						JOptionPane.showMessageDialog(null, "          Delete failed","Message",JOptionPane.ERROR_MESSAGE);
+					}
+				}
+				if(tblCategory.getRowCount()==0) {
+					JOptionPane.showMessageDialog(null, "         The list is empty","Message",JOptionPane.INFORMATION_MESSAGE);
+				}
+				if(n<0) {
+					JOptionPane.showMessageDialog(null, "         Please select a row","Message",JOptionPane.INFORMATION_MESSAGE);
+				}
+			}
+		});
+		btnDelete.setBounds(211, 130, 85, 32);
 		panel.add(btnDelete);
 		
 		JButton btnUpdate = new JButton("Update");
+		btnUpdate.addActionListener(new ActionListener() {
+			//update
+			public void actionPerformed(ActionEvent e) {
+				int n = tblCategory.getSelectionModel().getLeadSelectionIndex();
+				if(n>=0) {
+					boolean result = TypeBUS.updateType();
+					if(result) {
+						JOptionPane.showMessageDialog(null, "         Update successful","Message",JOptionPane.INFORMATION_MESSAGE);
+						TypeBUS.showTypeOfBookList(tblCategory);
+					}
+					else {
+						JOptionPane.showMessageDialog(null, "          Update failed","Message",JOptionPane.ERROR_MESSAGE);
+					}
+				}
+				if(tblCategory.getRowCount()==0) {
+					JOptionPane.showMessageDialog(null, "         The list is empty","Message",JOptionPane.INFORMATION_MESSAGE);
+				}
+				if(n<0) {
+					JOptionPane.showMessageDialog(null, "         Please select a row","Message",JOptionPane.INFORMATION_MESSAGE);
+				}
+			}
+		});
 		btnUpdate.setBounds(351, 130, 85, 32);
 		panel.add(btnUpdate);
 		
@@ -61,13 +129,48 @@ public class PanelManagerCategory extends JPanel {
 		panel.add(lblNewLabel_3_1);
 		
 		JScrollPane scrollPane = new JScrollPane();
-		scrollPane.setBorder(new LineBorder(Color.LIGHT_GRAY, 2));
-		scrollPane.setBounds(10, 220, 503, 278);
+		scrollPane.setBounds(10, 221, 503, 277);
 		add(scrollPane);
 		
-		tblCategoryManager = new JTable();
-		scrollPane.setColumnHeaderView(tblCategoryManager);
+		tblCategory = new JTable();
+		tblCategory.addMouseListener(new MouseAdapter() {
+			//click on table
+			@Override
+			public void mouseClicked(MouseEvent e) {
+				int n = tblCategory.getSelectionModel().getLeadSelectionIndex();
+				txtCategoryName.setText(tblCategory.getValueAt(n, 1).toString());
+			}
+		});
+		tblCategory.setModel(new DefaultTableModel(
+			new Object[][] {
+			},
+			new String[] {
+				"Id", "TypeName"
+			}
+		) {
+			boolean[] columnEditables = new boolean[] {
+				false, false
+			};
+			public boolean isCellEditable(int row, int column) {
+				return columnEditables[column];
+			}
+		});
+		scrollPane.setViewportView(tblCategory);
 		setVisible(false);
-
+		//Display Type List
+		TypeBUS.showTypeOfBookList(tblCategory);
 	}
+	//get Type
+		public static TypeOfBookDTO getType() {
+			TypeOfBookDTO p = new TypeOfBookDTO();
+			p.setTypeName(txtCategoryName.getText());
+			return p;
+		}
+		//get id
+		public static int getTypeID() {
+			int n = tblCategory.getSelectionModel().getLeadSelectionIndex();
+			DefaultTableModel model = (DefaultTableModel) tblCategory.getModel();
+			int id = (int) model.getValueAt(n, 0);
+			return id;
+		}
 }

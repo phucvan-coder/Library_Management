@@ -25,14 +25,15 @@ import DTO.MemberDTO;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import java.util.Date;
+import java.awt.event.ItemListener;
+import java.awt.event.ItemEvent;
 
 public class PanelManagerAccount extends JPanel {
 	private static JTextField txtNameAccount;
-	private static JTextField ttxtName;
+	private static JTextField txtName;
 	private static JTextField txtPassword;
 	private static JTable tblAccountManager;
 	private static JComboBox cmbMemberID;
-	private static JTextField txtRank;
 	/**
 	 * Create the panel.
 	 */
@@ -50,25 +51,25 @@ public class PanelManagerAccount extends JPanel {
 		JLabel lblNewLabel_3_1_1 = new JLabel("Username");
 		lblNewLabel_3_1_1.setHorizontalAlignment(SwingConstants.CENTER);
 		lblNewLabel_3_1_1.setFont(new Font("Tahoma", Font.BOLD, 14));
-		lblNewLabel_3_1_1.setBounds(0, 155, 92, 32);
+		lblNewLabel_3_1_1.setBounds(-6, 151, 92, 32);
 		panel.add(lblNewLabel_3_1_1);
 		
 		txtNameAccount = new JTextField();
 		txtNameAccount.setFont(new Font("Tahoma", Font.BOLD, 18));
 		txtNameAccount.setColumns(10);
-		txtNameAccount.setBounds(96, 154, 165, 32);
+		txtNameAccount.setBounds(96, 150, 165, 32);
 		panel.add(txtNameAccount);
 		
-		ttxtName = new JTextField();
-		ttxtName.setFont(new Font("Tahoma", Font.BOLD, 18));
-		ttxtName.setColumns(10);
-		ttxtName.setBounds(96, 102, 165, 32);
-		panel.add(ttxtName);
+		txtName = new JTextField();
+		txtName.setFont(new Font("Tahoma", Font.BOLD, 18));
+		txtName.setColumns(10);
+		txtName.setBounds(96, 96, 165, 32);
+		panel.add(txtName);
 		
 		JLabel lblNewLabel_3_1 = new JLabel("Name");
 		lblNewLabel_3_1.setHorizontalAlignment(SwingConstants.CENTER);
 		lblNewLabel_3_1.setFont(new Font("Tahoma", Font.BOLD, 13));
-		lblNewLabel_3_1.setBounds(10, 104, 49, 32);
+		lblNewLabel_3_1.setBounds(10, 98, 49, 32);
 		panel.add(lblNewLabel_3_1);
 		
 		JLabel lblNewLabel_3 = new JLabel("Id Member");
@@ -96,7 +97,7 @@ public class PanelManagerAccount extends JPanel {
 				}
 			}
 		});
-		btnAdd.setBounds(109, 210, 85, 21);
+		btnAdd.setBounds(371, 99, 122, 33);
 		panel.add(btnAdd);
 		
 		JButton btnDelete = new JButton("Delete");
@@ -122,7 +123,7 @@ public class PanelManagerAccount extends JPanel {
 				}
 			}
 		});
-		btnDelete.setBounds(212, 210, 85, 21);
+		btnDelete.setBounds(371, 150, 122, 32);
 		panel.add(btnDelete);
 		
 		JButton btnUpdate = new JButton("Update");
@@ -148,16 +149,19 @@ public class PanelManagerAccount extends JPanel {
 				}
 			}
 		});
-		btnUpdate.setBounds(307, 210, 85, 21);
+		btnUpdate.setBounds(371, 198, 122, 32);
 		panel.add(btnUpdate);
 		
-		JLabel lblNewLabel_3_1_1_1 = new JLabel("Rank");
-		lblNewLabel_3_1_1_1.setHorizontalAlignment(SwingConstants.CENTER);
-		lblNewLabel_3_1_1_1.setFont(new Font("Tahoma", Font.BOLD, 14));
-		lblNewLabel_3_1_1_1.setBounds(271, 103, 92, 32);
-		panel.add(lblNewLabel_3_1_1_1);
-		
 		cmbMemberID = new JComboBox();
+		cmbMemberID.addItemListener(new ItemListener() {
+			//click on cmbMemberID
+			public void itemStateChanged(ItemEvent e) {
+				//load data into textfield
+				AccountBUS.loadMemberNameToTxt(txtName,cmbMemberID);
+			}
+		});
+		cmbMemberID.addMouseListener(new MouseAdapter() {
+		});
 		cmbMemberID.setBounds(96, 45, 165, 22);
 		panel.add(cmbMemberID);
 		
@@ -172,12 +176,6 @@ public class PanelManagerAccount extends JPanel {
 		lblNewLabel.setBounds(160, 10, 203, 13);
 		panel.add(lblNewLabel);
 		
-		txtRank = new JTextField();
-		txtRank.setFont(new Font("Arial", Font.BOLD, 18));
-		txtRank.setColumns(10);
-		txtRank.setBounds(361, 102, 132, 32);
-		panel.add(txtRank);
-		
 		JScrollPane scrollPane = new JScrollPane();
 		scrollPane.setBounds(10, 263, 503, 235);
 		add(scrollPane);
@@ -189,10 +187,9 @@ public class PanelManagerAccount extends JPanel {
 			public void mouseClicked(MouseEvent e) {
 				int n = tblAccountManager.getSelectionModel().getLeadSelectionIndex();
 				cmbMemberID.setSelectedItem(tblAccountManager.getValueAt(n, 1));
-				ttxtName.setText(tblAccountManager.getValueAt(n, 2).toString());
+				txtName.setText(tblAccountManager.getValueAt(n, 2).toString());
 				txtNameAccount.setText(tblAccountManager.getValueAt(n, 3).toString());
 				txtPassword.setText(tblAccountManager.getValueAt(n, 4).toString());
-				txtRank.setText(tblAccountManager.getValueAt(n, 5).toString());
 			}
 		});
 		tblAccountManager.setModel(new DefaultTableModel(
@@ -214,10 +211,12 @@ public class PanelManagerAccount extends JPanel {
 		//load data into cbm
 		AccountBUS.loadMemberIDToCmb(cmbMemberID);
 		//load data into textfield
-		AccountBUS.loadMemberNameToTxt(txtRank,cmbMemberID);
+		AccountBUS.loadMemberNameToTxt(txtName,cmbMemberID);
+		//display Account list
+		AccountBUS.showAccountList(tblAccountManager);
 	}
 	//get Member
-		public static AccountDTO getMember() {
+		public static AccountDTO getAccount() {
 			AccountDTO p = new AccountDTO();
 			p.setMemberID(Integer.parseInt(cmbMemberID.getSelectedItem().toString()));
 			p.setAccountName(txtNameAccount.getText());

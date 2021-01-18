@@ -33,7 +33,7 @@ public class FormHomePage extends JFrame {
 	private Image img_Login = new ImageIcon(FormHomePage.class.getResource("/img/login.png")).getImage().getScaledInstance(27, 25, Image.SCALE_SMOOTH);
 	private Image img_Statistics = new ImageIcon(FormHomePage.class.getResource("/img/trend.png")).getImage().getScaledInstance(27, 25, Image.SCALE_SMOOTH);
 	private Image img_Logan = new ImageIcon(FormHomePage.class.getResource("/img/ebook.png")).getImage().getScaledInstance(40, 40, Image.SCALE_SMOOTH);
-	private PanelCategory panelCategory;
+	private PanelSearchingBook PanelSearchingBook;
 	//private PanelMain panelMain;
 	private PanelPlublisherManger pPublish ;
 	private PanelManagerBook panelManagerBook ;
@@ -78,7 +78,7 @@ public class FormHomePage extends JFrame {
 		setContentPane(contentPane);
 		contentPane.setLayout(null);
 		
-		panelCategory = new PanelCategory();
+		PanelSearchingBook = new PanelSearchingBook();
 		//panelMain = new PanelMain();
 		pPublish = new PanelPlublisherManger();
 		panelManagerBook = new PanelManagerBook();
@@ -110,9 +110,9 @@ public class FormHomePage extends JFrame {
 		PanelHomePage.addMouseListener(new PanelButtonMouseAdapter(PanelHomePage) {
 			@Override
 			public void mouseClicked(MouseEvent e) {
-				panelCategory.setVisible(true);
+				PanelSearchingBook.setVisible(true);
 				//panel_Main.add(panelCategory);
-				menuClicked(panelCategory);
+				menuClicked(PanelSearchingBook);
 			}
 			
 		});
@@ -149,11 +149,11 @@ public class FormHomePage extends JFrame {
 		panel.add(panelQuanLyAncount);
 		panelQuanLyAncount.setLayout(null);
 		
-		JLabel lblManagerAncount = new JLabel("Manager Ancount");
-		lblManagerAncount.setBounds(81, 11, 145, 18);
-		panelQuanLyAncount.add(lblManagerAncount);
-		lblManagerAncount.setForeground(new Color(204, 255, 255));
-		lblManagerAncount.setFont(new Font("Dialog", Font.BOLD, 14));
+		JLabel lblManagerAccount = new JLabel("Manager Account");
+		lblManagerAccount.setBounds(81, 11, 145, 18);
+		panelQuanLyAncount.add(lblManagerAccount);
+		lblManagerAccount.setForeground(new Color(204, 255, 255));
+		lblManagerAccount.setFont(new Font("Dialog", Font.BOLD, 14));
 		
 		JLabel lblManagerAccount_p = new JLabel("");
 		lblManagerAccount_p.setHorizontalAlignment(SwingConstants.CENTER);
@@ -327,7 +327,7 @@ public class FormHomePage extends JFrame {
 		panelManagerPublisher.addMouseListener(new PanelButtonMouseAdapter(panelManagerPublisher) {
 			@Override
 			public void mouseClicked(MouseEvent e) {
-				panelCategory.setVisible(true);
+				PanelSearchingBook.setVisible(true);
 				//panel_Main.add(panelCategory);
 				menuClicked(pPublish);
 			}
@@ -425,7 +425,7 @@ public class FormHomePage extends JFrame {
 		//panel_Main.add(panelMain);
 		panel_Main.setVisible(true);
 		//panel_Main.add(panelMain);
-		panel_Main.add(panelCategory);
+		panel_Main.add(PanelSearchingBook);
 		panel_Main.add(pPublish);
 		panel_Main.add(panelManagerBook);
 		panel_Main.add(panelManagerAccount);
@@ -435,7 +435,7 @@ public class FormHomePage extends JFrame {
 		panel_Main.add(panelBorrowBook);
 		panel_Main.add(panelBorrowReturn);
 		
-		menuClicked(panelCategory);
+		menuClicked(PanelSearchingBook);
 		
 		JPanel panel_2 = new JPanel();
 		panel_2.setBounds(248, 47, 523, 124);
@@ -465,7 +465,7 @@ public class FormHomePage extends JFrame {
 	}
 	
 	public void menuClicked(JPanel panel) {
-		panelCategory.setVisible(false);
+		PanelSearchingBook.setVisible(false);
 		//panelMain.setVisible(false);
 		pPublish.setVisible(false);
 		panelManagerBook.setVisible(false);

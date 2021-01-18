@@ -42,7 +42,6 @@ public class MemberBUS {
 		}
 		//delete
 		public static boolean deleteMember() {
-			MemberDTO a = PanelMemberManger.getMember();
 			int id = PanelMemberManger.getMemberID();
 			int result = 0;
 			result = MemberDAO.deleteMember(id);

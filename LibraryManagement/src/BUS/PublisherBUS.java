@@ -38,7 +38,6 @@ public class PublisherBUS {
 	}
 	//delete
 	public static boolean deletePublisher() {
-		PublisherDTO a = PanelPlublisherManger.getPublisher();
 		int id = PanelPlublisherManger.getPublisherID();
 		int result = 0;
 		result = PublisherDAO.deletePublisher(id);

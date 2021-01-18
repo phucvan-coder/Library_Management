@@ -6,6 +6,7 @@ public class AccountDTO {
 	private String memberName;
 	private String accountName;
 	private String password;
+	private String rank;
 	//Constructor
 	public AccountDTO() {
 		this.id = 0;
@@ -13,13 +14,15 @@ public class AccountDTO {
 		this.memberName = "";
 		this.accountName = "";
 		this.password = "";
+		this.rank = "";
 	}
-	public AccountDTO(int ID,int MemberID,String MemberName,String AccountName,String Password) {
+	public AccountDTO(int ID,int MemberID,String MemberName,String AccountName,String Password,String Rank) {
 		this.id = ID;
 		this.memberID = MemberID;
 		this.memberName = MemberName;
 		this.accountName = AccountName;
 		this.password = Password;
+		this.rank = Rank;
 	}
 	//getter and setter
 	public int getId() {
@@ -51,6 +54,12 @@ public class AccountDTO {
 	}
 	public void setMemberName(String memberName) {
 		this.memberName = memberName;
+	}
+	public String getRank() {
+		return rank;
+	}
+	public void setRank(String rank) {
+		this.rank = rank;
 	}
 	
 }

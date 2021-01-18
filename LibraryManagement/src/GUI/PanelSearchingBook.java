@@ -14,13 +14,13 @@ import com.toedter.calendar.JDateChooser;
 import javax.swing.border.LineBorder;
 import javax.swing.SwingConstants;
 
-public class PanelCategory extends JPanel {
+public class PanelSearchingBook extends JPanel {
 	private JTextField txtSearch;
 
 	/**
 	 * Create the panel.
 	 */
-	public PanelCategory() {
+	public PanelSearchingBook() {
 		setBackground(Color.LIGHT_GRAY);
 		setLayout(null);
 		setBounds(0,0,523, 524);

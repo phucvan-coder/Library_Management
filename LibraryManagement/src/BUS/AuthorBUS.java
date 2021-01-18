@@ -35,7 +35,6 @@ public class AuthorBUS {
 	}
 	//delete
 	public static boolean deleteAuthor() {
-		AuthorDTO a = PanelManagerAuthor.getAuthor();
 		int id = PanelManagerAuthor.getAuthorID();
 		int result = 0;
 		result = AuthorDAO.deleteAuthor(id);

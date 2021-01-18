@@ -15,7 +15,7 @@ public class AccountDAO {
 			try {
 				conn = ConnectionUtils.getConnection();
 				String sqlInsert = "INSERT INTO Account (MemberID, AccountName, Password) "
-	                    + " VALUES (N'"+a.getMemberID()+"', N'"+a.getAccountName()+"', N'"+a.getPassword()+"')";
+	                    + " VALUES ("+a.getMemberID()+", N'"+a.getAccountName()+"', N'"+a.getPassword()+"')";
 				java.sql.Statement st = conn.createStatement();
 				result = st.executeUpdate(sqlInsert);
 				conn.close();
@@ -75,7 +75,7 @@ public class AccountDAO {
 				r = ps.executeQuery();
 				AccountDTO p;
 				while(r.next()) {
-					p = new AccountDTO(r.getInt("Id"), r.getInt("MemberID"), r.getString("MemberName"), r.getString("AccountName"), r.getString("Password"));
+					p = new AccountDTO(r.getInt("Id"), r.getInt("MemberID"), r.getString("MemberName"), r.getString("AccountName"), r.getString("Password"), r.getString("Rank"));
 					AccountList.add(p);
 				}
 				conn.close();
@@ -86,8 +86,7 @@ public class AccountDAO {
 			return AccountList;
 		} 
 		//Load data into combobox
-		public static JComboBox loadMemberIDToCmb() {
-			JComboBox cmb = null;
+		public static void loadMemberIDToCmb(JComboBox cmb) {
 			Connection conn;
 			PreparedStatement ps;
 			ResultSet r;
@@ -97,22 +96,20 @@ public class AccountDAO {
 				ps = conn.prepareStatement(query);
 				r = ps.executeQuery();
 				while(r.next()) {
-					String id = r.getString("MemberID");
+					String id = String.valueOf(r.getInt("Id"));
 					cmb.addItem(id);
 				}
 			}
 			catch(Exception e) {
 				e.printStackTrace();
 			}
-			return cmb;
 		}
 		//load data into textfield
-		public static String loadMemberNameToTxt(JComboBox cmb) {
-			String t = null;
+		public static void loadMemberNameToTxt(JTextField t,JComboBox cmb) {
 			Connection conn;
 			PreparedStatement ps;
 			ResultSet r;
-			int id = Integer.parseInt(cmb.getSelectedObjects().toString());
+			int id = Integer.parseInt(cmb.getSelectedItem().toString());
 			try {
 				String query = "SELECT MemberName FROM Member WHERE Id="+id;
 				conn = ConnectionUtils.getConnection();
@@ -120,12 +117,11 @@ public class AccountDAO {
 				r = ps.executeQuery();
 				if(r.next()) {
 					String memberName = r.getString("MemberName");
-					t = memberName;
+					t.setText(memberName);;
 				}
 			}
 			catch(Exception e) {
 				e.printStackTrace();
 			}
-			return t;
 		}
 }
