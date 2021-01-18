@@ -1,18 +1,19 @@
 package DTO;
 import java.io.*;
+import java.util.Date;
 public class Borrow_ReturnDTO {
 	private int id;
-	private String borrowDate;
-	private String returnDate;
+	private Date borrowDate;
+	private Date returnDate;
 	private int numberOfBooks;
 	//Constructor
 	public Borrow_ReturnDTO() {
 		this.id = 0;
-		this.borrowDate = "";
-		this.returnDate = "";
+		this.borrowDate = null;
+		this.returnDate = null;
 		this.numberOfBooks = 0;
 	}
-	public Borrow_ReturnDTO(int ID,String BorrowDate,String ReturnDate,int NumberOfBooks) {
+	public Borrow_ReturnDTO(int ID,Date BorrowDate,Date ReturnDate,int NumberOfBooks) {
 		this.id = ID;
 		this.borrowDate = BorrowDate;
 		this.returnDate = ReturnDate;
@@ -25,16 +26,16 @@ public class Borrow_ReturnDTO {
 	public void setId(int id) {
 		this.id = id;
 	}
-	public String getBorrowDate() {
+	public Date getBorrowDate() {
 		return borrowDate;
 	}
-	public void setBorrowDate(String borrowDate) {
+	public void setBorrowDate(Date borrowDate) {
 		this.borrowDate = borrowDate;
 	}
-	public String getReturnDate() {
+	public Date getReturnDate() {
 		return returnDate;
 	}
-	public void setReturnDate(String returnDate) {
+	public void setReturnDate(Date returnDate) {
 		this.returnDate = returnDate;
 	}
 	public int getNumberOfBooks() {

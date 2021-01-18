@@ -1,5 +1,6 @@
 package DTO;
 import java.io.*;
+import java.util.Date;
 
 public class BookDTO {
 	private int id;
@@ -7,7 +8,7 @@ public class BookDTO {
 	private String authorName;
 	private String publisherName;
 	private String bookName;
-	private String dateIn;
+	private Date dateIn;
 	private String condition;
 	private String status;
 	//Constructor
@@ -17,11 +18,11 @@ public class BookDTO {
 		this.authorName = "";
 		this.publisherName = "";
 		this.bookName = "";
-		this.dateIn = "";
+		this.dateIn = null;
 		this.condition = "";
 		this.status = "";
 	}
-	public BookDTO(int ID,String TypeName,String AuthorName,String PublisherName,String BookName,String DateIn,String Condition,String Status) {
+	public BookDTO(int ID,String TypeName,String AuthorName,String PublisherName,String BookName,Date DateIn,String Condition,String Status) {
 		this.id = ID;
 		this.typeName = TypeName;
 		this.authorName = AuthorName;
@@ -62,10 +63,10 @@ public class BookDTO {
 	public void setBookName(String bookName) {
 		this.bookName = bookName;
 	}
-	public String getDateIn() {
+	public Date getDateIn() {
 		return dateIn;
 	}
-	public void setDateIn(String dateIn) {
+	public void setDateIn(Date dateIn) {
 		this.dateIn = dateIn;
 	}
 	public String getCondition() {

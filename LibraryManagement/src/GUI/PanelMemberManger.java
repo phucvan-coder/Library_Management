@@ -104,10 +104,10 @@ public class PanelMemberManger extends JPanel {
 						JOptionPane.showMessageDialog(null, "          Delete failed","Message",JOptionPane.ERROR_MESSAGE);
 					}
 				}
-				if(tblMember.getRowCount()==0) {
+				else if(tblMember.getRowCount()==0) {
 					JOptionPane.showMessageDialog(null, "         The list is empty","Message",JOptionPane.INFORMATION_MESSAGE);
 				}
-				if(n<0) {
+				else if(n<0) {
 					JOptionPane.showMessageDialog(null, "         Please select a row","Message",JOptionPane.INFORMATION_MESSAGE);
 				}
 			}
@@ -130,10 +130,10 @@ public class PanelMemberManger extends JPanel {
 						JOptionPane.showMessageDialog(null, "          Update failed","Message",JOptionPane.ERROR_MESSAGE);
 					}
 				}
-				if(tblMember.getRowCount()==0) {
+				else if(tblMember.getRowCount()==0) {
 					JOptionPane.showMessageDialog(null, "         The list is empty","Message",JOptionPane.INFORMATION_MESSAGE);
 				}
-				if(n<0) {
+				else if(n<0) {
 					JOptionPane.showMessageDialog(null, "         Please select a row","Message",JOptionPane.INFORMATION_MESSAGE);
 				}
 			}

@@ -1,0 +1,44 @@
+package BUS;
+import java.io.*;
+import java.util.ArrayList;
+
+import javax.swing.JComboBox;
+
+import DAO.BookDAO;
+import DAO.BorrowBookDAO;
+import DTO.Borrow_ReturnDTO;
+import DTO.Borrow_ReturnInfoDTO;
+import GUI.PanelBorrowBook;
+public class BorrowBookBUS {
+	//save
+	public static boolean saveBorrow_Return() {
+		Borrow_ReturnDTO a = PanelBorrowBook.getBorrow_Return();
+		ArrayList<Borrow_ReturnInfoDTO> b = PanelBorrowBook.getBorrow_ReturnInfo();
+		int flag = 0,result = 0;
+		flag=BorrowBookDAO.saveBorrow_Return(a);
+		if(flag==1) {
+			for (int i = 0; i < b.size(); i++) {
+				result+=BorrowBookDAO.saveBorrow_ReturnInfo(b.get(i));
+				//BorrowBookDAO.updateBook(b.get(i));
+			}
+		}
+		if(result>0&&result==b.size()) {
+			return true;
+		}
+		else {
+			return false;
+		}
+	}
+	//load data into cmb Type of book
+	public static void loadTypeOfBookToCmb(JComboBox cmb) {
+		BorrowBookDAO.loadTypeOfBookToCmb(cmb);
+	}
+	//load data into cmb book name
+	public static void loadBookNameToCmb(String typeOfBook,JComboBox cmb) {
+		BorrowBookDAO.loadTypeOfBookToCmb(typeOfBook, cmb);
+	}
+	//load data into cmb MemberID
+	public static void loadMemberIDToCmb(JComboBox cmb) {
+		BorrowBookDAO.loadMemberIDToCmb(cmb);
+	}
+}
