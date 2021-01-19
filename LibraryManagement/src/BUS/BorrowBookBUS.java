@@ -19,7 +19,7 @@ public class BorrowBookBUS {
 		if(flag==1) {
 			for (int i = 0; i < b.size(); i++) {
 				result+=BorrowBookDAO.saveBorrow_ReturnInfo(b.get(i));
-				//BorrowBookDAO.updateBook(b.get(i));
+				BorrowBookDAO.updateBook(b.get(i).getBookName());
 			}
 		}
 		if(result>0&&result==b.size()) {
@@ -35,7 +35,8 @@ public class BorrowBookBUS {
 	}
 	//load data into cmb book name
 	public static void loadBookNameToCmb(String typeOfBook,JComboBox cmb) {
-		BorrowBookDAO.loadTypeOfBookToCmb(typeOfBook, cmb);
+		int typeID = BorrowBookDAO.getTypeID(typeOfBook);
+		BorrowBookDAO.loadBookNameToCmb(typeID,cmb);
 	}
 	//load data into cmb MemberID
 	public static void loadMemberIDToCmb(JComboBox cmb) {

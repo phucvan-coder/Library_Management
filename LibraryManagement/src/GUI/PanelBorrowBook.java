@@ -148,6 +148,7 @@ public class PanelBorrowBook extends JPanel {
 			//after choose item of cmbCategory
 			public void itemStateChanged(ItemEvent e) {
 				String typeName = cmbCategory.getSelectedItem().toString();
+				cmbBookName.removeAllItems();
 				BorrowBookBUS.loadBookNameToCmb(typeName, cmbBookName);
 			}
 		});
@@ -199,24 +200,6 @@ public class PanelBorrowBook extends JPanel {
 		add(txtNumber);
 		txtNumber.setColumns(10);
 		
-		JButton btnConfirm = new JButton("Confirm");
-		btnConfirm.addActionListener(new ActionListener() {
-			//save
-			public void actionPerformed(ActionEvent e) {
-				boolean result = BorrowBookBUS.saveBorrow_Return();
-				if(result) {
-					JOptionPane.showMessageDialog(null, "         Save successful","Message",JOptionPane.INFORMATION_MESSAGE);
-					DefaultTableModel model = (DefaultTableModel) tblBorrowBook.getModel();
-					model.getDataVector().clear();
-				}
-				else {
-					JOptionPane.showMessageDialog(null, "          Save failed","Message",JOptionPane.ERROR_MESSAGE);
-				}
-			}
-		});
-		btnConfirm.setBounds(411, 467, 85, 21);
-		add(btnConfirm);
-		
 		JScrollPane scrollPane = new JScrollPane();
 		scrollPane.addMouseListener(new MouseAdapter() {
 			//click on table
@@ -251,8 +234,33 @@ public class PanelBorrowBook extends JPanel {
 		scrollPane.setViewportView(tblBorrowBook);
 		setVisible(false);
 		BorrowBookBUS.loadTypeOfBookToCmb(cmbCategory);
-		BorrowBookBUS.loadBookNameToCmb(cmbCategory.getSelectedItem().toString(), cmbBookName);
+		String typeName = cmbCategory.getSelectedItem().toString();
+		BorrowBookBUS.loadBookNameToCmb(typeName, cmbBookName);
 		BorrowBookBUS.loadMemberIDToCmb(cmbMemberID);
+		
+		JButton btnConfirm = new JButton("Confirm");
+		btnConfirm.setBounds(428, 467, 85, 21);
+		add(btnConfirm);
+		btnConfirm.addActionListener(new ActionListener() {
+			//save
+			public void actionPerformed(ActionEvent e) {
+				boolean result = BorrowBookBUS.saveBorrow_Return();
+				if(result) {
+					JOptionPane.showMessageDialog(null, "         Save successful","Message",JOptionPane.INFORMATION_MESSAGE);
+					DefaultTableModel model = (DefaultTableModel) tblBorrowBook.getModel();
+					model.getDataVector().removeAllElements();
+					//load cmb bookName
+					String typeName = cmbCategory.getSelectedItem().toString();
+					cmbBookName.removeAllItems();
+					BorrowBookBUS.loadBookNameToCmb(typeName, cmbBookName);
+					num=0;
+					txtNumber.setText(String.valueOf(num));
+				}
+				else {
+					JOptionPane.showMessageDialog(null, "          Save failed","Message",JOptionPane.ERROR_MESSAGE);
+				}
+			}
+		});
 	}
 	//get Borrow_ReturnInfo
 	public static ArrayList<Borrow_ReturnInfoDTO> getBorrow_ReturnInfo() {

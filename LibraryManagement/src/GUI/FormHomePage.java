@@ -20,8 +20,6 @@ import javax.swing.border.LineBorder;
 import javax.swing.border.BevelBorder;
 
 public class FormHomePage extends JFrame {
-
-	private JPanel contentPane;
 	
 	private Image img_house = new ImageIcon(FormHomePage.class.getResource("/img/house.png")).getImage().getScaledInstance(27, 25, Image.SCALE_FAST);
 	private Image img_Book = new ImageIcon(FormHomePage.class.getResource("/img/open-book.png")).getImage().getScaledInstance(27, 25, Image.SCALE_SMOOTH);
@@ -72,7 +70,7 @@ public class FormHomePage extends JFrame {
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 781, 700);
 		setUndecorated(true);
-		contentPane = new JPanel();
+		JPanel contentPane = new JPanel();
 		contentPane.setBorder(new LineBorder(new Color(0, 128, 128), 2));
 		contentPane.setBackground(new Color(255, 255, 255));
 		setContentPane(contentPane);

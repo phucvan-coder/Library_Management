@@ -16,7 +16,6 @@ public class BorrowBookDAO {
 	public static int saveBorrow_Return(Borrow_ReturnDTO a) {
 		int result = 0;
 		Connection conn;
-		PreparedStatement ps;
 		ResultSet r;
 		try {
 			String borrowDate = (new SimpleDateFormat("dd-MM-yyyy")).format(a.getBorrowDate());
@@ -33,7 +32,7 @@ public class BorrowBookDAO {
 		}
 		return result;
 	}
-	//save Borrow_ReturnID
+	//save Borrow_ReturnInfo
 	public static int saveBorrow_ReturnInfo(Borrow_ReturnInfoDTO a) {
 		int result = 0;
 		Connection conn;
@@ -84,13 +83,33 @@ public class BorrowBookDAO {
 			e.printStackTrace();
 		}
 	}
-	//Load data into combobox Book Name
-	public static void loadTypeOfBookToCmb(String typeName,JComboBox cmb) {
+	//  get id of book type
+	public static int getTypeID(String typeName) {
+		int typeID=0;
 		Connection conn;
 		PreparedStatement ps;
 		ResultSet r;
 		try {
-			String query = "SELECT BookName FROM Book,TypeOfBook WHERE TypeOfBook.TypeName = N'"+typeName+"' AND Status = N'Chưa Mượn'";
+			String query = "SELECT Id FROM TypeOfBook WHERE TypeName=N'"+typeName+"'";
+			conn = ConnectionUtils.getConnection();
+			ps = conn.prepareStatement(query);
+			r = ps.executeQuery();
+			if(r.next()) {
+				typeID=r.getInt("Id");
+			}
+		}
+		catch(Exception e) {
+			e.printStackTrace();
+		}
+		return typeID;
+	}
+	//Load data into combobox Book Name
+	public static void loadBookNameToCmb(int typeID,JComboBox cmb) {
+		Connection conn;
+		PreparedStatement ps;
+		ResultSet r;
+		try {
+			String query = "SELECT BookName FROM Book WHERE TypeID = "+typeID+" AND Book.Status = N'Chưa Mượn'";
 			conn = ConnectionUtils.getConnection();
 			ps = conn.prepareStatement(query);
 			r = ps.executeQuery();
@@ -123,27 +142,23 @@ public class BorrowBookDAO {
 			}
 		}
 		//update book status 
-		public static void updateBook(Borrow_ReturnInfoDTO a) {
-			int result = 0;
+		public static void updateBook(String bookName) {
 			Connection conn;
 			PreparedStatement ps;
 			ResultSet r;
 			try {
-				String query1 = "SELECT Id FROM Book WHERE BookName=N'"+a.getBookName()+"'";
+				String query = "SELECT Id FROM Book WHERE BookName=N'"+"tthvtct"+"'";
 				conn = ConnectionUtils.getConnection();
-				ps = conn.prepareStatement(query1);
+				ps = conn.prepareStatement(query);
 				r = ps.executeQuery();
-				int id;
 				if(r.next()) {
-					id = r.getInt("Id");
-					
-					conn = ConnectionUtils.getConnection();
+					int id = r.getInt("Id");
 					ps = conn.prepareStatement("UPDATE Book SET Status = ? WHERE Id = ?");
 					ps.setString(1, "Đã Mượn");
 					ps.setInt(2, id);
-					result = ps.executeUpdate();
-					conn.close();
+					ps.executeUpdate();
 				}
+				conn.close();
 			}
 			catch(Exception e) {
 				e.printStackTrace();
