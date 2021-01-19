@@ -7,9 +7,12 @@ import javax.swing.JTable;
 import javax.swing.table.DefaultTableModel;
 
 import DAO.BookDAO;
+import DTO.AccountDTO;
 import DTO.BookDTO;
+import GUI.FormDangNhap;
 import GUI.PanelManagerAccount;
 import GUI.PanelManagerBook;
+import GUI.PanelSearchingBook;
 public class BookBUS {
 	//display Book list
 			public static void showBookList(JTable table) {
@@ -30,6 +33,49 @@ public class BookBUS {
 					model.addRow(row);
 				}
 			}
+			
+			// Display Search Book
+			public static void showBookListSearch(JTable table) {
+				BookDAO BookList = new BookDAO();
+				BookDTO book = PanelSearchingBook.getNameBook();
+				DefaultTableModel model = (DefaultTableModel) table.getModel();
+				model.getDataVector().clear();
+				Object[] row = new Object[8];
+				ArrayList<BookDTO> list = BookList.getBookSearchList(book);
+				System.out.print(list.size());
+				for(int i = 0; i < list.size(); i++) {
+					row[0] = list.get(i).getId();
+					row[1] = list.get(i).getTypeName();
+					row[2] = list.get(i).getAuthorName();
+					row[3] = list.get(i).getPublisherName();
+					row[4] = list.get(i).getBookName();
+					row[5] = list.get(i).getDateIn();
+					row[6] = list.get(i).getCondition();
+					row[7] = list.get(i).getStatus();
+					model.addRow(row);
+				}
+			}
+			public static boolean CheckArraySearch(JTable table) {
+				int result = 0;
+				BookDAO BookList = new BookDAO();
+				BookDTO book = PanelSearchingBook.getNameBook();
+				DefaultTableModel model = (DefaultTableModel) table.getModel();
+				model.getDataVector().clear();
+				Object[] row = new Object[8];
+				ArrayList<BookDTO> list = BookList.getBookSearchList(book);
+				System.out.print(list.isEmpty());
+				result = list.size();
+				if(result==1) {
+					return true;
+				}
+				else {
+					return false;
+				}
+				
+				
+			}
+			
+			
 			//add
 			public static boolean addBook() {
 				BookDTO a = PanelManagerBook.getBook();

@@ -9,6 +9,7 @@ import java.util.ArrayList;
 
 import javax.swing.JComboBox;
 
+import DTO.AccountDTO;
 import DTO.BookDTO;
 public class BookDAO {
 	//add
@@ -102,7 +103,33 @@ public class BookDAO {
 					e.printStackTrace();
 				}
 				return BookList;
-			} 
+			}
+			// Search Name Book
+			public static ArrayList<BookDTO> getBookSearchList(BookDTO p) {
+				Connection conn;
+				PreparedStatement ps;
+				ResultSet r;
+				
+				ArrayList<BookDTO> BookListSearch = new ArrayList<BookDTO>();
+				try {
+					conn = ConnectionUtils.getConnection();
+					
+					ps = conn.prepareStatement("SELECT Book.Id AS BookID,TypeOfBook.TypeName,Author.AuthorName,Publisher.PublisherName,BookName,DateIn,Condition,Status FROM Book,TypeOfBook,Author,Publisher WHERE Book.TypeID = TypeOfBook.Id AND Book.AuthorID = Author.Id AND Book.PublisherID = Publisher.Id and Book.BookName like ?");
+					ps.setString(1, p.getBookName());
+					//ps.setString(2, user.getPassword());
+					
+					r = ps.executeQuery();
+					while(r.next()) {
+						p = new BookDTO(r.getInt("BookID"), r.getString("TypeName"), r.getString("AuthorName"),r.getString("PublisherName"), r.getString("BookName"), r.getDate("DateIn"), r.getString("Condition"), r.getString("Status"));
+						BookListSearch.add(p);
+					}
+					conn.close();
+				}
+				catch(Exception e) {
+					e.printStackTrace();
+				}
+				return BookListSearch;
+			}
 			//Load data into combobox Type
 			public static void loadTypeOfBookToCmb(JComboBox cmb) {
 				Connection conn;

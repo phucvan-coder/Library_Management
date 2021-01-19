@@ -8,6 +8,7 @@ import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
 import java.awt.SystemColor;
+import java.awt.Toolkit;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import java.awt.Color;
@@ -18,6 +19,8 @@ import java.awt.Font;
 import java.awt.Image;
 import javax.swing.border.LineBorder;
 import javax.swing.border.BevelBorder;
+import java.awt.Dialog.ModalExclusionType;
+import java.awt.Dimension;
 
 public class FormHomePage extends JFrame {
 	
@@ -67,7 +70,10 @@ public class FormHomePage extends JFrame {
 	 * Create the frame.
 	 */
 	public FormHomePage() {
-		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		//setModalExclusionType(ModalExclusionType.TOOLKIT_EXCLUDE);
+	
+		
+		
 		setBounds(100, 100, 781, 700);
 		setUndecorated(true);
 		JPanel contentPane = new JPanel();
@@ -75,6 +81,8 @@ public class FormHomePage extends JFrame {
 		contentPane.setBackground(new Color(255, 255, 255));
 		setContentPane(contentPane);
 		contentPane.setLayout(null);
+		Dimension dim = Toolkit.getDefaultToolkit().getScreenSize();
+		this.setLocation(dim.width/2-this.getSize().width/2, dim.height/2-this.getSize().height/2);
 		
 		PanelSearchingBook = new PanelSearchingBook();
 		//panelMain = new PanelMain();

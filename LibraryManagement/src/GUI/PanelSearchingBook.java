@@ -1,7 +1,13 @@
 package GUI;
 
 import javax.swing.JPanel;
+import BUS.BookBUS;
+import DTO.AccountDTO;
+import DTO.BookDTO;
+
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
+
 import java.awt.Color;
 import javax.swing.JScrollPane;
 import java.awt.Font;
@@ -12,10 +18,23 @@ import java.awt.event.ActionEvent;
 import javax.swing.ImageIcon;
 import com.toedter.calendar.JDateChooser;
 import javax.swing.border.LineBorder;
+import javax.swing.table.DefaultTableModel;
 import javax.swing.SwingConstants;
+import javax.swing.JTable;
+import java.awt.event.MouseAdapter;
+import java.awt.event.MouseEvent;
 
 public class PanelSearchingBook extends JPanel {
-	private JTextField txtSearch;
+	private static JTextField txtSearch;
+	private static JTable tblBook;
+	
+	//get Searching Book
+		public static BookDTO getNameBook() {
+			BookDTO book = new BookDTO();
+			book.setBookName(txtSearch.getText());
+		
+			return book;
+		}
 
 	/**
 	 * Create the panel.
@@ -32,6 +51,18 @@ public class PanelSearchingBook extends JPanel {
 		add(panel);
 		
 		JButton btnSearch = new JButton("Search");
+		btnSearch.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseClicked(MouseEvent e) {
+				if(BookBUS.CheckArraySearch(tblBook)) {
+					BookBUS.showBookListSearch(tblBook);
+				}
+				else {
+					JOptionPane.showMessageDialog(null,"Khong tim thay Book","Alert",JOptionPane.INFORMATION_MESSAGE);
+				}
+				
+			}
+		});
 		btnSearch.setBounds(375, 42, 85, 21);
 		panel.add(btnSearch);
 		
@@ -50,7 +81,28 @@ public class PanelSearchingBook extends JPanel {
 		scrollPane.setBorder(new LineBorder(Color.LIGHT_GRAY, 2));
 		scrollPane.setBounds(10, 134, 503, 350);
 		add(scrollPane);
-		setVisible(false);
+		
+		tblBook = new JTable();
+		tblBook.setModel(new DefaultTableModel(
+				new Object[][] {
+				},
+				new String[] {
+					"Id", "TypeOfBook", "Author", "Publisher", "BookName","DateIn","Condition", "Status"
+				}
+			) {
+				boolean[] columnEditables = new boolean[] {
+					false, false, false, false, false, false, false, false
+				};
+				public boolean isCellEditable(int row, int column) {
+					return columnEditables[column];
+				}
+			});
+			scrollPane.setViewportView(tblBook);
+			setVisible(false);
+			//if(txtSearch.getText()==null) {
+				BookBUS.showBookList(tblBook);
+			//}
+		
 
 	}
 }
