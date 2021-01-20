@@ -267,7 +267,7 @@ public class PanelBorrowBook extends JPanel {
 		ArrayList<Borrow_ReturnInfoDTO> a = new ArrayList<Borrow_ReturnInfoDTO>();
 		Borrow_ReturnInfoDTO b;
 		for (int i = 0; i < tblBorrowBook.getRowCount(); i++) {
-			b = new Borrow_ReturnInfoDTO(0,null,null,tblBorrowBook.getModel().getValueAt(i, 1).toString(),Integer.parseInt(tblBorrowBook.getModel().getValueAt(i, 2).toString()),"");
+			b = new Borrow_ReturnInfoDTO(0,0,tblBorrowBook.getModel().getValueAt(i, 1).toString(),Integer.parseInt(tblBorrowBook.getModel().getValueAt(i, 2).toString()),"");
 			a.add(i, b);
 		}
 		return a;

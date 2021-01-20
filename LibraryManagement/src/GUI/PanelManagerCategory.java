@@ -40,7 +40,7 @@ public class PanelManagerCategory extends JPanel {
 		JPanel panel = new JPanel();
 		panel.setLayout(null);
 		panel.setBackground(new Color(95, 158, 160));
-		panel.setBounds(10, 11, 503, 199);
+		panel.setBounds(10, 11, 503, 182);
 		add(panel);
 		
 		JLabel lblNewLabel_3 = new JLabel("Name of category");
@@ -159,6 +159,16 @@ public class PanelManagerCategory extends JPanel {
 		setVisible(false);
 		//Display Type List
 		TypeBUS.showTypeOfBookList(tblCategory);
+		
+		JButton btnReload = new JButton("Reload");
+		btnReload.addActionListener(new ActionListener() {
+			//reload
+			public void actionPerformed(ActionEvent e) {
+				TypeBUS.showTypeOfBookList(tblCategory);
+			}
+		});
+		btnReload.setBounds(10, 196, 85, 24);
+		add(btnReload);
 	}
 	//get Type
 		public static TypeOfBookDTO getType() {

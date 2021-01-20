@@ -147,7 +147,7 @@ public class BorrowBookDAO {
 			PreparedStatement ps;
 			ResultSet r;
 			try {
-				String query = "SELECT Id FROM Book WHERE BookName=N'"+"tthvtct"+"'";
+				String query = "SELECT Id FROM Book WHERE BookName=N'"+bookName+"'";
 				conn = ConnectionUtils.getConnection();
 				ps = conn.prepareStatement(query);
 				r = ps.executeQuery();

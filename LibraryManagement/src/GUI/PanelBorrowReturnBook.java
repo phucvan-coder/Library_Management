@@ -20,11 +20,14 @@ import javax.swing.JComboBox;
 import com.toedter.calendar.JDateChooser;
 
 import BUS.BookBUS;
-import BUS.Book_ReturnBus;
+import BUS.Book_ReturnBUS;
+import BUS.BorrowBookBUS;
 
 public class PanelBorrowReturnBook extends JPanel {
 	private static JTable tblBorrowReturnBookList;
 	private static JTable tblBorrowReturnBookDetails;
+	private static JDateChooser dateFrom;
+	private static JDateChooser dateTo;
 
 	/**
 	 * Create the panel.
@@ -40,17 +43,15 @@ public class PanelBorrowReturnBook extends JPanel {
 		panel.setBounds(10, 11, 503, 208);
 		add(panel);
 		
-		JButton btnAdd = new JButton("Add");
-		btnAdd.setBounds(154, 152, 85, 21);
-		panel.add(btnAdd);
-		
-		JButton btnDelete = new JButton("Delete");
-		btnDelete.setBounds(261, 152, 85, 21);
-		panel.add(btnDelete);
-		
-		JButton btnUpdate = new JButton("Update");
-		btnUpdate.setBounds(371, 152, 85, 21);
-		panel.add(btnUpdate);
+		JButton btnFilter = new JButton("Filter");
+		btnFilter.addActionListener(new ActionListener() {
+			//filter
+			public void actionPerformed(ActionEvent e) {
+				Book_ReturnBUS.filterBorrow_Return(dateFrom, dateTo,tblBorrowReturnBookList);
+			}
+		});
+		btnFilter.setBounds(408, 35, 85, 32);
+		panel.add(btnFilter);
 		
 		JLabel lblNewLabel_3_1_1_1 = new JLabel("To");
 		lblNewLabel_3_1_1_1.setFont(new Font("Tahoma", Font.BOLD, 14));
@@ -64,20 +65,34 @@ public class PanelBorrowReturnBook extends JPanel {
 		
 		JLabel lblNewLabel = new JLabel("Borrow of reutn Book");
 		lblNewLabel.setFont(new Font("Tahoma", Font.BOLD, 14));
-		lblNewLabel.setBounds(154, 10, 192, 13);
+		lblNewLabel.setBounds(180, 5, 192, 13);
 		panel.add(lblNewLabel);
 		
-		JDateChooser dateFrom = new JDateChooser();
+		dateFrom = new JDateChooser();
 		dateFrom.setBounds(80, 34, 266, 24);
+		//format dd/MM/yyyy for datechooser
+		dateFrom.setDateFormatString("dd-MM-yyyy");
 		panel.add(dateFrom);
 		
-		JDateChooser dateTo = new JDateChooser();
+		dateTo = new JDateChooser();
 		dateTo.setBounds(80, 99, 266, 24);
+		//format dd/MM/yyyy for datechooser
+		dateTo.setDateFormatString("dd-MM-yyyy");
 		panel.add(dateTo);
+		
+		JButton btnReload = new JButton("Reload");
+		btnReload.addActionListener(new ActionListener() {
+			//reload
+			public void actionPerformed(ActionEvent e) {
+				Book_ReturnBUS.reloadTable(tblBorrowReturnBookList);
+			}
+		});
+		btnReload.setBounds(408, 98, 85, 30);
+		panel.add(btnReload);
 		
 		JScrollPane scrollPane = new JScrollPane();
 		scrollPane.setBorder(new LineBorder(Color.LIGHT_GRAY, 2));
-		scrollPane.setBounds(10, 244, 249, 229);
+		scrollPane.setBounds(10, 244, 249, 254);
 		add(scrollPane);
 		
 		tblBorrowReturnBookList = new JTable();
@@ -86,11 +101,9 @@ public class PanelBorrowReturnBook extends JPanel {
 			@Override
 			public void mouseClicked(MouseEvent e) {
 				int n = tblBorrowReturnBookList.getSelectionModel().getLeadSelectionIndex();
-				
-				
-				dateFrom.setDate((Date) (tblBorrowReturnBookList.getValueAt(n, 1)));
-				dateTo.setDate((Date) (tblBorrowReturnBookList.getValueAt(n, 2)));
-				
+				int id = Integer.parseInt(tblBorrowReturnBookList.getValueAt(n, 0).toString());
+				//display Borrow_returnInfo list
+				Book_ReturnBUS.showBookReturnInfoList(id,tblBorrowReturnBookDetails);
 			}
 		});
 		//scrollPane.setColumnHeaderView(tblBorrowReturnBookList);
@@ -111,37 +124,34 @@ public class PanelBorrowReturnBook extends JPanel {
 			scrollPane.setViewportView(tblBorrowReturnBookList);
 			setVisible(false);
 			
-			//display book list
-			Book_ReturnBus.showBookReturnList(tblBorrowReturnBookList);
-			//Book_ReturnBus.loadDateFrom(dateFrom);
-			
+			//display Borrow_returnInfo list
+			Book_ReturnBUS.showBookReturnList(tblBorrowReturnBookList);
 		
 		JScrollPane scrollPane_1 = new JScrollPane();
 		scrollPane_1.setBorder(new LineBorder(Color.LIGHT_GRAY, 2));
-		scrollPane_1.setBounds(269, 244, 244, 229);
+		scrollPane_1.setBounds(269, 244, 244, 254);
 		add(scrollPane_1);
 		
 		tblBorrowReturnBookDetails = new JTable();
 		//scrollPane_1.setColumnHeaderView(tblBorrowReturnBookDetails);
 		tblBorrowReturnBookDetails.setModel(new DefaultTableModel(
-				new Object[][] {
-				},
-				new String[] {
-					"Id", "BorrowDate", "ReturnDate","BookName","MemberID","MemberName"
-				}
-			) {
-				boolean[] columnEditables = new boolean[] {
-					false, false, false, false, false, false
-				};
-				public boolean isCellEditable(int row, int column) {
-					return columnEditables[column];
-				}
-			});
+			new Object[][] {
+			},
+			new String[] {
+				"Id", "Borrow_ReturnID", "BookName", "MemberID", "MemberName"
+			}
+		) {
+			boolean[] columnEditables = new boolean[] {
+				false, false, false, false, false
+			};
+			public boolean isCellEditable(int row, int column) {
+				return columnEditables[column];
+			}
+		});
 			scrollPane_1.setViewportView(tblBorrowReturnBookDetails);
 			setVisible(false);
 			
-			//display book list
-			Book_ReturnBus.showBookReturnInfoList(tblBorrowReturnBookDetails);
+			
 		
 		
 		JPanel panel_1 = new JPanel();
@@ -161,10 +171,6 @@ public class PanelBorrowReturnBook extends JPanel {
 		JLabel lblNewLabel_1_1 = new JLabel("Borrow of Return Book Details");
 		lblNewLabel_1_1.setBounds(0, 0, 180, 13);
 		panel_1_1.add(lblNewLabel_1_1);
-		
-		JButton btnRepload = new JButton("Repload");
-		btnRepload.setBounds(395, 478, 85, 21);
-		add(btnRepload);
 		setVisible(false);
 
 	}

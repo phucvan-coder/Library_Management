@@ -150,7 +150,7 @@ public class PanelPlublisherManger extends JPanel {
 		panel.add(lblNewLabel);
 		
 		JScrollPane scrollPane = new JScrollPane();
-		scrollPane.setBounds(10, 265, 503, 233);
+		scrollPane.setBounds(10, 285, 503, 213);
 		add(scrollPane);
 		
 		tblPublisher = new JTable();
@@ -181,6 +181,16 @@ public class PanelPlublisherManger extends JPanel {
 		scrollPane.setViewportView(tblPublisher);
 		setVisible(false);
 		PublisherBUS.showPublisherList(tblPublisher);
+		
+		JButton btnReload = new JButton("Reload");
+		btnReload.addActionListener(new ActionListener() {
+			//reload
+			public void actionPerformed(ActionEvent e) {
+				PublisherBUS.showPublisherList(tblPublisher);
+			}
+		});
+		btnReload.setBounds(10, 257, 87, 20);
+		add(btnReload);
 	}
 	//get publisher
 		public static PublisherDTO getPublisher() {

@@ -6,7 +6,6 @@ import javax.swing.JTable;
 import javax.swing.table.DefaultTableModel;
 import DAO.PublisherDAO;
 import DTO.PublisherDTO;
-import GUI.FormPublisherManager;
 import GUI.PanelPlublisherManger;
 public class PublisherBUS {
 	//display list

@@ -1,6 +1,8 @@
 package BUS;
 import java.io.*;
 
+import javax.swing.JLabel;
+
 import DAO.DangNhapDAO;
 import DTO.AccountDTO;
 import GUI.FormDangNhap;
@@ -16,17 +18,9 @@ public class DangNhapBUS {
 			return false;
 		}
 	}
-	//check rank
-	public static String CheckRank() {
+	//get UserInfo
+	public static void getUserInfo(JLabel l1,JLabel l2) {
 		AccountDTO user = FormDangNhap.getAccount();
-		int a = DangNhapDAO.checkRank(user);
-		String rank = "";
-		if(a == 1) {
-			rank = "Thủ Thư";
-		}
-		else {
-			rank = "Người Đọc";
-		}
-		return rank;
+		DangNhapDAO.getUserInfo(user, l1, l2);;
 	}
 }

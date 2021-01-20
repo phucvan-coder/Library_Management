@@ -89,7 +89,6 @@ public class FormDangNhap extends JFrame {
 		txtUserName = new JTextField();
 		txtUserName.setForeground(SystemColor.textInactiveText);
 		txtUserName.setFont(new Font("Arial", Font.BOLD, 18));
-		txtUserName.setText("Username");
 		txtUserName.setBounds(10, 0, 219, 30);
 		panel.add(txtUserName);
 		txtUserName.setColumns(10);
@@ -102,7 +101,6 @@ public class FormDangNhap extends JFrame {
 		
 		pwdPassword = new JPasswordField();
 		pwdPassword.setForeground(SystemColor.textInactiveText);
-		pwdPassword.setText("Password");
 		pwdPassword.setBounds(10, 0, 219, 30);
 		panel_1.add(pwdPassword);
 		
@@ -182,6 +180,16 @@ public class FormDangNhap extends JFrame {
 		lblNewLabel.setBounds(55, 80, 98, 129);
 		panel_2.add(lblNewLabel);
 		lblNewLabel.setIcon(new ImageIcon(FormDangNhap.class.getResource("/img/rsz_libirary.png")));
+		
+		JLabel lblNewLabel_3 = new JLabel("User Name");
+		lblNewLabel_3.setFont(new Font("Arial", Font.BOLD, 16));
+		lblNewLabel_3.setBounds(229, 149, 90, 36);
+		contentPane.add(lblNewLabel_3);
+		
+		JLabel lblNewLabel_3_1 = new JLabel("Password");
+		lblNewLabel_3_1.setFont(new Font("Arial", Font.BOLD, 16));
+		lblNewLabel_3_1.setBounds(229, 223, 82, 36);
+		contentPane.add(lblNewLabel_3_1);
 		
 		}
 	}

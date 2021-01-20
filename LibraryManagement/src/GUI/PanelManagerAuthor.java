@@ -38,7 +38,7 @@ public class PanelManagerAuthor extends JPanel {
 		JPanel panel = new JPanel();
 		panel.setLayout(null);
 		panel.setBackground(new Color(95, 158, 160));
-		panel.setBounds(10, 11, 503, 178);
+		panel.setBounds(10, 11, 503, 159);
 		add(panel);
 		
 		JLabel lblNewLabel_3 = new JLabel("Name");
@@ -157,6 +157,16 @@ public class PanelManagerAuthor extends JPanel {
 		setVisible(false);
 		//display Author List
 		AuthorBUS.showAuthorList(tblAuthorManager);
+		
+		JButton btnReload = new JButton("Reload");
+		btnReload.addActionListener(new ActionListener() {
+			//reload
+			public void actionPerformed(ActionEvent e) {
+				AuthorBUS.showAuthorList(tblAuthorManager);
+			}
+		});
+		btnReload.setBounds(10, 174, 86, 24);
+		add(btnReload);
 	}
 	//get Author
 		public static AuthorDTO getAuthor() {

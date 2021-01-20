@@ -3,24 +3,21 @@ import java.io.*;
 import java.util.Date;
 public class Borrow_ReturnInfoDTO {
 	private int id;
-	private Date borrowDate;
-	private Date returnDate;
+	private int borrow_ReturnID;
 	private String bookName;
 	private int memberID;
 	private String memberName;
 	//Constructor
 	public Borrow_ReturnInfoDTO() {
 		this.id = 0;
-		this.borrowDate = null;
-		this.returnDate = null;
+		this.borrow_ReturnID = 0;
 		this.bookName = "";
 		this.memberID = 0;
 		this.memberName = "";
 	}
-	public Borrow_ReturnInfoDTO(int ID,Date BorrowDate,Date ReturnDate,String BookName,int MemberID,String MemberName) {
+	public Borrow_ReturnInfoDTO(int ID,int Borrow_ReturnID,String BookName,int MemberID,String MemberName) {
 		this.id = ID;
-		this.borrowDate = BorrowDate;
-		this.returnDate = ReturnDate;
+		this.borrow_ReturnID = Borrow_ReturnID;
 		this.bookName = BookName;
 		this.memberID = MemberID;
 		this.memberName = MemberName;
@@ -31,18 +28,6 @@ public class Borrow_ReturnInfoDTO {
 	}
 	public void setId(int id) {
 		this.id = id;
-	}
-	public Date getBorrowDate() {
-		return borrowDate;
-	}
-	public void setBorrowDate(Date borrowDate) {
-		this.borrowDate = borrowDate;
-	}
-	public Date getReturnDate() {
-		return returnDate;
-	}
-	public void setReturnDate(Date returnDate) {
-		this.returnDate = returnDate;
 	}
 	public String getBookName() {
 		return bookName;
@@ -61,6 +46,12 @@ public class Borrow_ReturnInfoDTO {
 	}
 	public void setMemberName(String memberName) {
 		this.memberName = memberName;
+	}
+	public int getBorrow_ReturnID() {
+		return borrow_ReturnID;
+	}
+	public void setBorrow_ReturnID(int borrow_ReturnID) {
+		this.borrow_ReturnID = borrow_ReturnID;
 	}
 	
 }

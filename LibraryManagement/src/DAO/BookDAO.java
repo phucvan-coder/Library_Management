@@ -105,7 +105,7 @@ public class BookDAO {
 				return BookList;
 			}
 			// Search Name Book
-			public static ArrayList<BookDTO> getBookSearchList(BookDTO p) {
+			public static ArrayList<BookDTO> getBookSearchList(String bookName) {
 				Connection conn;
 				PreparedStatement ps;
 				ResultSet r;
@@ -113,11 +113,8 @@ public class BookDAO {
 				ArrayList<BookDTO> BookListSearch = new ArrayList<BookDTO>();
 				try {
 					conn = ConnectionUtils.getConnection();
-					
-					ps = conn.prepareStatement("SELECT Book.Id AS BookID,TypeOfBook.TypeName,Author.AuthorName,Publisher.PublisherName,BookName,DateIn,Condition,Status FROM Book,TypeOfBook,Author,Publisher WHERE Book.TypeID = TypeOfBook.Id AND Book.AuthorID = Author.Id AND Book.PublisherID = Publisher.Id and Book.BookName like ?");
-					ps.setString(1, p.getBookName());
-					//ps.setString(2, user.getPassword());
-					
+					BookDTO p;
+					ps = conn.prepareStatement("SELECT Book.Id AS BookID,TypeOfBook.TypeName,Author.AuthorName,Publisher.PublisherName,BookName,DateIn,Condition,Status FROM Book,TypeOfBook,Author,Publisher WHERE Book.TypeID = TypeOfBook.Id AND Book.AuthorID = Author.Id AND Book.PublisherID = Publisher.Id and Book.BookName like '"+bookName+"%'");
 					r = ps.executeQuery();
 					while(r.next()) {
 						p = new BookDTO(r.getInt("BookID"), r.getString("TypeName"), r.getString("AuthorName"),r.getString("PublisherName"), r.getString("BookName"), r.getDate("DateIn"), r.getString("Condition"), r.getString("Status"));

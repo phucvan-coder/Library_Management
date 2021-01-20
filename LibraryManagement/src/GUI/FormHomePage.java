@@ -18,11 +18,16 @@ import javax.swing.SwingConstants;
 import java.awt.Font;
 import java.awt.Image;
 import javax.swing.border.LineBorder;
+
+import BUS.DangNhapBUS;
+
 import javax.swing.border.BevelBorder;
 import java.awt.Dialog.ModalExclusionType;
 import java.awt.Dimension;
 
 public class FormHomePage extends JFrame {
+	private static JLabel lblUserName;
+	private static JLabel lblRank;
 	
 	private Image img_house = new ImageIcon(FormHomePage.class.getResource("/img/house.png")).getImage().getScaledInstance(27, 25, Image.SCALE_FAST);
 	private Image img_Book = new ImageIcon(FormHomePage.class.getResource("/img/open-book.png")).getImage().getScaledInstance(27, 25, Image.SCALE_SMOOTH);
@@ -453,21 +458,22 @@ public class FormHomePage extends JFrame {
 		lblNewLabel_1.setBounds(10, 23, 88, 21);
 		panel_2.add(lblNewLabel_1);
 		
-		JLabel lblUserName = new JLabel("New label");
+		lblUserName = new JLabel("New label");
 		lblUserName.setFont(new Font("Arial", Font.PLAIN, 17));
 		lblUserName.setBounds(108, 23, 327, 19);
 		panel_2.add(lblUserName);
 		
 		JLabel lblNewLabel_1_1 = new JLabel("Rank:");
 		lblNewLabel_1_1.setFont(new Font("Arial", Font.PLAIN, 17));
-		lblNewLabel_1_1.setBounds(10, 80, 88, 21);
+		lblNewLabel_1_1.setBounds(56, 79, 42, 21);
 		panel_2.add(lblNewLabel_1_1);
 		
-		JLabel lblRank = new JLabel("New label");
+		lblRank = new JLabel("New label");
 		lblRank.setFont(new Font("Arial", Font.PLAIN, 17));
 		lblRank.setBounds(108, 80, 327, 19);
 		panel_2.add(lblRank);
-		
+		//set text for label
+		DangNhapBUS.getUserInfo(lblUserName,lblRank);
 	}
 	
 	public void menuClicked(JPanel panel) {
@@ -516,7 +522,5 @@ public class FormHomePage extends JFrame {
 			
 			
 		}
-		
-		
 	}
 }

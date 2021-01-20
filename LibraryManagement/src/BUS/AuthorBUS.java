@@ -5,7 +5,6 @@ import javax.swing.JTable;
 import javax.swing.table.DefaultTableModel;
 import DAO.AuthorDAO;
 import DTO.AuthorDTO;
-import GUI.FormQuanLyAccount;
 import GUI.PanelManagerAuthor;
 public class AuthorBUS {
 	//display Author list

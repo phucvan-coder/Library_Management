@@ -29,11 +29,9 @@ public class PanelSearchingBook extends JPanel {
 	private static JTable tblBook;
 	
 	//get Searching Book
-		public static BookDTO getNameBook() {
-			BookDTO book = new BookDTO();
-			book.setBookName(txtSearch.getText());
-		
-			return book;
+		public static String getBookName() {
+			String bookName = txtSearch.getText();
+			return bookName;
 		}
 
 	/**
@@ -79,7 +77,7 @@ public class PanelSearchingBook extends JPanel {
 		
 		JScrollPane scrollPane = new JScrollPane();
 		scrollPane.setBorder(new LineBorder(Color.LIGHT_GRAY, 2));
-		scrollPane.setBounds(10, 134, 503, 350);
+		scrollPane.setBounds(10, 159, 503, 325);
 		add(scrollPane);
 		
 		tblBook = new JTable();
@@ -101,6 +99,16 @@ public class PanelSearchingBook extends JPanel {
 			setVisible(false);
 			//if(txtSearch.getText()==null) {
 				BookBUS.showBookList(tblBook);
+				
+				JButton btnReload = new JButton("Reload");
+				btnReload.addActionListener(new ActionListener() {
+					//reload
+					public void actionPerformed(ActionEvent e) {
+						BookBUS.showBookList(tblBook);
+					}
+				});
+				btnReload.setBounds(10, 122, 85, 21);
+				add(btnReload);
 			//}
 		
 

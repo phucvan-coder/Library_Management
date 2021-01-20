@@ -48,7 +48,7 @@ public class PanelMemberManger extends JPanel {
 		JPanel panel = new JPanel();
 		panel.setLayout(null);
 		panel.setBackground(new Color(95, 158, 160));
-		panel.setBounds(10, 11, 503, 259);
+		panel.setBounds(10, 11, 503, 241);
 		add(panel);
 		
 		JLabel lblNewLabel_3_1_1 = new JLabel("Gender");
@@ -86,7 +86,7 @@ public class PanelMemberManger extends JPanel {
 				}
 			}
 		});
-		btnAdd.setBounds(80, 228, 85, 21);
+		btnAdd.setBounds(87, 213, 85, 21);
 		panel.add(btnAdd);
 		
 		JButton btnDelete = new JButton("Delete");
@@ -112,7 +112,7 @@ public class PanelMemberManger extends JPanel {
 				}
 			}
 		});
-		btnDelete.setBounds(212, 228, 85, 21);
+		btnDelete.setBounds(209, 213, 85, 21);
 		panel.add(btnDelete);
 		
 		JButton btnUpdate = new JButton("Update");
@@ -138,7 +138,7 @@ public class PanelMemberManger extends JPanel {
 				}
 			}
 		});
-		btnUpdate.setBounds(337, 228, 85, 21);
+		btnUpdate.setBounds(334, 213, 85, 21);
 		panel.add(btnUpdate);
 		
 		cmbGenderMember = new JComboBox();
@@ -216,6 +216,16 @@ public class PanelMemberManger extends JPanel {
 		setVisible(false);
 		//display Member list
 		MemberBUS.showMemberList(tblMember);
+		
+		JButton btnReload = new JButton("Reload");
+		btnReload.addActionListener(new ActionListener() {
+			//reload
+			public void actionPerformed(ActionEvent e) {
+				MemberBUS.showMemberList(tblMember);
+			}
+		});
+		btnReload.setBounds(10, 255, 77, 24);
+		add(btnReload);
 	}
 	//get Member
 	public static MemberDTO getMember() {

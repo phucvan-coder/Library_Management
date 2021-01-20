@@ -45,7 +45,7 @@ public class PanelManagerAccount extends JPanel {
 		JPanel panel = new JPanel();
 		panel.setLayout(null);
 		panel.setBackground(new Color(95, 158, 160));
-		panel.setBounds(10, 11, 503, 241);
+		panel.setBounds(10, 11, 503, 235);
 		add(panel);
 		
 		JLabel lblNewLabel_3_1_1 = new JLabel("Username");
@@ -177,7 +177,7 @@ public class PanelManagerAccount extends JPanel {
 		panel.add(lblNewLabel);
 		
 		JScrollPane scrollPane = new JScrollPane();
-		scrollPane.setBounds(10, 263, 503, 235);
+		scrollPane.setBounds(10, 270, 503, 228);
 		add(scrollPane);
 		
 		tblAccountManager = new JTable();
@@ -214,6 +214,16 @@ public class PanelManagerAccount extends JPanel {
 		AccountBUS.loadMemberNameToTxt(txtName,cmbMemberID);
 		//display Account list
 		AccountBUS.showAccountList(tblAccountManager);
+		
+		JButton btnReload = new JButton("Reload");
+		btnReload.addActionListener(new ActionListener() {
+			//reload
+			public void actionPerformed(ActionEvent e) {
+				AccountBUS.showAccountList(tblAccountManager);
+			}
+		});
+		btnReload.setBounds(10, 246, 86, 24);
+		add(btnReload);
 	}
 	//get Member
 		public static AccountDTO getAccount() {

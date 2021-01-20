@@ -46,7 +46,7 @@ public class PanelManagerBook extends JPanel {
 		JPanel panel = new JPanel();
 		panel.setLayout(null);
 		panel.setBackground(new Color(95, 158, 160));
-		panel.setBounds(10, 11, 503, 260);
+		panel.setBounds(10, 11, 503, 251);
 		add(panel);
 		
 		JLabel lblNewLabel_3_1_1 = new JLabel("Category");
@@ -168,7 +168,7 @@ public class PanelManagerBook extends JPanel {
 		panel.add(dtcDateIn);
 		
 		JScrollPane scrollPane = new JScrollPane();
-		scrollPane.setBounds(10, 282, 503, 216);
+		scrollPane.setBounds(10, 289, 503, 209);
 		add(scrollPane);
 		
 		tblBook = new JTable();
@@ -208,6 +208,16 @@ public class PanelManagerBook extends JPanel {
 		BookBUS.loadTypeOfBookToCmb(cmbCategory);
 		BookBUS.loadAuthorToCmb(cmbAuthor);
 		BookBUS.loadPublisherToCmb(cmbPublisher);
+		
+		JButton btnReload = new JButton("Reload");
+		btnReload.addActionListener(new ActionListener() {
+			//reload
+			public void actionPerformed(ActionEvent e) {
+				BookBUS.showBookList(tblBook);
+			}
+		});
+		btnReload.setBounds(10, 264, 84, 24);
+		add(btnReload);
 	}
 	//get Book
 		public static BookDTO getBook() {

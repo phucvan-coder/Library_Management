@@ -37,7 +37,7 @@ public class BookBUS {
 			// Display Search Book
 			public static void showBookListSearch(JTable table) {
 				BookDAO BookList = new BookDAO();
-				BookDTO book = PanelSearchingBook.getNameBook();
+				String book = PanelSearchingBook.getBookName();
 				DefaultTableModel model = (DefaultTableModel) table.getModel();
 				model.getDataVector().clear();
 				Object[] row = new Object[8];
@@ -58,7 +58,7 @@ public class BookBUS {
 			public static boolean CheckArraySearch(JTable table) {
 				int result = 0;
 				BookDAO BookList = new BookDAO();
-				BookDTO book = PanelSearchingBook.getNameBook();
+				String book = PanelSearchingBook.getBookName();
 				DefaultTableModel model = (DefaultTableModel) table.getModel();
 				model.getDataVector().clear();
 				Object[] row = new Object[8];
