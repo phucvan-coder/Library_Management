@@ -244,11 +244,10 @@ public class PanelBorrowBook extends JPanel {
 		btnConfirm.addActionListener(new ActionListener() {
 			//save
 			public void actionPerformed(ActionEvent e) {
-				boolean result = BorrowBookBUS.saveBorrow_Return();
+				boolean result = BorrowBookBUS.saveBorrow_Return(tblBorrowBook);
 				if(result) {
 					JOptionPane.showMessageDialog(null, "         Save successful","Message",JOptionPane.INFORMATION_MESSAGE);
-					DefaultTableModel model = (DefaultTableModel) tblBorrowBook.getModel();
-					model.getDataVector().removeAllElements();
+					
 					//load cmb bookName
 					String typeName = cmbCategory.getSelectedItem().toString();
 					cmbBookName.removeAllItems();

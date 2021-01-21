@@ -3,6 +3,8 @@ import java.io.*;
 import java.util.ArrayList;
 
 import javax.swing.JComboBox;
+import javax.swing.JTable;
+import javax.swing.table.DefaultTableModel;
 
 import DAO.BookDAO;
 import DAO.BorrowBookDAO;
@@ -11,7 +13,7 @@ import DTO.Borrow_ReturnInfoDTO;
 import GUI.PanelBorrowBook;
 public class BorrowBookBUS {
 	//s
-	public static boolean saveBorrow_Return() {
+	public static boolean saveBorrow_Return(JTable t) {
 		Borrow_ReturnDTO a = PanelBorrowBook.getBorrow_Return();
 		ArrayList<Borrow_ReturnInfoDTO> b = PanelBorrowBook.getBorrow_ReturnInfo();
 		int flag = 0,result = 0;
@@ -23,6 +25,8 @@ public class BorrowBookBUS {
 			}
 		}
 		if(result>0&&result==b.size()) {
+			DefaultTableModel model = (DefaultTableModel) t.getModel();
+			model.getDataVector().clear();
 			return true;
 		}
 		else {

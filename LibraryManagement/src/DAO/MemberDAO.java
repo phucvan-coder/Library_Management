@@ -16,7 +16,7 @@ public class MemberDAO {
 			int result = 0;
 			Connection conn;
 			try {
-				String date = (new SimpleDateFormat("dd-MM-yyyy")).format(a.getBirthday());
+				String date = (new SimpleDateFormat("MM-dd-yyyy")).format(a.getBirthday());
 				conn = ConnectionUtils.getConnection();
 				String sqlInsert = "INSERT INTO Member (MemberName, Birthday, Gender, PhoneNumber, Rank) "
 	                    + " VALUES (N'"+a.getMemberName()+"', '"+date+"', N'"+a.getGender()+"', N'"+a.getPhoneNumber()+"', N'"+a.getRank()+"')";
@@ -55,7 +55,7 @@ public class MemberDAO {
 				conn = ConnectionUtils.getConnection();
 				ps = conn.prepareStatement("UPDATE Member SET MemberName = ?, Birthday = ?, Gender = ?, PhoneNumber = ?, Rank = ? WHERE Id = ?");
 				//turn date into String
-				String date = (new SimpleDateFormat("dd-MM-yyyy")).format(a.getBirthday());
+				String date = (new SimpleDateFormat("MM-dd-yyyy")).format(a.getBirthday());
 				ps.setString(1, a.getMemberName());
 				ps.setString(2, date);
 				ps.setString(3, a.getGender());

@@ -12,6 +12,7 @@ import javax.swing.JButton;
 import java.awt.event.ActionListener;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
+import java.sql.Connection;
 import java.util.Date;
 import java.awt.event.ActionEvent;
 import javax.swing.SwingConstants;
@@ -24,6 +25,17 @@ import com.toedter.calendar.JDateChooser;
 import BUS.BookBUS;
 import BUS.Book_ReturnBUS;
 import BUS.BorrowBookBUS;
+import DAO.ConnectionUtils;
+
+import org.jfree.chart.ChartFactory;
+import org.jfree.chart.ChartFrame;
+import org.jfree.chart.ChartPanel;
+import org.jfree.chart.JFreeChart;
+import org.jfree.data.category.CategoryDataset;
+import org.jfree.data.category.DefaultCategoryDataset;
+import org.jfree.data.jdbc.JDBCCategoryDataset;
+import org.jfree.data.xy.IntervalXYDataset;
+
 
 public class PanelBorrowReturnBook extends JPanel {
 	private static JTable tblBorrowReturnBookList;
@@ -52,7 +64,7 @@ public class PanelBorrowReturnBook extends JPanel {
 				Book_ReturnBUS.filterBorrow_Return(dateFrom, dateTo,tblBorrowReturnBookList);
 			}
 		});
-		btnFilter.setBounds(408, 35, 85, 32);
+		btnFilter.setBounds(408, 55, 85, 32);
 		panel.add(btnFilter);
 		
 		JLabel lblNewLabel_3_1_1_1 = new JLabel("To");
@@ -103,6 +115,46 @@ public class PanelBorrowReturnBook extends JPanel {
 		});
 		btnExport.setBounds(408, 153, 85, 32);
 		panel.add(btnExport);
+		
+		JButton btnLine = new JButton("Statistics");
+		btnLine.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+				//line L=new line();
+				//L.setVisible(true);
+				Connection conn;
+		    	
+		    	try {
+		    		conn = ConnectionUtils.getConnection();
+		    		String query = "select BorrowDate,NumberOfBooks from Borrow_Return";
+					java.sql.Statement st = conn.createStatement();
+					//conn.close();
+					JDBCCategoryDataset dataset = new JDBCCategoryDataset(conn, query);
+					dataset.executeQuery(query);
+					String chartTitle = "Programming Languages Trends";
+			        String categoryAxisLabel = "BorrowDate";
+			        String valueAxisLabel = "NumberOfBooks";
+			     
+			        //CategoryDataset dataset = createDataset();
+			     
+			        JFreeChart chart = ChartFactory.createLineChart(chartTitle,
+			                categoryAxisLabel, valueAxisLabel, dataset);
+			     
+			       
+			        
+			        ChartFrame frame = new ChartFrame("query chart", chart);
+			        frame.setVisible(true);
+			        frame.setSize(700,700);
+					
+		    		
+		    	}
+		    	catch (Exception e){
+		    		JOptionPane.showMessageDialog(null, e);
+		    	}
+		    	
+			}
+		});
+		btnLine.setBounds(408, 5, 85, 32);
+		panel.add(btnLine);
 		
 		JScrollPane scrollPane = new JScrollPane();
 		scrollPane.setBorder(new LineBorder(Color.LIGHT_GRAY, 2));

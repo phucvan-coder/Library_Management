@@ -18,8 +18,8 @@ public class BorrowBookDAO {
 		Connection conn;
 		ResultSet r;
 		try {
-			String borrowDate = (new SimpleDateFormat("dd-MM-yyyy")).format(a.getBorrowDate());
-			String returnDate = (new SimpleDateFormat("dd-MM-yyyy")).format(a.getReturnDate());
+			String borrowDate = (new SimpleDateFormat("MM-dd-yyyy")).format(a.getBorrowDate());
+			String returnDate = (new SimpleDateFormat("MM-dd-yyyy")).format(a.getReturnDate());
 			conn = ConnectionUtils.getConnection();
 			String sqlInsert = "INSERT INTO Borrow_Return (BorrowDate, ReturnDate, NumberOfBooks) "
                     + " VALUES ('"+borrowDate+"', '"+returnDate+"', "+a.getNumberOfBooks()+")";

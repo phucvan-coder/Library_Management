@@ -29,7 +29,7 @@ public class BookDAO {
 						authorID = r.getInt("AuthorID");
 						publisherID = r.getInt("PublisherID");
 						
-						String date = (new SimpleDateFormat("dd-MM-yyyy")).format(a.getDateIn());
+						String date = (new SimpleDateFormat("MM-dd-yyyy")).format(a.getDateIn());
 						conn = ConnectionUtils.getConnection();
 						String sqlInsert = "INSERT INTO Book (TypeID, AuthorID, PublisherID, BookName, DateIn, Condition, Status) "
 			                    + " VALUES ("+typeID+", "+authorID+", "+publisherID+" ,N'"+a.getBookName()+"', '"+date+"', N'"+a.getCondition()+"', N'"+a.getStatus()+"')";
@@ -63,7 +63,7 @@ public class BookDAO {
 						conn = ConnectionUtils.getConnection();
 						ps = conn.prepareStatement("UPDATE Book SET TypeID = ?, AuthorID = ?, PublisherID = ?, BookName = ?, DateIn = ?, Condition = ?, Status = ? WHERE Id = ?");
 						//turn date into String
-						String date = (new SimpleDateFormat("dd-MM-yyyy")).format(a.getDateIn());
+						String date = (new SimpleDateFormat("MM-dd-yyyy")).format(a.getDateIn());
 						ps.setInt(1, typeID);
 						ps.setInt(2, authorID);
 						ps.setInt(3, publisherID);

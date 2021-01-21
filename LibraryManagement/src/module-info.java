@@ -6,4 +6,5 @@ module LibraryManagement {
 	requires jdk.jconsole;
 	requires org.apache.poi.poi;
 	requires org.apache.poi.ooxml;
+	requires org.jfree.jfreechart;
 }

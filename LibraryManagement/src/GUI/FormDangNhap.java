@@ -132,7 +132,9 @@ public class FormDangNhap extends JFrame {
 		JButton btnCancel = new JButton("Cancel");
 		btnCancel.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				dispose();
+				if (JOptionPane.showConfirmDialog(null, "Do You Want To Exit ?", "Notification", JOptionPane.YES_NO_OPTION)== 0){
+					FormDangNhap.this.dispose();
+				}
 			}
 		});
 		btnCancel.setFont(new Font("Arial", Font.PLAIN, 15));
