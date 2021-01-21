@@ -2,6 +2,8 @@ package GUI;
 
 import javax.swing.JPanel;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
+
 import java.awt.Color;
 import javax.swing.JScrollPane;
 import java.awt.Font;
@@ -89,6 +91,18 @@ public class PanelBorrowReturnBook extends JPanel {
 		});
 		btnReload.setBounds(408, 98, 85, 30);
 		panel.add(btnReload);
+		
+		JButton btnExport = new JButton("Export File");
+		btnExport.addActionListener(new ActionListener() {
+			//Export file
+			public void actionPerformed(ActionEvent e) {
+				int n = tblBorrowReturnBookList.getSelectionModel().getLeadSelectionIndex();
+				Book_ReturnBUS.exportFile(n, tblBorrowReturnBookList, tblBorrowReturnBookDetails);
+				JOptionPane.showMessageDialog(null, "         Export file successful","Message",JOptionPane.INFORMATION_MESSAGE);
+			}
+		});
+		btnExport.setBounds(408, 153, 85, 32);
+		panel.add(btnExport);
 		
 		JScrollPane scrollPane = new JScrollPane();
 		scrollPane.setBorder(new LineBorder(Color.LIGHT_GRAY, 2));
