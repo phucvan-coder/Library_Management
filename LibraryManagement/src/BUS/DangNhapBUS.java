@@ -21,6 +21,15 @@ public class DangNhapBUS {
 	//get UserInfo
 	public static void getUserInfo(JLabel l1,JLabel l2) {
 		AccountDTO user = FormDangNhap.getAccount();
-		DangNhapDAO.getUserInfo(user, l1, l2);;
+		DangNhapDAO.getUserInfo(user, l1, l2);
+	}
+	//check rank
+	public static int checkRank() {
+		AccountDTO user = FormDangNhap.getAccount();
+		int result = 0;
+		if(DangNhapDAO.checkRank(user)) {
+			result=1;
+		}
+		return result;
 	}
 }

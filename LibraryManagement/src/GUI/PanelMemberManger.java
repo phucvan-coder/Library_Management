@@ -142,7 +142,7 @@ public class PanelMemberManger extends JPanel {
 		panel.add(btnUpdate);
 		
 		cmbGenderMember = new JComboBox();
-		cmbGenderMember.setModel(new DefaultComboBoxModel(new String[] {"Nam", "N\u1EEF", "Kh\u00E1c"}));
+		cmbGenderMember.setModel(new DefaultComboBoxModel(new String[] {"Nam", "Nữ", "Khác"}));
 		cmbGenderMember.setFont(new Font("Arial", Font.PLAIN, 13));
 		cmbGenderMember.setBounds(90, 177, 159, 22);
 		panel.add(cmbGenderMember);
@@ -165,10 +165,15 @@ public class PanelMemberManger extends JPanel {
 		panel.add(lblNewLabel_3_1_1_1);
 		
 		cmbRankMember = new JComboBox();
-		cmbRankMember.setModel(new DefaultComboBoxModel(new String[] {"Th\u1EE7 Th\u01B0", "Ng\u01B0\u1EDDi \u0110\u1ECDc"}));
+		cmbRankMember.setModel(new DefaultComboBoxModel(new String[] {"Thủ Thư", "Người Đọc"}));
 		cmbRankMember.setFont(new Font("Arial", Font.PLAIN, 13));
 		cmbRankMember.setBounds(334, 110, 159, 22);
+		int rank = GUI.FormHomePage.checkRank;
+		if(rank!=1) {
+			cmbRankMember.setEnabled(false);
+		}
 		panel.add(cmbRankMember);
+		
 		
 		JLabel lblNewLabel_3_4 = new JLabel("Member Management");
 		lblNewLabel_3_4.setFont(new Font("Tahoma", Font.BOLD, 14));

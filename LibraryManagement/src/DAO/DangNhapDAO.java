@@ -52,4 +52,29 @@ public class DangNhapDAO {
 			e.printStackTrace();
 		}
 	}
+	//Check rank
+		public static boolean checkRank(AccountDTO user) {
+			boolean result = false;
+			Connection conn;
+			PreparedStatement ps;
+			ResultSet r;
+			try {
+				conn = ConnectionUtils.getConnection();
+				ps = conn.prepareStatement("SELECT Member.Rank AS Rank FROM Account, Member WHERE AccountName = ? AND Password = ? AND MemberID = Member.Id");
+				ps.setString(1, user.getAccountName());
+				ps.setString(2, user.getPassword());
+				r = ps.executeQuery();
+				if(r.next()) {
+					String rank = r.getString("Rank");
+					if(rank.equals("Thủ Thư")) {
+						result = true;
+					}
+				}
+				conn.close();
+			}
+			catch(Exception e) {
+				e.printStackTrace();
+			}
+			return result;
+		}
 }

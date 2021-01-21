@@ -19,6 +19,7 @@ import java.awt.Font;
 import java.awt.Image;
 import javax.swing.border.LineBorder;
 
+
 import BUS.DangNhapBUS;
 
 import javax.swing.border.BevelBorder;
@@ -50,8 +51,7 @@ public class FormHomePage extends JFrame {
 	private PanelBorrowReturnBook panelBorrowReturnBook ;
 	private PanelBorrowBook panelBorrowBook ;
 	private PanelBorrowReturnBook panelBorrowReturn;
-	
-	
+	public static int checkRank = DangNhapBUS.checkRank();
 	
 	
 
@@ -76,8 +76,6 @@ public class FormHomePage extends JFrame {
 	 */
 	public FormHomePage() {
 		//setModalExclusionType(ModalExclusionType.TOOLKIT_EXCLUDE);
-	
-		
 		
 		setBounds(100, 100, 781, 700);
 		setUndecorated(true);
@@ -119,11 +117,12 @@ public class FormHomePage extends JFrame {
 		
 		JPanel PanelHomePage = new JPanel();
 		PanelHomePage.addMouseListener(new PanelButtonMouseAdapter(PanelHomePage) {
+			//event---------------------------------------------------------------
 			@Override
 			public void mouseClicked(MouseEvent e) {
+				menuClicked();
 				PanelSearchingBook.setVisible(true);
 				//panel_Main.add(panelCategory);
-				menuClicked(PanelSearchingBook);
 			}
 			
 		});
@@ -147,11 +146,12 @@ public class FormHomePage extends JFrame {
 		
 		JPanel panelQuanLyAncount = new JPanel();
 		panelQuanLyAncount.addMouseListener(new PanelButtonMouseAdapter(panelQuanLyAncount) {
+			//event---------------------------------------------------------------
 			@Override
 			public void mouseClicked(MouseEvent e) {
+				menuClicked();
 				panelManagerAccount.setVisible(true);
 				//panel_Main.add(panelCategory);
-				menuClicked(panelManagerAccount);
 			}
 		});
 		panelQuanLyAncount.setBorder(new LineBorder(new Color(128, 128, 128)));
@@ -179,11 +179,18 @@ public class FormHomePage extends JFrame {
 		
 		JPanel panelQuanLyAuthor = new JPanel();
 		panelQuanLyAuthor.addMouseListener(new PanelButtonMouseAdapter(panelQuanLyAuthor) {
+			//event---------------------------------------------------------------
 			@Override
 			public void mouseClicked(MouseEvent e) {
-				panelManagerAuthor.setVisible(true);
-				//panel_Main.add(panelCategory);
-				menuClicked(panelManagerAuthor);
+					if(checkRank==1) {
+						menuClicked();
+						panelManagerAuthor.setVisible(true);
+						//panel_Main.add(panelCategory);
+						
+					}
+					else{
+						JOptionPane.showMessageDialog(null,"Access failed.","Alert",JOptionPane.INFORMATION_MESSAGE);
+					}
 			}
 		});
 		panelQuanLyAuthor.setBorder(new LineBorder(new Color(128, 128, 128)));
@@ -207,11 +214,18 @@ public class FormHomePage extends JFrame {
 		
 		JPanel panelQuanLyBook = new JPanel();
 		panelQuanLyBook.addMouseListener(new PanelButtonMouseAdapter(panelQuanLyBook) {
+			//event---------------------------------------------------------------
 			@Override
 			public void mouseClicked(MouseEvent e) {
-				panelManagerBook.setVisible(true);
-				//panel_Main.add(panelCategory);
-				menuClicked(panelManagerBook);
+					if(checkRank==1) {
+						menuClicked();
+						panelManagerBook.setVisible(true);
+						//panel_Main.add(panelCategory);
+						
+					}
+					else{
+						JOptionPane.showMessageDialog(null,"Access failed.","Alert",JOptionPane.INFORMATION_MESSAGE);
+					}
 			}
 			
 		});
@@ -235,11 +249,18 @@ public class FormHomePage extends JFrame {
 		
 		JPanel panelQuanLyCategory = new JPanel();
 		panelQuanLyCategory.addMouseListener(new PanelButtonMouseAdapter(panelQuanLyCategory) {
+			//event---------------------------------------------------------------
 			@Override
 			public void mouseClicked(MouseEvent e) {
-				panelManagerCategory.setVisible(true);
-				//panel_Main.add(panelCategory);
-				menuClicked(panelManagerCategory);
+					if(checkRank==1) {
+						menuClicked();
+						panelManagerCategory.setVisible(true);
+						//panel_Main.add(panelCategory);
+						
+					}
+					else{
+						JOptionPane.showMessageDialog(null,"Access failed.","Alert",JOptionPane.INFORMATION_MESSAGE);
+					}
 			}
 		});
 		panelQuanLyCategory.setBorder(new LineBorder(new Color(128, 128, 128), 1, true));
@@ -262,11 +283,12 @@ public class FormHomePage extends JFrame {
 		
 		JPanel panelQuanLyMember = new JPanel();
 		panelQuanLyMember.addMouseListener(new PanelButtonMouseAdapter(panelQuanLyMember) {
+			//event---------------------------------------------------------------
 			@Override
 			public void mouseClicked(MouseEvent e) {
+				menuClicked();
 				panelManagerMember.setVisible(true);
 				//panel_Main.add(panelCategory);
-				menuClicked(panelManagerMember);
 			}
 		});
 		panelQuanLyMember.setBorder(new LineBorder(new Color(128, 128, 128), 1, true));
@@ -336,11 +358,18 @@ public class FormHomePage extends JFrame {
 		lblMember_p_1.setBounds(25, 10, 46, 23);
 		panelManagerPublisher.add(lblMember_p_1);
 		panelManagerPublisher.addMouseListener(new PanelButtonMouseAdapter(panelManagerPublisher) {
+			//event---------------------------------------------------------------
 			@Override
 			public void mouseClicked(MouseEvent e) {
-				PanelSearchingBook.setVisible(true);
-				//panel_Main.add(panelCategory);
-				menuClicked(pPublish);
+				if(checkRank==1) {
+					menuClicked();
+					pPublish.setVisible(true);
+					//panel_Main.add(panelCategory);
+					
+				}
+				else{
+					JOptionPane.showMessageDialog(null,"Access failed.","Alert",JOptionPane.INFORMATION_MESSAGE);
+				}
 			}
 			
 		});
@@ -353,11 +382,17 @@ public class FormHomePage extends JFrame {
 		pBorrowBook.addMouseListener(new PanelButtonMouseAdapter(pBorrowBook) {
 			@Override
 			public void mouseClicked(MouseEvent e) {
-				panelBorrowBook.setVisible(true);
-				//panel_Main.add(panelCategory);
-				menuClicked(panelBorrowBook);
+					if(checkRank==1) {
+						menuClicked();
+						panelBorrowBook.setVisible(true);
+						//panel_Main.add(panelCategory);
+						
+					}
+					else{
+						JOptionPane.showMessageDialog(null,"Access failed.","Alert",JOptionPane.INFORMATION_MESSAGE);
+					}
+					
 			}
-			
 		});
 		panel.add(pBorrowBook);
 		
@@ -382,7 +417,7 @@ public class FormHomePage extends JFrame {
 		contentPane.add(panel_1);
 		panel_1.setLayout(null);
 		
-		JLabel lblNewLabel = new JLabel("Libary Manager softwares app");
+		JLabel lblNewLabel = new JLabel("Libary Manager software");
 		lblNewLabel.setBackground(new Color(0, 0, 0));
 		lblNewLabel.setForeground(new Color(0, 0, 0));
 		lblNewLabel.setHorizontalAlignment(SwingConstants.CENTER);
@@ -400,9 +435,15 @@ public class FormHomePage extends JFrame {
 		pBorrowReturn.addMouseListener(new PanelButtonMouseAdapter(pBorrowReturn) {
 			@Override
 			public void mouseClicked(MouseEvent e) {
-				panelBorrowReturn.setVisible(true);
-				//panel_Main.add(panelCategory);
-				menuClicked(panelBorrowReturn);
+				if(checkRank==1) {
+					menuClicked();
+					panelBorrowReturn.setVisible(true);
+					//panel_Main.add(panelCategory);
+					
+				}
+				else{
+					JOptionPane.showMessageDialog(null,"Access failed.","Alert",JOptionPane.INFORMATION_MESSAGE);
+				}
 			}
 			
 		});
@@ -446,7 +487,7 @@ public class FormHomePage extends JFrame {
 		panel_Main.add(panelBorrowBook);
 		panel_Main.add(panelBorrowReturn);
 		
-		menuClicked(PanelSearchingBook);
+		PanelSearchingBook.setVisible(true);;
 		
 		JPanel panel_2 = new JPanel();
 		panel_2.setBounds(248, 47, 523, 124);
@@ -454,29 +495,30 @@ public class FormHomePage extends JFrame {
 		panel_2.setLayout(null);
 		
 		JLabel lblNewLabel_1 = new JLabel("User Name:");
-		lblNewLabel_1.setFont(new Font("Arial", Font.PLAIN, 17));
-		lblNewLabel_1.setBounds(10, 23, 88, 21);
+		lblNewLabel_1.setFont(new Font("Arial", Font.BOLD, 18));
+		lblNewLabel_1.setBounds(10, 23, 111, 21);
 		panel_2.add(lblNewLabel_1);
 		
 		lblUserName = new JLabel("New label");
-		lblUserName.setFont(new Font("Arial", Font.PLAIN, 17));
-		lblUserName.setBounds(108, 23, 327, 19);
+		lblUserName.setFont(new Font("Arial", Font.BOLD, 18));
+		lblUserName.setBounds(131, 24, 327, 19);
 		panel_2.add(lblUserName);
 		
 		JLabel lblNewLabel_1_1 = new JLabel("Rank:");
-		lblNewLabel_1_1.setFont(new Font("Arial", Font.PLAIN, 17));
-		lblNewLabel_1_1.setBounds(56, 79, 42, 21);
+		lblNewLabel_1_1.setFont(new Font("Arial", Font.BOLD, 18));
+		lblNewLabel_1_1.setBounds(10, 79, 58, 21);
 		panel_2.add(lblNewLabel_1_1);
 		
 		lblRank = new JLabel("New label");
-		lblRank.setFont(new Font("Arial", Font.PLAIN, 17));
-		lblRank.setBounds(108, 80, 327, 19);
+		lblRank.setFont(new Font("Arial", Font.BOLD, 18));
+		lblRank.setBounds(78, 80, 327, 19);
 		panel_2.add(lblRank);
 		//set text for label
+		//get user info
 		DangNhapBUS.getUserInfo(lblUserName,lblRank);
 	}
 	
-	public void menuClicked(JPanel panel) {
+	public void menuClicked() {
 		PanelSearchingBook.setVisible(false);
 		//panelMain.setVisible(false);
 		pPublish.setVisible(false);
@@ -487,12 +529,6 @@ public class FormHomePage extends JFrame {
 		panelManagerCategory.setVisible(false);
 		panelBorrowBook.setVisible(false);
 		panelBorrowReturn.setVisible(false);
-		
-		
-		
-		
-		panel.setVisible(true);
-		
 	}
 	
 	private class PanelButtonMouseAdapter extends MouseAdapter{
@@ -524,3 +560,4 @@ public class FormHomePage extends JFrame {
 		}
 	}
 }
+//JOptionPane.showMessageDialog(null,"Access failed.","Alert",JOptionPane.INFORMATION_MESSAGE);
