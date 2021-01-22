@@ -23,7 +23,7 @@ import javax.swing.JComboBox;
 import com.toedter.calendar.JDateChooser;
 
 import BUS.BookBUS;
-import BUS.Book_ReturnBUS;
+import BUS.Borrow_ReturnBUS;
 import BUS.BorrowBookBUS;
 import DAO.ConnectionUtils;
 
@@ -61,7 +61,7 @@ public class PanelBorrowReturnBook extends JPanel {
 		btnFilter.addActionListener(new ActionListener() {
 			//filter
 			public void actionPerformed(ActionEvent e) {
-				Book_ReturnBUS.filterBorrow_Return(dateFrom, dateTo,tblBorrowReturnBookList);
+				Borrow_ReturnBUS.filterBorrow_Return(dateFrom, dateTo,tblBorrowReturnBookList);
 			}
 		});
 		btnFilter.setBounds(408, 55, 85, 32);
@@ -98,7 +98,7 @@ public class PanelBorrowReturnBook extends JPanel {
 		btnReload.addActionListener(new ActionListener() {
 			//reload
 			public void actionPerformed(ActionEvent e) {
-				Book_ReturnBUS.reloadTable(tblBorrowReturnBookList);
+				Borrow_ReturnBUS.reloadTable(tblBorrowReturnBookList);
 			}
 		});
 		btnReload.setBounds(408, 98, 85, 30);
@@ -109,8 +109,13 @@ public class PanelBorrowReturnBook extends JPanel {
 			//Export file
 			public void actionPerformed(ActionEvent e) {
 				int n = tblBorrowReturnBookList.getSelectionModel().getLeadSelectionIndex();
-				Book_ReturnBUS.exportFile(n, tblBorrowReturnBookList, tblBorrowReturnBookDetails);
-				JOptionPane.showMessageDialog(null, "         Export file successful","Message",JOptionPane.INFORMATION_MESSAGE);
+				if(n>=0) {
+					Borrow_ReturnBUS.exportFile(n, tblBorrowReturnBookList, tblBorrowReturnBookDetails);
+					JOptionPane.showMessageDialog(null, "         Export file successful","Message",JOptionPane.INFORMATION_MESSAGE);
+				}
+				else {
+					JOptionPane.showMessageDialog(null, "         Please choose an ọbject on table borrow_return","Message",JOptionPane.INFORMATION_MESSAGE);
+				}
 			}
 		});
 		btnExport.setBounds(408, 153, 85, 32);
@@ -169,7 +174,7 @@ public class PanelBorrowReturnBook extends JPanel {
 				int n = tblBorrowReturnBookList.getSelectionModel().getLeadSelectionIndex();
 				int id = Integer.parseInt(tblBorrowReturnBookList.getValueAt(n, 0).toString());
 				//display Borrow_returnInfo list
-				Book_ReturnBUS.showBookReturnInfoList(id,tblBorrowReturnBookDetails);
+				Borrow_ReturnBUS.showBookReturnInfoList(id,tblBorrowReturnBookDetails);
 			}
 		});
 		//scrollPane.setColumnHeaderView(tblBorrowReturnBookList);
@@ -191,7 +196,7 @@ public class PanelBorrowReturnBook extends JPanel {
 			setVisible(false);
 			
 			//display Borrow_returnInfo list
-			Book_ReturnBUS.showBookReturnList(tblBorrowReturnBookList);
+			Borrow_ReturnBUS.showBookReturnList(tblBorrowReturnBookList);
 		
 		JScrollPane scrollPane_1 = new JScrollPane();
 		scrollPane_1.setBorder(new LineBorder(Color.LIGHT_GRAY, 2));

@@ -224,6 +224,13 @@ public class PanelManagerAccount extends JPanel {
 		});
 		btnReload.setBounds(10, 246, 86, 24);
 		add(btnReload);
+		
+		int rank = GUI.FormHomePage.checkRank;
+		if(rank!=1) {
+			btnAdd.setEnabled(false);
+			btnDelete.setEnabled(false);
+			btnUpdate.setEnabled(false);
+		}
 	}
 	//get Member
 		public static AccountDTO getAccount() {

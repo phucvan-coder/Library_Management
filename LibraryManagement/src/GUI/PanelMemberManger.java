@@ -168,10 +168,6 @@ public class PanelMemberManger extends JPanel {
 		cmbRankMember.setModel(new DefaultComboBoxModel(new String[] {"Thủ Thư", "Người Đọc"}));
 		cmbRankMember.setFont(new Font("Arial", Font.PLAIN, 13));
 		cmbRankMember.setBounds(334, 110, 159, 22);
-		int rank = GUI.FormHomePage.checkRank;
-		if(rank!=1) {
-			cmbRankMember.setEnabled(false);
-		}
 		panel.add(cmbRankMember);
 		
 		
@@ -231,6 +227,13 @@ public class PanelMemberManger extends JPanel {
 		});
 		btnReload.setBounds(10, 255, 77, 24);
 		add(btnReload);
+		
+		int rank = GUI.FormHomePage.checkRank;
+		if(rank!=1) {
+			btnAdd.setEnabled(false);
+			btnDelete.setEnabled(false);
+			btnUpdate.setEnabled(false);
+		}
 	}
 	//get Member
 	public static MemberDTO getMember() {

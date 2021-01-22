@@ -22,7 +22,7 @@ import org.apache.poi.ss.usermodel.CellType;
 import org.apache.poi.xssf.usermodel.XSSFRow;
 import org.apache.poi.xssf.usermodel.XSSFSheet;
 import org.apache.poi.xssf.usermodel.XSSFWorkbook;
-public class Book_ReturnBUS {
+public class Borrow_ReturnBUS {
 	
 	public static void showBookReturnList(JTable table) {
 		BorrowReturnDAO BorrowReturnList = new BorrowReturnDAO();
