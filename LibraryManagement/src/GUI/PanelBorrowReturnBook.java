@@ -13,6 +13,7 @@ import java.awt.event.ActionListener;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import java.sql.Connection;
+import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.awt.event.ActionEvent;
 import javax.swing.SwingConstants;
@@ -126,36 +127,42 @@ public class PanelBorrowReturnBook extends JPanel {
 			public void actionPerformed(ActionEvent arg0) {
 				//line L=new line();
 				//L.setVisible(true);
-				Connection conn;
-		    	
-		    	try {
-		    		conn = ConnectionUtils.getConnection();
-		    		String query = "select BorrowDate,NumberOfBooks from Borrow_Return";
-					java.sql.Statement st = conn.createStatement();
-					//conn.close();
-					JDBCCategoryDataset dataset = new JDBCCategoryDataset(conn, query);
-					dataset.executeQuery(query);
-					String chartTitle = "Programming Languages Trends";
-			        String categoryAxisLabel = "BorrowDate";
-			        String valueAxisLabel = "NumberOfBooks";
-			     
-			        //CategoryDataset dataset = createDataset();
-			     
-			        JFreeChart chart = ChartFactory.createLineChart(chartTitle,
-			                categoryAxisLabel, valueAxisLabel, dataset);
-			     
-			       
-			        
-			        ChartFrame frame = new ChartFrame("query chart", chart);
-			        frame.setVisible(true);
-			        frame.setSize(700,700);
-					
-		    		
-		    	}
-		    	catch (Exception e){
-		    		JOptionPane.showMessageDialog(null, e);
-		    	}
-		    	
+				if(dateFrom.getDate()!=null||dateTo.getDate()!=null) {
+					Connection conn;
+			    	
+			    	try {
+			    		conn = ConnectionUtils.getConnection();
+			    		String from = (new SimpleDateFormat("MM-dd-yyyy")).format(dateFrom.getDate());
+			    		String to = (new SimpleDateFormat("MM-dd-yyyy")).format(dateTo.getDate());
+			    		String query = "select BorrowDate,NumberOfBooks from Borrow_Return where BorrowDate >= '"+from+"' and BorrowDate <= '"+to+"'";
+						java.sql.Statement st = conn.createStatement();
+						//conn.close();
+						JDBCCategoryDataset dataset = new JDBCCategoryDataset(conn, query);
+						dataset.executeQuery(query);
+						String chartTitle = "Programming Languages Trends";
+				        String categoryAxisLabel = "BorrowDate";
+				        String valueAxisLabel = "NumberOfBooks";
+				     
+				        //CategoryDataset dataset = createDataset();
+				     
+				        JFreeChart chart = ChartFactory.createLineChart(chartTitle,
+				                categoryAxisLabel, valueAxisLabel, dataset);
+				     
+				       
+				        
+				        ChartFrame frame = new ChartFrame("query chart", chart);
+				        frame.setVisible(true);
+				        frame.setSize(700,700);
+						
+			    		
+			    	}
+			    	catch (Exception e){
+			    		JOptionPane.showMessageDialog(null, e);
+			    	}
+				}
+				else {
+					JOptionPane.showMessageDialog(null, "         Please choose the time","Message",JOptionPane.INFORMATION_MESSAGE);
+				}
 			}
 		});
 		btnLine.setBounds(408, 5, 85, 32);

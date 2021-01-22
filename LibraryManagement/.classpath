@@ -141,7 +141,7 @@
 			<attribute name="module" value="true"/>
 		</attributes>
 	</classpathentry>
-	<classpathentry kind="lib" path="C:/Users/huyka/OneDrive/Máy tính/Library_Management/LibraryManagement/Library/jfreechart-1.5.2.jar">
+	<classpathentry kind="lib" path="Library/jfreechart-1.5.2.jar">
 		<attributes>
 			<attribute name="module" value="true"/>
 		</attributes>

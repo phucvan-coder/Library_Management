@@ -82,7 +82,7 @@ public class PanelBorrowBook extends JPanel {
 				}
 			}
 		});
-		btnAdd.setBounds(109, 210, 85, 21);
+		btnAdd.setBounds(45, 210, 85, 21);
 		panel.add(btnAdd);
 		
 		JButton btnDelete = new JButton("Delete");
@@ -104,7 +104,7 @@ public class PanelBorrowBook extends JPanel {
 				}
 			}
 		});
-		btnDelete.setBounds(212, 210, 85, 21);
+		btnDelete.setBounds(156, 210, 85, 21);
 		panel.add(btnDelete);
 		
 		JButton btnUpdate = new JButton("Update");
@@ -135,7 +135,7 @@ public class PanelBorrowBook extends JPanel {
 				}
 			}
 		});
-		btnUpdate.setBounds(307, 210, 85, 21);
+		btnUpdate.setBounds(268, 210, 85, 21);
 		panel.add(btnUpdate);
 		
 		JLabel lblNewLabel_3_1_1_1 = new JLabel("To");
@@ -237,6 +237,19 @@ public class PanelBorrowBook extends JPanel {
 		String typeName = cmbCategory.getSelectedItem().toString();
 		BorrowBookBUS.loadBookNameToCmb(typeName, cmbBookName);
 		BorrowBookBUS.loadMemberIDToCmb(cmbMemberID);
+		
+		JButton btnReload = new JButton("Reload");
+		btnReload.addActionListener(new ActionListener() {
+			//reload
+			public void actionPerformed(ActionEvent e) {
+				BorrowBookBUS.loadTypeOfBookToCmb(cmbCategory);
+				String typeName = cmbCategory.getSelectedItem().toString();
+				cmbBookName.removeAllItems();
+				BorrowBookBUS.loadBookNameToCmb(typeName, cmbBookName);
+			}
+		});
+		btnReload.setBounds(376, 209, 85, 21);
+		panel.add(btnReload);
 		
 		JButton btnConfirm = new JButton("Confirm");
 		btnConfirm.setBounds(428, 467, 85, 21);
