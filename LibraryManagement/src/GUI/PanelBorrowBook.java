@@ -234,7 +234,13 @@ public class PanelBorrowBook extends JPanel {
 		scrollPane.setViewportView(tblBorrowBook);
 		setVisible(false);
 		BorrowBookBUS.loadTypeOfBookToCmb(cmbCategory);
-		String typeName = cmbCategory.getSelectedItem().toString();
+		String typeName="";
+		if(cmbCategory.getItemCount()==0) {
+			typeName="";
+		}
+		else {
+			typeName = cmbCategory.getSelectedItem().toString();
+		}
 		BorrowBookBUS.loadBookNameToCmb(typeName, cmbBookName);
 		BorrowBookBUS.loadMemberIDToCmb(cmbMemberID);
 		

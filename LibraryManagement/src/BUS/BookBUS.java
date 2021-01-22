@@ -103,14 +103,17 @@ public class BookBUS {
 			}
 			//load data into combobox
 			public static void loadTypeOfBookToCmb(JComboBox cmb) {
+				cmb.removeAllItems();
 				BookDAO.loadTypeOfBookToCmb(cmb);
 			}
 			
 			public static void loadAuthorToCmb(JComboBox cmb) {
+				cmb.removeAllItems();
 				BookDAO.loadAuthorToCmb(cmb);
 			}
 			
 			public static void loadPublisherToCmb(JComboBox cmb) {
+				cmb.removeAllItems();
 				BookDAO.loadPublisherToCmb(cmb);
 			}
 }

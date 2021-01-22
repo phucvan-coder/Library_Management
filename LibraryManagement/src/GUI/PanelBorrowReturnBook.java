@@ -55,7 +55,7 @@ public class PanelBorrowReturnBook extends JPanel {
 		JPanel panel = new JPanel();
 		panel.setLayout(null);
 		panel.setBackground(new Color(95, 158, 160));
-		panel.setBounds(10, 11, 606, 208);
+		panel.setBounds(10, 10, 606, 208);
 		add(panel);
 		
 		JButton btnFilter = new JButton("Filter");
@@ -65,7 +65,7 @@ public class PanelBorrowReturnBook extends JPanel {
 				Borrow_ReturnBUS.filterBorrow_Return(dateFrom, dateTo,tblBorrowReturnBookList);
 			}
 		});
-		btnFilter.setBounds(491, 78, 85, 32);
+		btnFilter.setBounds(474, 78, 102, 32);
 		panel.add(btnFilter);
 		
 		JLabel lblNewLabel_3_1_1_1 = new JLabel("To");
@@ -102,7 +102,7 @@ public class PanelBorrowReturnBook extends JPanel {
 				Borrow_ReturnBUS.reloadTable(tblBorrowReturnBookList);
 			}
 		});
-		btnReload.setBounds(491, 121, 85, 30);
+		btnReload.setBounds(474, 38, 102, 30);
 		panel.add(btnReload);
 		
 		JButton btnExport = new JButton("Export File");
@@ -119,7 +119,7 @@ public class PanelBorrowReturnBook extends JPanel {
 				}
 			}
 		});
-		btnExport.setBounds(491, 176, 85, 32);
+		btnExport.setBounds(474, 161, 102, 32);
 		panel.add(btnExport);
 		
 		JButton btnLine = new JButton("Statistics");
@@ -165,7 +165,7 @@ public class PanelBorrowReturnBook extends JPanel {
 				}
 			}
 		});
-		btnLine.setBounds(491, 28, 85, 32);
+		btnLine.setBounds(474, 119, 102, 32);
 		panel.add(btnLine);
 		
 		JScrollPane scrollPane = new JScrollPane();

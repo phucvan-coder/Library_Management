@@ -214,6 +214,9 @@ public class PanelManagerBook extends JPanel {
 			//reload
 			public void actionPerformed(ActionEvent e) {
 				BookBUS.showBookList(tblBook);
+				BookBUS.loadTypeOfBookToCmb(cmbCategory);
+				BookBUS.loadAuthorToCmb(cmbAuthor);
+				BookBUS.loadPublisherToCmb(cmbPublisher);
 			}
 		});
 		btnReload.setBounds(10, 264, 84, 24);

@@ -35,6 +35,7 @@ public class BorrowBookBUS {
 	}
 	//load data into cmb Type of book
 	public static void loadTypeOfBookToCmb(JComboBox cmb) {
+		cmb.removeAllItems();
 		BorrowBookDAO.loadTypeOfBookToCmb(cmb);
 	}
 	//load data into cmb book name
