@@ -45,6 +45,7 @@ public class BorrowBookBUS {
 	}
 	//load data into cmb MemberID
 	public static void loadMemberIDToCmb(JComboBox cmb) {
+		cmb.removeAllItems();
 		BorrowBookDAO.loadMemberIDToCmb(cmb);
 	}
 }

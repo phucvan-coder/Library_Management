@@ -249,6 +249,7 @@ public class PanelBorrowBook extends JPanel {
 			//reload
 			public void actionPerformed(ActionEvent e) {
 				BorrowBookBUS.loadTypeOfBookToCmb(cmbCategory);
+				BorrowBookBUS.loadMemberIDToCmb(cmbMemberID);
 				String typeName = cmbCategory.getSelectedItem().toString();
 				cmbBookName.removeAllItems();
 				BorrowBookBUS.loadBookNameToCmb(typeName, cmbBookName);

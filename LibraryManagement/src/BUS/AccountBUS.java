@@ -67,6 +67,7 @@ public class AccountBUS {
 		}
 		//load data into combobox
 		public static void loadMemberIDToCmb(JComboBox cmb) {
+			cmb.removeAllItems();
 			AccountDAO.loadMemberIDToCmb(cmb);
 		}
 		//load data into textfield

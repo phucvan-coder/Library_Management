@@ -219,6 +219,7 @@ public class PanelManagerAccount extends JPanel {
 		btnReload.addActionListener(new ActionListener() {
 			//reload
 			public void actionPerformed(ActionEvent e) {
+				AccountBUS.loadMemberIDToCmb(cmbMemberID);
 				AccountBUS.showAccountList(tblAccountManager);
 			}
 		});
