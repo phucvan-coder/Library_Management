@@ -40,12 +40,12 @@ public class PanelSearchingBook extends JPanel {
 	public PanelSearchingBook() {
 		setBackground(Color.LIGHT_GRAY);
 		setLayout(null);
-		setBounds(0,0,523, 524);
+		setBounds(0,0,626, 505);
 		
 		JPanel panel = new JPanel();
 		panel.setLayout(null);
 		panel.setBackground(new Color(95, 158, 160));
-		panel.setBounds(10, 22, 503, 89);
+		panel.setBounds(10, 22, 606, 89);
 		add(panel);
 		
 		JButton btnSearch = new JButton("Search");
@@ -61,23 +61,23 @@ public class PanelSearchingBook extends JPanel {
 				
 			}
 		});
-		btnSearch.setBounds(375, 42, 85, 21);
+		btnSearch.setBounds(432, 43, 89, 21);
 		panel.add(btnSearch);
 		
 		JLabel lblSearch = new JLabel("Book Searching");
 		lblSearch.setHorizontalAlignment(SwingConstants.CENTER);
 		lblSearch.setFont(new Font("Tahoma", Font.BOLD, 14));
-		lblSearch.setBounds(154, 10, 192, 13);
+		lblSearch.setBounds(219, 11, 192, 13);
 		panel.add(lblSearch);
 		
 		txtSearch = new JTextField();
-		txtSearch.setBounds(78, 43, 277, 19);
+		txtSearch.setBounds(76, 43, 352, 19);
 		panel.add(txtSearch);
 		txtSearch.setColumns(10);
 		
 		JScrollPane scrollPane = new JScrollPane();
 		scrollPane.setBorder(new LineBorder(Color.LIGHT_GRAY, 2));
-		scrollPane.setBounds(10, 159, 503, 325);
+		scrollPane.setBounds(10, 159, 606, 325);
 		add(scrollPane);
 		
 		tblBook = new JTable();

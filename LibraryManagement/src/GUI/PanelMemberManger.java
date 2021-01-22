@@ -43,33 +43,33 @@ public class PanelMemberManger extends JPanel {
 	public PanelMemberManger() {
 		setBackground(Color.LIGHT_GRAY);
 		setLayout(null);
-		setBounds(0,0,523, 509);
+		setBounds(0,0,626, 505);
 		
 		JPanel panel = new JPanel();
 		panel.setLayout(null);
 		panel.setBackground(new Color(95, 158, 160));
-		panel.setBounds(10, 11, 503, 241);
+		panel.setBounds(10, 11, 606, 241);
 		add(panel);
 		
 		JLabel lblNewLabel_3_1_1 = new JLabel("Gender");
 		lblNewLabel_3_1_1.setFont(new Font("Arial", Font.BOLD, 14));
-		lblNewLabel_3_1_1.setBounds(10, 170, 78, 32);
+		lblNewLabel_3_1_1.setBounds(31, 170, 78, 32);
 		panel.add(lblNewLabel_3_1_1);
 		
 		JLabel lblNewLabel_3_1 = new JLabel("Birthday");
 		lblNewLabel_3_1.setFont(new Font("Arial", Font.BOLD, 14));
-		lblNewLabel_3_1.setBounds(10, 104, 70, 32);
+		lblNewLabel_3_1.setBounds(31, 104, 70, 32);
 		panel.add(lblNewLabel_3_1);
 		
 		JLabel lblNewLabel_3 = new JLabel("Name ");
 		lblNewLabel_3.setFont(new Font("Arial", Font.BOLD, 14));
-		lblNewLabel_3.setBounds(10, 39, 54, 32);
+		lblNewLabel_3.setBounds(31, 39, 54, 32);
 		panel.add(lblNewLabel_3);
 		
 		txtNameMember = new JTextField();
 		txtNameMember.setFont(new Font("Arial", Font.PLAIN, 13));
 		txtNameMember.setColumns(10);
-		txtNameMember.setBounds(87, 39, 159, 32);
+		txtNameMember.setBounds(108, 39, 159, 32);
 		panel.add(txtNameMember);
 		
 		JButton btnAdd = new JButton("Add");
@@ -86,7 +86,7 @@ public class PanelMemberManger extends JPanel {
 				}
 			}
 		});
-		btnAdd.setBounds(87, 213, 85, 21);
+		btnAdd.setBounds(166, 209, 85, 21);
 		panel.add(btnAdd);
 		
 		JButton btnDelete = new JButton("Delete");
@@ -112,7 +112,7 @@ public class PanelMemberManger extends JPanel {
 				}
 			}
 		});
-		btnDelete.setBounds(209, 213, 85, 21);
+		btnDelete.setBounds(288, 209, 85, 21);
 		panel.add(btnDelete);
 		
 		JButton btnUpdate = new JButton("Update");
@@ -138,52 +138,52 @@ public class PanelMemberManger extends JPanel {
 				}
 			}
 		});
-		btnUpdate.setBounds(334, 213, 85, 21);
+		btnUpdate.setBounds(413, 209, 85, 21);
 		panel.add(btnUpdate);
 		
 		cmbGenderMember = new JComboBox();
 		cmbGenderMember.setModel(new DefaultComboBoxModel(new String[] {"Nam", "Nữ", "Khác"}));
 		cmbGenderMember.setFont(new Font("Arial", Font.PLAIN, 13));
-		cmbGenderMember.setBounds(90, 177, 159, 22);
+		cmbGenderMember.setBounds(111, 177, 159, 22);
 		panel.add(cmbGenderMember);
 		
 		JLabel lblNewLabel_3_2 = new JLabel("Phone");
 		lblNewLabel_3_2.setFont(new Font("Arial", Font.BOLD, 14));
-		lblNewLabel_3_2.setBounds(270, 39, 54, 32);
+		lblNewLabel_3_2.setBounds(334, 39, 54, 32);
 		panel.add(lblNewLabel_3_2);
 		
 		txtTelephoneNumber = new JTextField();
 		txtTelephoneNumber.setFont(new Font("Arial", Font.PLAIN, 13));
 		txtTelephoneNumber.setColumns(10);
-		txtTelephoneNumber.setBounds(334, 39, 159, 32);
+		txtTelephoneNumber.setBounds(398, 45, 181, 21);
 		panel.add(txtTelephoneNumber);
 		
 		JLabel lblNewLabel_3_1_1_1 = new JLabel("Rank");
 		lblNewLabel_3_1_1_1.setHorizontalAlignment(SwingConstants.CENTER);
 		lblNewLabel_3_1_1_1.setFont(new Font("Arial", Font.BOLD, 14));
-		lblNewLabel_3_1_1_1.setBounds(256, 104, 78, 32);
+		lblNewLabel_3_1_1_1.setBounds(320, 104, 78, 32);
 		panel.add(lblNewLabel_3_1_1_1);
 		
 		cmbRankMember = new JComboBox();
 		cmbRankMember.setModel(new DefaultComboBoxModel(new String[] {"Thủ Thư", "Người Đọc"}));
 		cmbRankMember.setFont(new Font("Arial", Font.PLAIN, 13));
-		cmbRankMember.setBounds(334, 110, 159, 22);
+		cmbRankMember.setBounds(398, 110, 181, 22);
 		panel.add(cmbRankMember);
 		
 		
 		JLabel lblNewLabel_3_4 = new JLabel("Member Management");
 		lblNewLabel_3_4.setFont(new Font("Tahoma", Font.BOLD, 14));
-		lblNewLabel_3_4.setBounds(175, 0, 178, 32);
+		lblNewLabel_3_4.setBounds(228, 0, 260, 32);
 		panel.add(lblNewLabel_3_4);
 		
 		dtcBirthday = new JDateChooser();
-		dtcBirthday.setBounds(90, 104, 156, 32);
+		dtcBirthday.setBounds(111, 104, 156, 32);
 		//format dd/MM/yyyy for datechooser
 		dtcBirthday.setDateFormatString("dd-MM-yyyy");
 		panel.add(dtcBirthday);
 		
 		JScrollPane scrollPane = new JScrollPane();
-		scrollPane.setBounds(10, 281, 503, 217);
+		scrollPane.setBounds(10, 281, 606, 217);
 		add(scrollPane);
 		
 		tblMember = new JTable();

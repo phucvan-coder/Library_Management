@@ -33,23 +33,23 @@ public class PanelManagerAuthor extends JPanel {
 	public PanelManagerAuthor() {
 		setBackground(Color.LIGHT_GRAY);
 		setLayout(null);
-		setBounds(0,0,523, 509);
+		setBounds(0,0,626, 505);
 		
 		JPanel panel = new JPanel();
 		panel.setLayout(null);
 		panel.setBackground(new Color(95, 158, 160));
-		panel.setBounds(10, 11, 503, 159);
+		panel.setBounds(10, 11, 606, 159);
 		add(panel);
 		
 		JLabel lblNewLabel_3 = new JLabel("Name");
-		lblNewLabel_3.setFont(new Font("Tahoma", Font.BOLD, 13));
-		lblNewLabel_3.setBounds(91, 51, 53, 32);
+		lblNewLabel_3.setFont(new Font("Tahoma", Font.BOLD, 15));
+		lblNewLabel_3.setBounds(73, 50, 60, 32);
 		panel.add(lblNewLabel_3);
 		
 		txtNameAuthor = new JTextField();
 		txtNameAuthor.setFont(new Font("Arial", Font.BOLD, 18));
 		txtNameAuthor.setColumns(10);
-		txtNameAuthor.setBounds(167, 50, 249, 32);
+		txtNameAuthor.setBounds(149, 50, 329, 32);
 		panel.add(txtNameAuthor);
 		
 		JButton btnAdd = new JButton("Add");
@@ -66,7 +66,7 @@ public class PanelManagerAuthor extends JPanel {
 				}
 			}
 		});
-		btnAdd.setBounds(91, 121, 85, 31);
+		btnAdd.setBounds(149, 117, 85, 31);
 		panel.add(btnAdd);
 		
 		JButton btnDelete = new JButton("Delete");
@@ -92,7 +92,7 @@ public class PanelManagerAuthor extends JPanel {
 				}
 			}
 		});
-		btnDelete.setBounds(203, 120, 85, 32);
+		btnDelete.setBounds(269, 116, 85, 32);
 		panel.add(btnDelete);
 		
 		JButton btnUpdate = new JButton("Update");
@@ -118,16 +118,16 @@ public class PanelManagerAuthor extends JPanel {
 				}
 			}
 		});
-		btnUpdate.setBounds(332, 121, 85, 31);
+		btnUpdate.setBounds(393, 117, 85, 31);
 		panel.add(btnUpdate);
 		
 		JLabel lblNewLabel = new JLabel("Author Management");
 		lblNewLabel.setFont(new Font("Tahoma", Font.BOLD, 14));
-		lblNewLabel.setBounds(192, 10, 164, 13);
+		lblNewLabel.setBounds(237, 11, 164, 13);
 		panel.add(lblNewLabel);
 		
 		JScrollPane scrollPane = new JScrollPane();
-		scrollPane.setBounds(10, 200, 503, 298);
+		scrollPane.setBounds(10, 200, 606, 298);
 		add(scrollPane);
 		
 		tblAuthorManager = new JTable();

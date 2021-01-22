@@ -18,7 +18,7 @@ public class PanelMain extends JPanel {
 	public PanelMain() {
 		setBackground(Color.LIGHT_GRAY);
 		setLayout(null);
-		setBounds(0,0,523, 520);
+		setBounds(0,0,626, 505);
 		setVisible(false);
 
 	}

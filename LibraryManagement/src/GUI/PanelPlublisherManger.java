@@ -33,46 +33,46 @@ public class PanelPlublisherManger extends JPanel {
 	public PanelPlublisherManger() {
 		setBackground(Color.LIGHT_GRAY);
 		setLayout(null);
-		setBounds(0,0,523, 509);
+		setBounds(0,0,626, 505);
 		
 		JPanel panel = new JPanel();
 		panel.setLayout(null);
 		panel.setBackground(new Color(95, 158, 160));
-		panel.setBounds(10, 11, 503, 241);
+		panel.setBounds(10, 11, 606, 241);
 		add(panel);
 		
 		JLabel lblNewLabel_3_1_1 = new JLabel("Phone Number");
 		lblNewLabel_3_1_1.setHorizontalAlignment(SwingConstants.CENTER);
 		lblNewLabel_3_1_1.setFont(new Font("Arial", Font.BOLD, 14));
-		lblNewLabel_3_1_1.setBounds(10, 170, 110, 32);
+		lblNewLabel_3_1_1.setBounds(30, 167, 110, 32);
 		panel.add(lblNewLabel_3_1_1);
 		
 		txtPhoneNumber = new JTextField();
 		txtPhoneNumber.setFont(new Font("Arial", Font.PLAIN, 12));
 		txtPhoneNumber.setColumns(10);
-		txtPhoneNumber.setBounds(140, 169, 202, 32);
+		txtPhoneNumber.setBounds(160, 166, 202, 32);
 		panel.add(txtPhoneNumber);
 		
 		txtAdrress = new JTextField();
 		txtAdrress.setFont(new Font("Arial", Font.PLAIN, 12));
 		txtAdrress.setColumns(10);
-		txtAdrress.setBounds(140, 103, 202, 32);
+		txtAdrress.setBounds(160, 100, 202, 32);
 		panel.add(txtAdrress);
 		
 		JLabel lblNewLabel_3_1 = new JLabel("Address");
 		lblNewLabel_3_1.setFont(new Font("Arial", Font.BOLD, 14));
-		lblNewLabel_3_1.setBounds(10, 104, 78, 32);
+		lblNewLabel_3_1.setBounds(30, 101, 78, 32);
 		panel.add(lblNewLabel_3_1);
 		
 		JLabel lblNewLabel_3 = new JLabel("Name Publisher");
 		lblNewLabel_3.setFont(new Font("Arial", Font.BOLD, 14));
-		lblNewLabel_3.setBounds(10, 39, 117, 32);
+		lblNewLabel_3.setBounds(30, 36, 117, 32);
 		panel.add(lblNewLabel_3);
 		
 		txtNamePublisher = new JTextField();
 		txtNamePublisher.setFont(new Font("Arial", Font.PLAIN, 12));
 		txtNamePublisher.setColumns(10);
-		txtNamePublisher.setBounds(137, 39, 205, 32);
+		txtNamePublisher.setBounds(157, 36, 205, 32);
 		panel.add(txtNamePublisher);
 		
 		JButton btnAdd = new JButton("Add");
@@ -89,7 +89,7 @@ public class PanelPlublisherManger extends JPanel {
 				}
 			}
 		});
-		btnAdd.setBounds(388, 43, 105, 29);
+		btnAdd.setBounds(461, 39, 105, 29);
 		panel.add(btnAdd);
 		
 		JButton btnDelete = new JButton("Delete");
@@ -115,7 +115,7 @@ public class PanelPlublisherManger extends JPanel {
 				}
 			}
 		});
-		btnDelete.setBounds(388, 107, 105, 30);
+		btnDelete.setBounds(461, 103, 105, 30);
 		panel.add(btnDelete);
 		
 		JButton btnUpdate = new JButton("Update");
@@ -141,16 +141,16 @@ public class PanelPlublisherManger extends JPanel {
 				}
 			}
 		});
-		btnUpdate.setBounds(388, 174, 105, 29);
+		btnUpdate.setBounds(461, 170, 105, 29);
 		panel.add(btnUpdate);
 		
 		JLabel lblNewLabel = new JLabel("Publisher Management");
 		lblNewLabel.setFont(new Font("Arial", Font.BOLD, 14));
-		lblNewLabel.setBounds(175, 11, 167, 14);
+		lblNewLabel.setBounds(216, 11, 167, 14);
 		panel.add(lblNewLabel);
 		
 		JScrollPane scrollPane = new JScrollPane();
-		scrollPane.setBounds(10, 285, 503, 213);
+		scrollPane.setBounds(10, 285, 606, 213);
 		add(scrollPane);
 		
 		tblPublisher = new JTable();

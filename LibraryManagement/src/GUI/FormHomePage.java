@@ -77,8 +77,8 @@ public class FormHomePage extends JFrame {
 	public FormHomePage() {
 		//setModalExclusionType(ModalExclusionType.TOOLKIT_EXCLUDE);
 		
-		setBounds(100, 100, 781, 700);
-		setUndecorated(true);
+		setBounds(100, 100, 900, 735);
+		//setUndecorated(true);
 		JPanel contentPane = new JPanel();
 		contentPane.setBorder(new LineBorder(new Color(0, 128, 128), 2));
 		contentPane.setBackground(new Color(255, 255, 255));
@@ -469,7 +469,7 @@ public class FormHomePage extends JFrame {
 		JPanel panel_Main = new JPanel();
 		panel_Main.setBorder(null);
 		panel_Main.setBackground(Color.LIGHT_GRAY);
-		panel_Main.setBounds(248, 180, 523, 509);
+		panel_Main.setBounds(248, 180, 626, 505);
 		contentPane.add(panel_Main);
 		panel_Main.setLayout(null);
 		//panel_Main.setLayout(null);
@@ -490,7 +490,7 @@ public class FormHomePage extends JFrame {
 		PanelSearchingBook.setVisible(true);;
 		
 		JPanel panel_2 = new JPanel();
-		panel_2.setBounds(248, 47, 523, 124);
+		panel_2.setBounds(248, 47, 626, 124);
 		contentPane.add(panel_2);
 		panel_2.setLayout(null);
 		

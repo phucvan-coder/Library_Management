@@ -50,12 +50,12 @@ public class PanelBorrowReturnBook extends JPanel {
 	public PanelBorrowReturnBook() {
 		setBackground(Color.LIGHT_GRAY);
 		setLayout(null);
-		setBounds(0,0,523, 509);
+		setBounds(0,0,626, 505);
 		
 		JPanel panel = new JPanel();
 		panel.setLayout(null);
 		panel.setBackground(new Color(95, 158, 160));
-		panel.setBounds(10, 11, 503, 208);
+		panel.setBounds(10, 11, 606, 208);
 		add(panel);
 		
 		JButton btnFilter = new JButton("Filter");
@@ -65,32 +65,32 @@ public class PanelBorrowReturnBook extends JPanel {
 				Borrow_ReturnBUS.filterBorrow_Return(dateFrom, dateTo,tblBorrowReturnBookList);
 			}
 		});
-		btnFilter.setBounds(408, 55, 85, 32);
+		btnFilter.setBounds(491, 78, 85, 32);
 		panel.add(btnFilter);
 		
 		JLabel lblNewLabel_3_1_1_1 = new JLabel("To");
 		lblNewLabel_3_1_1_1.setFont(new Font("Tahoma", Font.BOLD, 14));
-		lblNewLabel_3_1_1_1.setBounds(10, 98, 65, 32);
+		lblNewLabel_3_1_1_1.setBounds(10, 98, 375, 32);
 		panel.add(lblNewLabel_3_1_1_1);
 		
 		JLabel lblNewLabel_3_1_1_2 = new JLabel("From");
 		lblNewLabel_3_1_1_2.setFont(new Font("Tahoma", Font.BOLD, 14));
-		lblNewLabel_3_1_1_2.setBounds(10, 33, 65, 32);
+		lblNewLabel_3_1_1_2.setBounds(10, 33, 375, 32);
 		panel.add(lblNewLabel_3_1_1_2);
 		
 		JLabel lblNewLabel = new JLabel("Borrow of reutn Book");
 		lblNewLabel.setFont(new Font("Tahoma", Font.BOLD, 14));
-		lblNewLabel.setBounds(180, 5, 192, 13);
+		lblNewLabel.setBounds(226, 9, 192, 13);
 		panel.add(lblNewLabel);
 		
 		dateFrom = new JDateChooser();
-		dateFrom.setBounds(80, 34, 266, 24);
+		dateFrom.setBounds(80, 34, 305, 24);
 		//format dd/MM/yyyy for datechooser
 		dateFrom.setDateFormatString("dd-MM-yyyy");
 		panel.add(dateFrom);
 		
 		dateTo = new JDateChooser();
-		dateTo.setBounds(80, 99, 266, 24);
+		dateTo.setBounds(80, 99, 305, 24);
 		//format dd/MM/yyyy for datechooser
 		dateTo.setDateFormatString("dd-MM-yyyy");
 		panel.add(dateTo);
@@ -102,7 +102,7 @@ public class PanelBorrowReturnBook extends JPanel {
 				Borrow_ReturnBUS.reloadTable(tblBorrowReturnBookList);
 			}
 		});
-		btnReload.setBounds(408, 98, 85, 30);
+		btnReload.setBounds(491, 121, 85, 30);
 		panel.add(btnReload);
 		
 		JButton btnExport = new JButton("Export File");
@@ -119,7 +119,7 @@ public class PanelBorrowReturnBook extends JPanel {
 				}
 			}
 		});
-		btnExport.setBounds(408, 153, 85, 32);
+		btnExport.setBounds(491, 176, 85, 32);
 		panel.add(btnExport);
 		
 		JButton btnLine = new JButton("Statistics");
@@ -165,12 +165,12 @@ public class PanelBorrowReturnBook extends JPanel {
 				}
 			}
 		});
-		btnLine.setBounds(408, 5, 85, 32);
+		btnLine.setBounds(491, 28, 85, 32);
 		panel.add(btnLine);
 		
 		JScrollPane scrollPane = new JScrollPane();
 		scrollPane.setBorder(new LineBorder(Color.LIGHT_GRAY, 2));
-		scrollPane.setBounds(10, 244, 249, 254);
+		scrollPane.setBounds(10, 244, 285, 254);
 		add(scrollPane);
 		
 		tblBorrowReturnBookList = new JTable();
@@ -207,7 +207,7 @@ public class PanelBorrowReturnBook extends JPanel {
 		
 		JScrollPane scrollPane_1 = new JScrollPane();
 		scrollPane_1.setBorder(new LineBorder(Color.LIGHT_GRAY, 2));
-		scrollPane_1.setBounds(269, 244, 244, 254);
+		scrollPane_1.setBounds(305, 244, 311, 254);
 		add(scrollPane_1);
 		
 		tblBorrowReturnBookDetails = new JTable();
@@ -233,7 +233,7 @@ public class PanelBorrowReturnBook extends JPanel {
 		
 		
 		JPanel panel_1 = new JPanel();
-		panel_1.setBounds(10, 229, 249, 13);
+		panel_1.setBounds(10, 229, 285, 13);
 		add(panel_1);
 		panel_1.setLayout(null);
 		
@@ -243,7 +243,7 @@ public class PanelBorrowReturnBook extends JPanel {
 		
 		JPanel panel_1_1 = new JPanel();
 		panel_1_1.setLayout(null);
-		panel_1_1.setBounds(269, 229, 244, 13);
+		panel_1_1.setBounds(305, 229, 311, 13);
 		add(panel_1_1);
 		
 		JLabel lblNewLabel_1_1 = new JLabel("Borrow of Return Book Details");

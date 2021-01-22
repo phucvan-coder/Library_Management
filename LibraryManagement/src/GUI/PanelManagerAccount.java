@@ -40,47 +40,47 @@ public class PanelManagerAccount extends JPanel {
 	public PanelManagerAccount() {
 		setBackground(Color.LIGHT_GRAY);
 		setLayout(null);
-		setBounds(0,0,523, 509);
+		setBounds(0,0,626, 505);
 		
 		JPanel panel = new JPanel();
 		panel.setLayout(null);
 		panel.setBackground(new Color(95, 158, 160));
-		panel.setBounds(10, 11, 503, 235);
+		panel.setBounds(10, 11, 606, 235);
 		add(panel);
 		
 		JLabel lblNewLabel_3_1_1 = new JLabel("Accountname");
 		lblNewLabel_3_1_1.setHorizontalAlignment(SwingConstants.CENTER);
 		lblNewLabel_3_1_1.setFont(new Font("Tahoma", Font.BOLD, 14));
-		lblNewLabel_3_1_1.setBounds(0, 151, 96, 32);
+		lblNewLabel_3_1_1.setBounds(20, 159, 96, 32);
 		panel.add(lblNewLabel_3_1_1);
 		
 		txtNameAccount = new JTextField();
 		txtNameAccount.setFont(new Font("Tahoma", Font.BOLD, 18));
 		txtNameAccount.setColumns(10);
-		txtNameAccount.setBounds(98, 150, 165, 32);
+		txtNameAccount.setBounds(126, 158, 165, 32);
 		panel.add(txtNameAccount);
 		
 		txtName = new JTextField();
 		txtName.setEditable(false);
 		txtName.setFont(new Font("Tahoma", Font.BOLD, 18));
 		txtName.setColumns(10);
-		txtName.setBounds(98, 96, 165, 32);
+		txtName.setBounds(126, 104, 165, 32);
 		panel.add(txtName);
 		
 		JLabel lblNewLabel_3_1 = new JLabel("Name");
 		lblNewLabel_3_1.setFont(new Font("Tahoma", Font.BOLD, 13));
-		lblNewLabel_3_1.setBounds(10, 98, 49, 32);
+		lblNewLabel_3_1.setBounds(22, 106, 49, 32);
 		panel.add(lblNewLabel_3_1);
 		
 		JLabel lblNewLabel_3 = new JLabel("Id Member");
 		lblNewLabel_3.setFont(new Font("Tahoma", Font.BOLD, 13));
-		lblNewLabel_3.setBounds(10, 40, 72, 32);
+		lblNewLabel_3.setBounds(20, 47, 72, 32);
 		panel.add(lblNewLabel_3);
 		
 		txtPassword = new JTextField();
 		txtPassword.setFont(new Font("Arial", Font.BOLD, 18));
 		txtPassword.setColumns(10);
-		txtPassword.setBounds(361, 39, 132, 32);
+		txtPassword.setBounds(417, 40, 167, 32);
 		panel.add(txtPassword);
 		
 		JButton btnAdd = new JButton("Add");
@@ -97,7 +97,7 @@ public class PanelManagerAccount extends JPanel {
 				}
 			}
 		});
-		btnAdd.setBounds(371, 99, 122, 33);
+		btnAdd.setBounds(462, 96, 122, 33);
 		panel.add(btnAdd);
 		
 		JButton btnDelete = new JButton("Delete");
@@ -123,7 +123,7 @@ public class PanelManagerAccount extends JPanel {
 				}
 			}
 		});
-		btnDelete.setBounds(371, 150, 122, 32);
+		btnDelete.setBounds(462, 147, 122, 32);
 		panel.add(btnDelete);
 		
 		JButton btnUpdate = new JButton("Update");
@@ -149,7 +149,7 @@ public class PanelManagerAccount extends JPanel {
 				}
 			}
 		});
-		btnUpdate.setBounds(371, 198, 122, 32);
+		btnUpdate.setBounds(462, 195, 122, 32);
 		panel.add(btnUpdate);
 		
 		cmbMemberID = new JComboBox();
@@ -162,22 +162,22 @@ public class PanelManagerAccount extends JPanel {
 		});
 		cmbMemberID.addMouseListener(new MouseAdapter() {
 		});
-		cmbMemberID.setBounds(98, 45, 165, 22);
+		cmbMemberID.setBounds(126, 53, 165, 22);
 		panel.add(cmbMemberID);
 		
 		JLabel lblNewLabel_3_1_1_2 = new JLabel("Pasword");
 		lblNewLabel_3_1_1_2.setHorizontalAlignment(SwingConstants.CENTER);
 		lblNewLabel_3_1_1_2.setFont(new Font("Tahoma", Font.BOLD, 14));
-		lblNewLabel_3_1_1_2.setBounds(271, 38, 92, 32);
+		lblNewLabel_3_1_1_2.setBounds(327, 39, 92, 32);
 		panel.add(lblNewLabel_3_1_1_2);
 		
 		JLabel lblNewLabel = new JLabel("Account Management");
 		lblNewLabel.setFont(new Font("Tahoma", Font.BOLD, 14));
-		lblNewLabel.setBounds(160, 10, 203, 13);
+		lblNewLabel.setBounds(230, 11, 203, 13);
 		panel.add(lblNewLabel);
 		
 		JScrollPane scrollPane = new JScrollPane();
-		scrollPane.setBounds(10, 270, 503, 228);
+		scrollPane.setBounds(10, 270, 606, 228);
 		add(scrollPane);
 		
 		tblAccountManager = new JTable();

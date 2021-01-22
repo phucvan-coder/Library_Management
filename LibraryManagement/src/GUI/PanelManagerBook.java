@@ -41,33 +41,33 @@ public class PanelManagerBook extends JPanel {
 	public PanelManagerBook() {
 		setBackground(Color.LIGHT_GRAY);
 		setLayout(null);
-		setBounds(0,0,523, 509);
+		setBounds(0,0,626, 505);
 		
 		JPanel panel = new JPanel();
 		panel.setLayout(null);
 		panel.setBackground(new Color(95, 158, 160));
-		panel.setBounds(10, 11, 503, 251);
+		panel.setBounds(10, 11, 606, 251);
 		add(panel);
 		
 		JLabel lblNewLabel_3_1_1 = new JLabel("Category");
 		lblNewLabel_3_1_1.setFont(new Font("Tahoma", Font.BOLD, 14));
-		lblNewLabel_3_1_1.setBounds(10, 39, 72, 32);
+		lblNewLabel_3_1_1.setBounds(26, 39, 237, 32);
 		panel.add(lblNewLabel_3_1_1);
 		
 		JLabel lblNewLabel_3_1 = new JLabel("Author");
 		lblNewLabel_3_1.setFont(new Font("Tahoma", Font.BOLD, 13));
-		lblNewLabel_3_1.setBounds(10, 92, 63, 32);
+		lblNewLabel_3_1.setBounds(26, 92, 237, 32);
 		panel.add(lblNewLabel_3_1);
 		
 		JLabel lblNewLabel_3 = new JLabel("Name");
 		lblNewLabel_3.setFont(new Font("Tahoma", Font.BOLD, 13));
-		lblNewLabel_3.setBounds(10, 189, 42, 32);
+		lblNewLabel_3.setBounds(26, 189, 237, 32);
 		panel.add(lblNewLabel_3);
 		
 		txtBookName = new JTextField();
 		txtBookName.setFont(new Font("Arial", Font.BOLD, 18));
 		txtBookName.setColumns(10);
-		txtBookName.setBounds(92, 188, 132, 32);
+		txtBookName.setBounds(108, 193, 155, 22);
 		panel.add(txtBookName);
 		
 		JButton btnAdd = new JButton("Add");
@@ -84,7 +84,7 @@ public class PanelManagerBook extends JPanel {
 				}
 			}
 		});
-		btnAdd.setBounds(359, 172, 132, 33);
+		btnAdd.setBounds(419, 171, 163, 33);
 		panel.add(btnAdd);
 		
 		JButton btnUpdate = new JButton("Update");
@@ -110,65 +110,65 @@ public class PanelManagerBook extends JPanel {
 				}
 			}
 		});
-		btnUpdate.setBounds(359, 216, 132, 33);
+		btnUpdate.setBounds(419, 215, 163, 33);
 		panel.add(btnUpdate);
 		
 		JLabel lblNewLabel_3_1_1_1 = new JLabel("Status");
 		lblNewLabel_3_1_1_1.setFont(new Font("Tahoma", Font.BOLD, 14));
-		lblNewLabel_3_1_1_1.setBounds(274, 132, 79, 32);
+		lblNewLabel_3_1_1_1.setBounds(334, 131, 248, 32);
 		panel.add(lblNewLabel_3_1_1_1);
 		
 		cmbStatus = new JComboBox();
 		cmbStatus.setModel(new DefaultComboBoxModel(new String[] {"Ch\u01B0a M\u01B0\u1EE3n", "\u0110\u00E3 M\u01B0\u1EE3n", "Kh\u00F4ng C\u00F2n"}));
-		cmbStatus.setBounds(359, 139, 132, 22);
+		cmbStatus.setBounds(419, 138, 163, 22);
 		panel.add(cmbStatus);
 		
 		JLabel lblNewLabel_3_1_1_2 = new JLabel("Condition");
 		lblNewLabel_3_1_1_2.setFont(new Font("Tahoma", Font.BOLD, 14));
-		lblNewLabel_3_1_1_2.setBounds(274, 91, 79, 32);
+		lblNewLabel_3_1_1_2.setBounds(334, 90, 248, 32);
 		panel.add(lblNewLabel_3_1_1_2);
 		
 		txtCondition = new JTextField();
 		txtCondition.setFont(new Font("Tahoma", Font.BOLD, 18));
 		txtCondition.setColumns(10);
-		txtCondition.setBounds(359, 90, 132, 32);
+		txtCondition.setBounds(419, 94, 163, 22);
 		panel.add(txtCondition);
 		
 		JLabel lblNewLabel = new JLabel("Book Management");
 		lblNewLabel.setFont(new Font("Tahoma", Font.BOLD, 14));
-		lblNewLabel.setBounds(194, 10, 159, 13);
+		lblNewLabel.setBounds(231, 11, 159, 13);
 		panel.add(lblNewLabel);
 		
 		cmbAuthor = new JComboBox();
-		cmbAuthor.setBounds(92, 98, 132, 22);
+		cmbAuthor.setBounds(108, 98, 155, 22);
 		panel.add(cmbAuthor);
 		
 		cmbCategory = new JComboBox();
-		cmbCategory.setBounds(92, 46, 132, 22);
+		cmbCategory.setBounds(108, 46, 155, 22);
 		panel.add(cmbCategory);
 		
 		JLabel lblNewLabel_3_1_2 = new JLabel("Publisher");
 		lblNewLabel_3_1_2.setFont(new Font("Tahoma", Font.BOLD, 13));
-		lblNewLabel_3_1_2.setBounds(10, 139, 63, 32);
+		lblNewLabel_3_1_2.setBounds(26, 139, 237, 32);
 		panel.add(lblNewLabel_3_1_2);
 		
 		cmbPublisher = new JComboBox();
-		cmbPublisher.setBounds(92, 139, 132, 22);
+		cmbPublisher.setBounds(108, 139, 155, 22);
 		panel.add(cmbPublisher);
 		
 		JLabel lblNewLabel_3_2 = new JLabel("Date in");
 		lblNewLabel_3_2.setFont(new Font("Tahoma", Font.BOLD, 13));
-		lblNewLabel_3_2.setBounds(274, 40, 63, 32);
+		lblNewLabel_3_2.setBounds(334, 39, 248, 32);
 		panel.add(lblNewLabel_3_2);
 		
 		dtcDateIn = new JDateChooser();
-		dtcDateIn.setBounds(359, 49, 132, 22);
+		dtcDateIn.setBounds(419, 48, 163, 22);
 		//format dd/MM/yyyy for datechooser
 		dtcDateIn.setDateFormatString("dd-MM-yyyy");
 		panel.add(dtcDateIn);
 		
 		JScrollPane scrollPane = new JScrollPane();
-		scrollPane.setBounds(10, 289, 503, 209);
+		scrollPane.setBounds(10, 289, 606, 209);
 		add(scrollPane);
 		
 		tblBook = new JTable();

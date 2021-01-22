@@ -35,23 +35,23 @@ public class PanelManagerCategory extends JPanel {
 	public PanelManagerCategory() {
 		setBackground(Color.LIGHT_GRAY);
 		setLayout(null);
-		setBounds(0,0,523, 509);
+		setBounds(0,0,626, 505);
 		
 		JPanel panel = new JPanel();
 		panel.setLayout(null);
 		panel.setBackground(new Color(95, 158, 160));
-		panel.setBounds(10, 11, 503, 182);
+		panel.setBounds(10, 11, 606, 182);
 		add(panel);
 		
 		JLabel lblNewLabel_3 = new JLabel("Name of category");
 		lblNewLabel_3.setFont(new Font("Tahoma", Font.BOLD, 13));
-		lblNewLabel_3.setBounds(65, 60, 136, 32);
+		lblNewLabel_3.setBounds(46, 60, 127, 32);
 		panel.add(lblNewLabel_3);
 		
 		txtCategoryName = new JTextField();
 		txtCategoryName.setFont(new Font("Arial", Font.BOLD, 18));
 		txtCategoryName.setColumns(10);
-		txtCategoryName.setBounds(211, 59, 225, 32);
+		txtCategoryName.setBounds(211, 59, 197, 32);
 		panel.add(txtCategoryName);
 		
 		JButton btnAdd = new JButton("Add");
@@ -68,7 +68,7 @@ public class PanelManagerCategory extends JPanel {
 				}
 			}
 		});
-		btnAdd.setBounds(61, 130, 85, 32);
+		btnAdd.setBounds(156, 139, 85, 32);
 		panel.add(btnAdd);
 		
 		JButton btnDelete = new JButton("Delete");
@@ -94,7 +94,7 @@ public class PanelManagerCategory extends JPanel {
 				}
 			}
 		});
-		btnDelete.setBounds(211, 130, 85, 32);
+		btnDelete.setBounds(404, 139, 85, 32);
 		panel.add(btnDelete);
 		
 		JButton btnUpdate = new JButton("Update");
@@ -120,16 +120,16 @@ public class PanelManagerCategory extends JPanel {
 				}
 			}
 		});
-		btnUpdate.setBounds(351, 130, 85, 32);
+		btnUpdate.setBounds(279, 139, 85, 32);
 		panel.add(btnUpdate);
 		
 		JLabel lblNewLabel_3_1 = new JLabel("Category Management");
 		lblNewLabel_3_1.setFont(new Font("Tahoma", Font.BOLD, 13));
-		lblNewLabel_3_1.setBounds(169, 10, 158, 24);
+		lblNewLabel_3_1.setBounds(225, 11, 186, 24);
 		panel.add(lblNewLabel_3_1);
 		
 		JScrollPane scrollPane = new JScrollPane();
-		scrollPane.setBounds(10, 221, 503, 277);
+		scrollPane.setBounds(10, 221, 606, 277);
 		add(scrollPane);
 		
 		tblCategory = new JTable();

@@ -45,12 +45,12 @@ public class PanelBorrowBook extends JPanel {
 	public PanelBorrowBook() {
 		setBackground(Color.LIGHT_GRAY);
 		setLayout(null);
-		setBounds(0,0,523, 509);
+		setBounds(0,0,626, 505);
 		
 		JPanel panel = new JPanel();
 		panel.setLayout(null);
 		panel.setBackground(new Color(95, 158, 160));
-		panel.setBounds(10, 11, 503, 241);
+		panel.setBounds(10, 11, 606, 241);
 		add(panel);
 		
 		JLabel lblNewLabel_3_1_1 = new JLabel("Book Name");
@@ -82,7 +82,7 @@ public class PanelBorrowBook extends JPanel {
 				}
 			}
 		});
-		btnAdd.setBounds(45, 210, 85, 21);
+		btnAdd.setBounds(111, 209, 85, 21);
 		panel.add(btnAdd);
 		
 		JButton btnDelete = new JButton("Delete");
@@ -104,7 +104,7 @@ public class PanelBorrowBook extends JPanel {
 				}
 			}
 		});
-		btnDelete.setBounds(156, 210, 85, 21);
+		btnDelete.setBounds(222, 209, 85, 21);
 		panel.add(btnDelete);
 		
 		JButton btnUpdate = new JButton("Update");
@@ -135,12 +135,12 @@ public class PanelBorrowBook extends JPanel {
 				}
 			}
 		});
-		btnUpdate.setBounds(268, 210, 85, 21);
+		btnUpdate.setBounds(334, 209, 85, 21);
 		panel.add(btnUpdate);
 		
 		JLabel lblNewLabel_3_1_1_1 = new JLabel("To");
 		lblNewLabel_3_1_1_1.setFont(new Font("Tahoma", Font.BOLD, 14));
-		lblNewLabel_3_1_1_1.setBounds(307, 109, 39, 32);
+		lblNewLabel_3_1_1_1.setBounds(355, 103, 39, 32);
 		panel.add(lblNewLabel_3_1_1_1);
 		
 		cmbCategory = new JComboBox();
@@ -157,12 +157,12 @@ public class PanelBorrowBook extends JPanel {
 		
 		JLabel lblNewLabel_3_1_1_2 = new JLabel("From");
 		lblNewLabel_3_1_1_2.setFont(new Font("Tahoma", Font.BOLD, 14));
-		lblNewLabel_3_1_1_2.setBounds(302, 45, 44, 32);
+		lblNewLabel_3_1_1_2.setBounds(350, 39, 44, 32);
 		panel.add(lblNewLabel_3_1_1_2);
 		
 		JLabel lblNewLabel = new JLabel("Borrow Book");
 		lblNewLabel.setFont(new Font("Tahoma", Font.BOLD, 14));
-		lblNewLabel.setBounds(210, 10, 136, 13);
+		lblNewLabel.setBounds(245, 11, 136, 13);
 		panel.add(lblNewLabel);
 		
 		cmbBookName = new JComboBox();
@@ -170,13 +170,13 @@ public class PanelBorrowBook extends JPanel {
 		panel.add(cmbBookName);
 		
 		dtcFrom = new JDateChooser();
-		dtcFrom.setBounds(351, 47, 142, 24);
+		dtcFrom.setBounds(399, 41, 170, 24);
 		//format dd/MM/yyyy for datechooser
 		dtcFrom.setDateFormatString("dd-MM-yyyy");
 		panel.add(dtcFrom);
 		
 		dtcTo = new JDateChooser();
-		dtcTo.setBounds(351, 111, 142, 24);
+		dtcTo.setBounds(399, 105, 170, 24);
 		//format dd/MM/yyyy for datechooser
 		dtcTo.setDateFormatString("dd-MM-yyyy");
 		panel.add(dtcTo);
@@ -192,11 +192,11 @@ public class PanelBorrowBook extends JPanel {
 		
 		JLabel lblNumberOfBoook = new JLabel("Number of Books");
 		lblNumberOfBoook.setFont(new Font("Tahoma", Font.BOLD, 14));
-		lblNumberOfBoook.setBounds(42, 469, 136, 13);
+		lblNumberOfBoook.setBounds(73, 472, 136, 13);
 		add(lblNumberOfBoook);
 		
 		txtNumber = new JTextField();
-		txtNumber.setBounds(172, 469, 36, 19);
+		txtNumber.setBounds(203, 472, 36, 19);
 		add(txtNumber);
 		txtNumber.setColumns(10);
 		
@@ -213,7 +213,7 @@ public class PanelBorrowBook extends JPanel {
 				dtcTo.setDate((Date) (tblBorrowBook.getValueAt(n, 5)));
 			}
 		});
-		scrollPane.setBounds(10, 263, 503, 196);
+		scrollPane.setBounds(10, 263, 606, 196);
 		add(scrollPane);
 		
 		tblBorrowBook = new JTable();
@@ -248,11 +248,11 @@ public class PanelBorrowBook extends JPanel {
 				BorrowBookBUS.loadBookNameToCmb(typeName, cmbBookName);
 			}
 		});
-		btnReload.setBounds(376, 209, 85, 21);
+		btnReload.setBounds(442, 208, 85, 21);
 		panel.add(btnReload);
 		
 		JButton btnConfirm = new JButton("Confirm");
-		btnConfirm.setBounds(428, 467, 85, 21);
+		btnConfirm.setBounds(459, 470, 85, 21);
 		add(btnConfirm);
 		btnConfirm.addActionListener(new ActionListener() {
 			//save
