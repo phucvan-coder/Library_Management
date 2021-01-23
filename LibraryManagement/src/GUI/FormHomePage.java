@@ -9,6 +9,7 @@ import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
 import java.awt.SystemColor;
 import java.awt.Toolkit;
+import java.awt.Window;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import java.awt.Color;
@@ -51,7 +52,7 @@ public class FormHomePage extends JFrame {
 	private PanelBorrowReturnBook panelBorrowReturnBook ;
 	private PanelBorrowBook panelBorrowBook ;
 	private PanelBorrowReturnBook panelBorrowReturn;
-	public static int checkRank = DangNhapBUS.checkRank();
+	public static int checkRank;
 	
 	
 
@@ -78,7 +79,7 @@ public class FormHomePage extends JFrame {
 		//setModalExclusionType(ModalExclusionType.TOOLKIT_EXCLUDE);
 		
 		setBounds(100, 100, 900, 735);
-		//setUndecorated(true);
+		setUndecorated(true);
 		JPanel contentPane = new JPanel();
 		contentPane.setBorder(new LineBorder(new Color(0, 128, 128), 2));
 		contentPane.setBackground(new Color(255, 255, 255));
@@ -316,6 +317,10 @@ public class FormHomePage extends JFrame {
 				
 				lg.setVisible(true);
 				dispose();
+				//System.exit();
+				
+				
+				
 				
 			}
 			

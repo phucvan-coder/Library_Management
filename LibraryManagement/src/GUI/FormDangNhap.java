@@ -36,6 +36,7 @@ public class FormDangNhap extends JFrame {
 	private JPanel contentPane;
 	private static JPasswordField pwdPassword;
 	private static JTextField txtUserName;
+	protected static int rank;
 	//get Account
 	public static AccountDTO getAccount() {
 		AccountDTO user = new AccountDTO();
@@ -114,8 +115,10 @@ public class FormDangNhap extends JFrame {
 			public void actionPerformed(ActionEvent e) {
 				if(DangNhapBUS.CheckAccount()) {
 					JOptionPane.showMessageDialog(null,"Login successfully.","Alert",JOptionPane.INFORMATION_MESSAGE);
+					rank = DangNhapBUS.checkRank();
 					FormHomePage hp = new FormHomePage();
 					hp.setVisible(true);
+					hp.checkRank = rank;
 					dispose();
 				}
 				else {
