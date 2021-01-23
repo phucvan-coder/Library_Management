@@ -73,7 +73,7 @@ public class BorrowReturnDAO {
 		String borrowDate = (new SimpleDateFormat("dd-MM-yyyy")).format(dFrom.getDate());
 		String returnDate = (new SimpleDateFormat("dd-MM-yyyy")).format(dTo.getDate());
 		try {
-			String query = "SELECT * FROM Borrow_Return WHERE BorrowDate >='"+borrowDate+"' AND ReturnDate <= '"+returnDate+"'";
+			String query = "SELECT * FROM Borrow_Return WHERE BorrowDate >='"+borrowDate+"' AND BorrowDate <= '"+returnDate+"'";
 			conn = ConnectionUtils.getConnection();
 			ps = conn.prepareStatement(query);
 			r = ps.executeQuery();
